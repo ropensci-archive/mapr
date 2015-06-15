@@ -1,0 +1,33 @@
+Package: spoccutils
+Title: Utilities for use with 'spocc'
+Description: Utilities for use with 'spocc'.
+Version: 0.0.1.9000
+License: MIT + file LICENSE
+Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
+    email = "myrmecocystus@gmail.com")
+URL: https://github.com/ropensci/spoccutils
+BugReports: https://github.com/ropensci/spoccutils/issues
+LazyData: true
+VignetteBuilder: knitr
+Roxygen: list(wrap = FALSE)
+Depends:
+    ggplot2
+Imports:
+    spocc (>= 0.2.9),
+    ggmap,
+    rworldmap,
+    sp,
+    lubridate,
+    RColorBrewer,
+    httr,
+    leafletR (>= 0.2-0),
+    whisker,
+    gistr,
+    V8,
+    jsonlite
+Suggests:
+    roxygen2,
+    testthat,
+    knitr,
+    taxize,
+    maptools
