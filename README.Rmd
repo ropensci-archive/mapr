@@ -11,10 +11,22 @@ knitr::opts_chunk$set(
 ```
 
 [![Build Status](https://api.travis-ci.org/ropensci/spoccutils.png)](https://travis-ci.org/ropensci/spoccutils)
-[![Build status](https://ci.appveyor.com/api/projects/status/3d43armi2oanva2s)](https://ci.appveyor.com/project/sckott/spoccutils)
+[![Build status](https://ci.appveyor.com/api/projects/status/jfgg6p111mynxrdc?svg=true)](https://ci.appveyor.com/project/sckott/spoccutils)
 [![Coverage Status](https://coveralls.io/repos/ropensci/spoccutils/badge.svg)](https://coveralls.io/r/ropensci/spoccutils)
 
 Helper for [spocc](https://github.com/ropensci/spocc) - a client for getting species occurrence data from many sources.
+
+This package has utilities for:
+
+* Making maps, with:
+    * base R
+    * ggplot2
+    * Shiny
+    * Leaflet
+    * GitHub Gists
+    * ...
+    
+We split this package off from `spocc` to make `spocc` lighter weight so that users that just want data don't have to install a bunch of other dependencies for mapping, etc. 
 
 ## Contributing
 
