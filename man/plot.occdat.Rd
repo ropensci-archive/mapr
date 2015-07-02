@@ -4,7 +4,7 @@
 \alias{plot.occdat}
 \title{Use base R plotting methods to visualize spocc data.}
 \usage{
-\method{plot}{occdat}(x, ...)
+plot.occdat(x, ...)
 }
 \description{
 Use base R plotting methods to visualize spocc data.

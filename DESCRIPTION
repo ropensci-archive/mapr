@@ -16,6 +16,10 @@ Roxygen: list(wrap = FALSE)
 Depends:
     ggplot2
 Imports:
+    methods,
+    utils,
+    stats,
+    graphics,
     spocc (>= 0.2.4),
     ggmap,
     sp,

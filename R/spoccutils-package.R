@@ -1,5 +1,9 @@
 #' spoccutils
 #'
+#' @importFrom methods as is
+#' @importFrom stats na.omit complete.cases setNames
+#' @importFrom utils write.csv browseURL
+#' @importFrom graphics points
 #' @import spocc
 #' @name spoccutils-package
 #' @aliases spoccutils
