@@ -14,4 +14,10 @@ map_plot(x, ...)
 \description{
 Use base R plotting method to visualize spocc data.
 }
+\examples{
+\dontrun{
+(out <- occ(query='Accipiter striatus', from='gbif', limit=100))
+map_plot(out)
+}
+}
 

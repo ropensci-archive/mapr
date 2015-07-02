@@ -4,6 +4,10 @@
 #' @export
 #' @param x Input, an object of class \code{occdat}
 #' @param ... Further args to \code{\link{points}}
+#' @examples \dontrun{
+#' (out <- occ(query='Accipiter striatus', from='gbif', limit=100))
+#' map_plot(out)
+#' }
 map_plot <- function(x, ...) {
   df <- occ2df(x)
   df <- df[complete.cases(df),]
