@@ -1,5 +1,6 @@
 #' spoccutils
 #'
+#' @import spocc
 #' @name spoccutils-package
 #' @aliases spoccutils
 #' @docType package

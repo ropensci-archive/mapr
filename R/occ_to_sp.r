@@ -1,6 +1,6 @@
 #' Create a spatial points dataframe from a spocc search.
 #'
-#' @importFrom sp SpatialPoints SpatialPointsDataFrame
+#' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
 #' @export
 #'
 #' @param occObj The resuslts of a spocc search called by occ()

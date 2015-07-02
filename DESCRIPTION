@@ -16,9 +16,10 @@ Roxygen: list(wrap = FALSE)
 Depends:
     ggplot2
 Imports:
+    spocc (>= 0.2.4),
     ggmap,
-    rworldmap,
     sp,
+    rworldmap,
     lubridate,
     RColorBrewer,
     httr,
@@ -28,7 +29,6 @@ Imports:
     V8,
     jsonlite
 Suggests:
-    spocc (>= 0.2.4),
     roxygen2,
     testthat,
     knitr,
