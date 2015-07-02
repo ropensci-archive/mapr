@@ -1,4 +1,4 @@
-context("Testing Leaflet maps")
+context("map_leaflet works correctly")
 
 test_that("Leaflet maps and geoJSON work", {
   skip_on_cran()

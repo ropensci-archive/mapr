@@ -4,8 +4,7 @@
 \alias{map_gist}
 \title{Make an interactive map to view in the browser as a Github gist}
 \usage{
-map_gist(data, description = "", file = "gistmap", dir = NULL,
-  public = TRUE, browse = TRUE, ...)
+map_gist(data, description = "", public = TRUE, browse = TRUE, ...)
 }
 \arguments{
 \item{data}{A data.frame, with any number of columns, but with at least the
@@ -14,16 +13,11 @@ following: name (the taxonomic name), latitude (in dec. deg.), longitude
 
 \item{description}{Description for the Github gist, or leave to default (=no description)}
 
-\item{file}{File name (without file extension) for your geojson file. Default is 'gistmap'.}
-
-\item{dir}{Directory for storing file and reading it back in to create gist.
-If none is given, this function gets your working directory and uses that.}
-
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
 \item{browse}{If TRUE (default) the map opens in your default browser.}
 
-\item{...}{Further arguments passed on to \code{spocc_stylegeojson}}
+\item{...}{Further arguments passed on to \code{\link{style_geojson}}}
 }
 \description{
 Make an interactive map to view in the browser as a Github gist

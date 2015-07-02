@@ -5,6 +5,7 @@
 #' @importFrom utils write.csv browseURL
 #' @importFrom graphics points
 #' @import spocc
+#' @importFrom httr POST stop_for_status content upload_file
 #' @name spoccutils-package
 #' @aliases spoccutils
 #' @docType package

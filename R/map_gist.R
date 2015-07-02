@@ -7,12 +7,9 @@
 #'    following: name (the taxonomic name), latitude (in dec. deg.), longitude
 #'    (in dec. deg.)
 #' @param description Description for the Github gist, or leave to default (=no description)
-#' @param file File name (without file extension) for your geojson file. Default is 'gistmap'.
-#' @param dir Directory for storing file and reading it back in to create gist.
-#'    If none is given, this function gets your working directory and uses that.
 #' @param public (logical) Whether gist is public (default: TRUE)
 #' @param browse If TRUE (default) the map opens in your default browser.
-#' @param ... Further arguments passed on to \code{spocc_stylegeojson}
+#' @param ... Further arguments passed on to \code{\link{style_geojson}}
 #'
 #' @details See \code{\link[gistr]{gist_auth}} for help on authentication
 #'
@@ -33,19 +30,16 @@
 #' map_gist(data=dat, symbol=c('park','zoo','garden'))
 #' }
 
-map_gist <- function(data, description = "", file = "gistmap", dir = NULL,
-  public = TRUE, browse = TRUE, ...) {
-
+map_gist <- function(data, description = "", public = TRUE, browse = TRUE, ...) {
   stopifnot(is(data, "occdatind") | is(data, "occdat"))
   data <- if (is(data, "occdatind")) {
     do.call(rbind, data$data)
   } else {
     occ2df(data)
   }
-  if (is.null(dir)) dir <- paste0(getwd(), "/")
-  spplist <- as.character(unique(data$name))
-  datgeojson <- spocc_stylegeojson(input = data, var = "name", ...)
-  write.csv(datgeojson, paste(dir, file, ".csv", sep = ""))
-  spocc_togeojson(input = paste(dir, file, ".csv", sep = ""), destpath = dir, outfilename = file)
-  gist_create(paste(dir, file, ".geojson", sep = ""), description = description, public = public, browse = browse)
+  datgeojson <- style_geojson(input = data, var = "name", ...)
+  file <- tempfile(fileext = ".csv")
+  write.csv(datgeojson, file)
+  geofile <- togeojson2(file)
+  gist_create(geofile, description = description, public = public, browse = browse)
 }

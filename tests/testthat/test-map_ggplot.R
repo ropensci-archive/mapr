@@ -1,6 +1,6 @@
-context("ggmap works correctly")
+context("map_ggplot works correctly")
 
-test_that("ggmaps work as expected", {
+test_that("map_ggplot work as expected", {
   skip_on_cran()
 
   library("ggplot2")
