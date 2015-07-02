@@ -1,4 +1,4 @@
-#' ggplot2 visualization of species occurences
+#' ggpmap visualization of species occurences
 #'
 #' @import ggplot2
 #' @importFrom ggmap ggmap get_map
@@ -8,13 +8,13 @@
 #' @param point_color Default color of your points
 #' @examples \dontrun{
 #' ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
-#' map_ggplot(ecoengine_data)
+#' map_ggmap(ecoengine_data)
 #' gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif', limit=100)
-#' map_ggplot(gbif_data)
+#' map_ggmap(gbif_data)
 #' bison_data <- occ(query = 'Accipiter striatus', from = 'bison', limit=100)
-#' map_ggplot(bison_data)
+#' map_ggmap(bison_data)
 #'}
-map_ggplot <- function(df, zoom = 5, point_color = "#86161f") {
+map_ggmap <- function(df, zoom = 5, point_color = "#86161f") {
   dt <- occ2df(df)
   latitude <- NA
   longitude <- NA
