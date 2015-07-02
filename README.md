@@ -56,7 +56,7 @@ Get data from GBIF
 library("spocc")
 (out <- occ(query='Accipiter striatus', from='gbif', limit=100))
 #> Searched: gbif
-#> Occurrences - Found: 447,903, Returned: 100
+#> Occurrences - Found: 447,905, Returned: 100
 #> Search type: Scientific
 #>   gbif: Accipiter striatus (100)
 ```
@@ -70,14 +70,14 @@ out$gbif
 #>                  name  longitude latitude prov
 #> 1  Accipiter striatus    0.00000  0.00000 gbif
 #> 2  Accipiter striatus         NA       NA gbif
-#> 3  Accipiter striatus  -75.17209 40.34000 gbif
-#> 4  Accipiter striatus -104.88120 21.46585 gbif
+#> 3  Accipiter striatus -104.88120 21.46585 gbif
+#> 4  Accipiter striatus  -71.19554 42.31845 gbif
 #> 5  Accipiter striatus  -78.15051 37.95521 gbif
 #> 6  Accipiter striatus  -97.80459 30.41678 gbif
-#> 7  Accipiter striatus  -71.19554 42.31845 gbif
+#> 7  Accipiter striatus  -75.17209 40.34000 gbif
 #> 8  Accipiter striatus -122.20175 37.88370 gbif
-#> 9  Accipiter striatus -109.91977 23.53768 gbif
-#> 10 Accipiter striatus  -99.47894 27.44924 gbif
+#> 9  Accipiter striatus  -99.47894 27.44924 gbif
+#> 10 Accipiter striatus -135.32701 57.05420 gbif
 #> ..                ...        ...      ...  ...
 #> Variables not shown: issues (chr), key (int), datasetKey (chr),
 #>      publishingOrgKey (chr), publishingCountry (chr), protocol (chr),
@@ -91,26 +91,26 @@ out$gbif
 #>      month (int), day (int), eventDate (time), modified (chr),
 #>      lastInterpreted (chr), references (chr), identifiers (chr), facts
 #>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
-#>      (chr), country (chr), institutionID (chr), verbatimLocality (chr),
-#>      rights (chr), higherGeography (chr), type (chr), endDayOfYear (chr),
-#>      catalogNumber (chr), otherCatalogNumbers (chr), disposition (chr),
-#>      startDayOfYear (chr), verbatimEventDate (chr), preparations (chr),
-#>      nomenclaturalCode (chr), higherClassification (chr), occurrenceID
-#>      (chr), collectionCode (chr), gbifID (chr), occurrenceRemarks (chr),
-#>      accessRights (chr), institutionCode (chr), county (chr),
-#>      occurrenceStatus (chr), locality (chr), language (chr), identifier
+#>      (chr), country (chr), startDayOfYear (chr), verbatimEventDate (chr),
+#>      preparations (chr), institutionID (chr), verbatimLocality (chr),
+#>      nomenclaturalCode (chr), higherClassification (chr), rights (chr),
+#>      higherGeography (chr), occurrenceID (chr), type (chr), collectionCode
+#>      (chr), occurrenceRemarks (chr), gbifID (chr), accessRights (chr),
+#>      institutionCode (chr), endDayOfYear (chr), county (chr),
+#>      catalogNumber (chr), otherCatalogNumbers (chr), occurrenceStatus
+#>      (chr), locality (chr), language (chr), identifier (chr), disposition
 #>      (chr), dateIdentified (chr), informationWithheld (chr),
 #>      http...unknown.org.occurrenceDetails (chr), rightsHolder (chr),
 #>      taxonID (chr), datasetName (chr), recordedBy (chr), identificationID
-#>      (chr), eventTime (chr), georeferencedDate (chr), identifiedBy (chr),
-#>      georeferenceSources (chr), identificationVerificationStatus (chr),
+#>      (chr), eventTime (chr), georeferencedDate (chr), georeferenceSources
+#>      (chr), identifiedBy (chr), identificationVerificationStatus (chr),
 #>      samplingProtocol (chr), georeferenceVerificationStatus (chr),
 #>      individualID (chr), locationAccordingTo (chr),
 #>      verbatimCoordinateSystem (chr), previousIdentifications (chr),
 #>      georeferenceProtocol (chr), identificationQualifier (chr),
 #>      dynamicProperties (chr), georeferencedBy (chr), lifeStage (chr),
 #>      elevation (dbl), elevationAccuracy (dbl), waterBody (chr),
-#>      samplingEffort (chr), recordNumber (chr), locationRemarks (chr),
+#>      recordNumber (chr), samplingEffort (chr), locationRemarks (chr),
 #>      infraspecificEpithet (chr), collectionID (chr), ownerInstitutionCode
 #>      (chr), datasetID (chr), verbatimElevation (chr), vernacularName (chr)
 ```
@@ -168,9 +168,9 @@ plot(out, cex=1, pch=10)
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropensci/spocc/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/spoccutils/issues).
 * License: MIT
-* Get citation information for `spocc` in R doing `citation(package = 'spocc')`
+* Get citation information for `spoccutils` in R doing `citation(package = 'spoccutils')`
 
 [![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
 

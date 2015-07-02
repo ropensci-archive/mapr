@@ -113,9 +113,9 @@ plot(out, cex=1, pch=10)
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropensci/spocc/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/spoccutils/issues).
 * License: MIT
-* Get citation information for `spocc` in R doing `citation(package = 'spocc')`
+* Get citation information for `spoccutils` in R doing `citation(package = 'spoccutils')`
 
 [![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
 
