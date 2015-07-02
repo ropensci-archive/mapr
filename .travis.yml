@@ -8,8 +8,7 @@ before_script:
 - sudo apt-get install -y libv8-dev
 - "./travis-tool.sh bootstrap"
 - "./travis-tool.sh install_deps"
-- "./travis-tool.sh install_bioc sangerseqR"
-- "./travis-tool.sh github_package jimhester/robustr jimhester/covr ropensci/rvertnet"
+- "./travis-tool.sh github_package jimhester/robustr jimhester/covr ropensci/spocc sckott/ridigbio ropensci/rebird"
 
 after_success:
 - Rscript -e 'library(covr); coveralls()'
