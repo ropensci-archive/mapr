@@ -22,6 +22,7 @@ Imports:
     graphics,
     spocc (>= 0.2.4),
     ggmap,
+    grid,
     sp,
     rworldmap,
     RColorBrewer,

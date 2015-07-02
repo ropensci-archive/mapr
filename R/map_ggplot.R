@@ -1,40 +1,38 @@
-#' ggpmap visualization of species occurences
+#' ggplot2 visualization of species occurences
 #'
-#' @import ggplot2
-#' @importFrom ggmap ggmap get_map
+#' @importFrom grid unit
 #' @export
-#' @param df Input \code{data.frame}
-#' @param zoom zoom level for map. Adjust depending on how your data look.
+#' @param x Input, object of class \code{occdat}
+#' @param map (character) One of world, world2, state, usa, county, france, italy, or nz
 #' @param point_color Default color of your points
 #' @examples \dontrun{
-#' ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
-#' map_ggmap(ecoengine_data)
-#' gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif', limit=100)
-#' map_ggmap(gbif_data)
-#' bison_data <- occ(query = 'Accipiter striatus', from = 'bison', limit=100)
-#' map_ggmap(bison_data)
+#' dat <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
+#' map_ggplot(dat)
+#' map_ggplot(dat, "usa")
+#' map_ggplot(dat, "county")
 #'}
-map_ggmap <- function(df, zoom = 5, point_color = "#86161f") {
-  dt <- occ2df(df)
-  latitude <- NA
-  longitude <- NA
-  # Remove rows with missing data
+map_ggplot <- function(x, map = "world", point_color = "#86161f") {
+  latitude <- longitude <- group <- NA
+  dt <- occ2df(x)
   dt <- dt[complete.cases(dt), ]
-  min_lat <- min(dt$latitude, na.rm = TRUE)
-  max_lat <- max(dt$latitude, na.rm = TRUE)
-  min_long <- min(dt$longitude, na.rm = TRUE)
-  max_long <- max(dt$longitude, na.rm = TRUE)
-  species <- unique(dt$name)
-  center_lat <- min_lat + (max_lat - min_lat)/2
-  center_long <- min_long + (max_long - min_long)/2
-  map_center <- c(lon = center_long, lat = center_lat)
-  species_map <- get_map(location = map_center, zoom = zoom, maptype = "terrain")
-  temp <- dt[, c("latitude", "longitude")]
-  ggmap(species_map) +
-    geom_point(data = temp,
-               aes(x = longitude, y = latitude), color = point_color, size = 3) +
-    ggtitle(paste0("Distribution of ", species)) +
-    labs(x = "Longitude", y = "Latitude")
+  wmap <- map_data(map)
+  ggplot(dt, aes(longitude, latitude)) +
+    geom_point(color = point_color, size = 3) +
+    geom_polygon(aes(long, lat, group = group), fill = NA, colour = "black", data = wmap) +
+    sutils_blank_theme()
 }
-# [BUGS]: Can't figure out why it leaves out points even after I center the plot
-# on the data. Setting zoom = 'auto' leaves out even more points.
+
+sutils_blank_theme <- function(){
+  theme(axis.line = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        plot.background = element_blank(),
+        plot.margin = rep(unit(0, "null"), 4))
+}
