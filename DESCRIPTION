@@ -1,7 +1,10 @@
 Package: spoccutils
 Title: Utilities for use with 'spocc'
-Description: Utilities for use with 'spocc'.
-Version: 0.0.1.9000
+Description: Utilities for use with 'spocc'. Includes functions to
+    clean occurrence data, find and remove duplicates, combine data,
+    and make maps with base 'R' plots, 'ggplot2', and various interactive
+    maps.
+Version: 0.0.2.9000
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
@@ -13,7 +16,6 @@ Roxygen: list(wrap = FALSE)
 Depends:
     ggplot2
 Imports:
-    spocc (>= 0.2.9),
     ggmap,
     rworldmap,
     sp,
@@ -26,6 +28,7 @@ Imports:
     V8,
     jsonlite
 Suggests:
+    spocc (>= 0.2.4),
     roxygen2,
     testthat,
     knitr,
