@@ -24,14 +24,10 @@ Imports:
     ggmap,
     sp,
     rworldmap,
-    lubridate,
     RColorBrewer,
     httr,
     leafletR (>= 0.2-0),
-    whisker,
-    gistr,
-    V8,
-    jsonlite
+    gistr
 Suggests:
     roxygen2,
     testthat,

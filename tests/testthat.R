@@ -1,2 +1,2 @@
 library('testthat')
-test_check("spocc")
+test_check("spoccutils")
