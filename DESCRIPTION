@@ -4,7 +4,7 @@ Description: Utilities for use with 'spocc'. Includes functions to
     clean occurrence data, find and remove duplicates, combine data,
     and make maps with base 'R' plots, 'ggplot2', and various interactive
     maps.
-Version: 0.0.5.9000
+Version: 0.1.0
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
