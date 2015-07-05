@@ -12,7 +12,7 @@
 #' map_ggplot(dat, "county")
 #'}
 map_ggplot <- function(x, map = "world", point_color = "#86161f") {
-  lat <- long <- group <- NA
+  latitude <- longitude <- lat <- long <- group <- NA
   dt <- occ2df(x)
   dt <- dt[complete.cases(dt), ]
   wmap <- map_data(map)
