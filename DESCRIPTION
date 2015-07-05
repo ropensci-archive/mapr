@@ -1,5 +1,5 @@
 Package: spoccutils
-Title: Utilities for use with 'spocc'
+Title: Utilities for Use with 'spocc'
 Description: Utilities for use with 'spocc'. Includes functions to
     clean occurrence data, find and remove duplicates, combine data,
     and make maps with base 'R' plots, 'ggplot2', and various interactive
