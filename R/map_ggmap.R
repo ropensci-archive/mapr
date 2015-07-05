@@ -7,6 +7,7 @@
 #' @param zoom zoom level for map. Adjust depending on how your data look.
 #' @param point_color Default color of your points
 #' @examples \dontrun{
+#' library("spocc")
 #' ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
 #' map_ggmap(ecoengine_data)
 #' gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif', limit=100)

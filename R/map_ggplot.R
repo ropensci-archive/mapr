@@ -6,6 +6,7 @@
 #' @param map (character) One of world, world2, state, usa, county, france, italy, or nz
 #' @param point_color Default color of your points
 #' @examples \dontrun{
+#' library("spocc")
 #' dat <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
 #' map_ggplot(dat)
 #' map_ggplot(dat, "usa")

@@ -50,6 +50,7 @@ NOTE that with some map_provider options you will have no map layer
 }
 \examples{
 \dontrun{
+library("spocc")
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=50)
 map_leaflet(dat, dest = ".")

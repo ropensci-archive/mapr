@@ -18,6 +18,7 @@ ggplot2 visualization of species occurences
 }
 \examples{
 \dontrun{
+library("spocc")
 dat <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
 map_ggplot(dat)
 map_ggplot(dat, "usa")

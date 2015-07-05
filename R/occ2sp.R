@@ -16,6 +16,7 @@
 #' @examples \dontrun{
 #' ### See points on a map
 #' library("maptools")
+#' library("spocc")
 #' data(wrld_simpl)
 #' plot(wrld_simpl[wrld_simpl$NAME == "United States", ],xlim=c(-70,-60))
 #' out <- occ(query = "Accipiter striatus", from = c("inat","gbif"))

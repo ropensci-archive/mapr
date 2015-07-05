@@ -27,6 +27,7 @@ See \code{\link[gistr]{gist_auth}} for help on authentication
 }
 \examples{
 \dontrun{
+library("spocc")
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(spp, from=c('gbif','ecoengine'), limit=30, gbifopts=list(hasCoordinate=TRUE))
 dat <- fixnames(dat, "query")

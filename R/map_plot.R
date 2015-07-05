@@ -5,6 +5,7 @@
 #' @param x Input, an object of class \code{occdat}
 #' @param ... Further args to \code{\link{points}}
 #' @examples \dontrun{
+#' library("spocc")
 #' (out <- occ(query='Accipiter striatus', from='gbif', limit=100, has_coords=TRUE))
 #' map_plot(out)
 #' }

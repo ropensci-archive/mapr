@@ -16,6 +16,7 @@ Use base R plotting method to visualize spocc data.
 }
 \examples{
 \dontrun{
+library("spocc")
 (out <- occ(query='Accipiter striatus', from='gbif', limit=100, has_coords=TRUE))
 map_plot(out)
 }
