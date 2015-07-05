@@ -33,11 +33,7 @@
 
 map_gist <- function(data, description = "", public = TRUE, browse = TRUE, ...) {
   stopifnot(is(data, "occdatind") | is(data, "occdat"))
-  data <- if (is(data, "occdatind")) {
-    do.call(rbind, data$data)
-  } else {
-    occ2df(data)
-  }
+  data <- occ2df(data)
   datgeojson <- style_geojson(input = data, var = "name", ...)
   file <- tempfile(fileext = ".csv")
   write.csv(datgeojson, file)

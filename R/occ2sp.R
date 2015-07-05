@@ -1,9 +1,9 @@
-#' Create a spatial points dataframe from a spocc search.
+#' Create a spatial points dataframe from a spocc search
 #'
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
 #' @export
 #'
-#' @param occObj The resuslts of a spocc search called by occ()
+#' @param x The resuslts of a spocc search called by occ()
 #' @param coord_string A valid EPGS cooridate string from the sp package, the default is WSGS 84
 #' @param just_coords Return data frame with specios names and provenance or just a spatial points
 #' object, which is the default.
@@ -18,18 +18,16 @@
 #' library("maptools")
 #' library("spocc")
 #' data(wrld_simpl)
-#' plot(wrld_simpl[wrld_simpl$NAME == "United States", ],xlim=c(-70,-60))
-#' out <- occ(query = "Accipiter striatus", from = c("inat","gbif"))
-#' sp_points <- occ_to_sp(out, just_coords=TRUE)
-#' points(sp_points,col=2)
+#' plot(wrld_simpl[wrld_simpl$NAME == "United States", ], xlim = c(-70, -60))
+#' out <- occ(query = "Accipiter striatus", from = c("ecoengine", "gbif"), limit = 50)
+#' sp_points <- occ2sp(out, just_coords = TRUE)
+#' points(sp_points, col = 2)
 #' }
-
-occ_to_sp <- function(occObj, coord_string = "+proj=longlat +datum=WGS84", just_coords = FALSE){
-
-  points <- occ2df(occObj)
+occ2sp <- function(x, coord_string = "+proj=longlat +datum=WGS84", just_coords = FALSE) {
+  points <- occ2df(x)
 
   # remove NA rows
-  points <- points[complete.cases(points),]
+  points <- points[complete.cases(points), ]
 
   # check valid coords
   index <- 1:dim(points)[1]
