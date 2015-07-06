@@ -4,6 +4,7 @@ http://cran.r-project.org/web/packages/policies.html
 R CMD CHECK passed on my local OS X install with R 3.2.1 and
 R development version, Ubuntu running on Travis-CI, and WinBuilder.
 
-This is a re-submission to fix examples. So sorry for missing this!
+This is a second re-submission to remove extraneous files. The 
+first re-submission was to fix examples that did not run. 
 
-Thanks! Scott Chamberlain
+Thanks for your patience! Scott Chamberlain
