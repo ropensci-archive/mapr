@@ -11,7 +11,7 @@ before_script:
 - "./travis-tool.sh github_package jimhester/robustr jimhester/covr ropensci/spocc sckott/ridigbio ropensci/rebird"
 
 after_success:
-- Rscript -e 'library(covr); coveralls()'
+- Rscript -e 'covr::codecov()'
 
 notifications:
   slack:

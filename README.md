@@ -5,7 +5,7 @@ spoccutils
 
 [![Build Status](https://api.travis-ci.org/ropensci/spoccutils.png)](https://travis-ci.org/ropensci/spoccutils)
 [![Build status](https://ci.appveyor.com/api/projects/status/3tyojycmeqmj2pcw?svg=true)](https://ci.appveyor.com/project/sckott/spoccutils)
-[![Coverage Status](https://coveralls.io/repos/ropensci/spoccutils/badge.svg)](https://coveralls.io/r/ropensci/spoccutils)
+[![codecov.io](https://codecov.io/github/ropensci/spoccutils/coverage.svg?branch=master)](https://codecov.io/github/ropensci/spoccutils?branch=master)
 
 Helper for [spocc](https://github.com/ropensci/spocc) - a client for getting species occurrence data from many sources.
 
