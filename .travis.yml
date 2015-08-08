@@ -5,6 +5,9 @@ r_github_packages:
   - jimhester/robustr
   - jimhester/covr
 
+before_script:
+  - sudo apt-get install -y libv8-dev
+
 after_success:
   - Rscript -e 'covr::codecov()'
 
