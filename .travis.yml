@@ -1,19 +1,16 @@
-language: c
+language: r
+sudo: required
 
-script: "./travis-tool.sh run_tests"
-
-before_script:
-- curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
-- chmod 755 ./travis-tool.sh
-- sudo apt-get install -y libv8-dev
-- "./travis-tool.sh bootstrap"
-- "./travis-tool.sh install_deps"
-- "./travis-tool.sh github_package jimhester/robustr jimhester/covr ropensci/spocc sckott/ridigbio ropensci/rebird"
+r_github_packages:
+  - jimhester/robustr
+  - jimhester/covr
 
 after_success:
-- Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov()'
 
 notifications:
+	email:
+		on_success: change
+    on_failure: change
   slack:
     secure: JgCatgv7Eeh6qHmi3TwWLdKHkCjnr5KHcBzVwy2F4IPafqPMEEhnSFxqP2Td8f7YcPqvdiv/blTGdgIOAi3V64O4fp3NZLLpzINNiL0i9iBZqkT71uw8ovcfrAeIHA9D9gapLtx3D4hdUF9jIyLIW2kMzIvaIA5PiDJ+oZitHow=
-
