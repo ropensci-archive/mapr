@@ -1,6 +1,5 @@
 #' ggplot2 visualization of species occurences
 #'
-#' @importFrom grid unit
 #' @export
 #' @param x Input, object of class \code{occdat}
 #' @param map (character) One of world, world2, state, usa, county, france, italy, or nz

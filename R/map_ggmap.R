@@ -1,7 +1,5 @@
 #' ggpmap visualization of species occurences
 #'
-#' @import ggplot2
-#' @importFrom ggmap ggmap get_map
 #' @export
 #' @param x Input, object of class \code{occdat}
 #' @param zoom zoom level for map. Adjust depending on how your data look.

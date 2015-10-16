@@ -4,7 +4,7 @@ Description: Utilities for use with 'spocc'. Includes functions to
     clean occurrence data, find and remove duplicates, combine data,
     and make maps with base 'R' plots, 'ggplot2', and various interactive
     maps.
-Version: 0.1.0.9000
+Version: 0.1.0.9400
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
@@ -13,16 +13,14 @@ BugReports: https://github.com/ropensci/spoccutils/issues
 LazyData: true
 VignetteBuilder: knitr
 Roxygen: list(wrap = FALSE)
-Depends:
-    ggplot2
 Imports:
     methods,
     utils,
     stats,
     graphics,
     spocc (>= 0.3.0),
+    ggplot2,
     ggmap,
-    grid,
     sp,
     rworldmap,
     RColorBrewer,
