@@ -3,6 +3,7 @@ sudo: required
 
 r_github_packages:
   - jimhester/covr
+  - hadley/ggplot2
 
 before_install:
   - sudo apt-get install libv8-dev
