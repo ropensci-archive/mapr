@@ -1,6 +1,9 @@
 language: r
 sudo: required
 
+r_binary_packages:
+  - ggmap
+
 r_github_packages:
   - jimhester/covr
   - hadley/ggplot2
