@@ -34,5 +34,5 @@ sutils_blank_theme <- function(){
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         plot.background = element_blank(),
-        plot.margin = rep(unit(0, "null"), 4))
+        plot.margin = rep(ggplot2::unit(0, "null"), 4))
 }

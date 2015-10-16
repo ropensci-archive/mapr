@@ -18,9 +18,8 @@ Imports:
     utils,
     stats,
     graphics,
-    spocc (>= 0.3.0),
     ggplot2,
-    ggmap,
+    spocc (>= 0.3.0),
     sp,
     rworldmap,
     RColorBrewer,
@@ -28,8 +27,8 @@ Imports:
     leafletR (>= 0.2-0),
     gistr
 Suggests:
-    roxygen2,
     testthat,
+    ggmap,
     knitr,
     taxize,
     maptools

@@ -14,11 +14,12 @@
 #' map_ggmap(bison_data)
 #'}
 map_ggmap <- function(x, zoom = 5, point_color = "#86161f") {
+  check4pkg("ggmap")
   dt <- occ2df(x)
   latitude <- NA
   longitude <- NA
   # Remove rows with missing data
-  dt <- dt[complete.cases(dt), ]
+  dt <- dt[complete.cases(dt$latitude, dt$longitude), ]
   min_lat <- min(dt$latitude, na.rm = TRUE)
   max_lat <- max(dt$latitude, na.rm = TRUE)
   min_long <- min(dt$longitude, na.rm = TRUE)
@@ -27,9 +28,9 @@ map_ggmap <- function(x, zoom = 5, point_color = "#86161f") {
   center_lat <- min_lat + (max_lat - min_lat)/2
   center_long <- min_long + (max_long - min_long)/2
   map_center <- c(lon = center_long, lat = center_lat)
-  species_map <- get_map(location = map_center, zoom = zoom, maptype = "terrain")
+  species_map <- ggmap::get_map(location = map_center, zoom = zoom, maptype = "terrain")
   temp <- dt[, c("latitude", "longitude")]
-  ggmap(species_map) +
+  ggmap::ggmap(species_map) +
     geom_point(data = temp,
                aes(x = longitude, y = latitude), color = point_color, size = 3) +
     ggtitle(paste0("Distribution of ", species)) +
