@@ -11,7 +11,7 @@
 #' }
 map_plot <- function(x, ...) {
   df <- occ2df(x)
-  df <- df[complete.cases(df),]
+  df <- df[complete.cases(df$latitude, df$longitude), ]
   df <- df[df$longitude != 0, ]
   sp::coordinates(df) <- ~longitude + latitude
   sp::proj4string(df) <- sp::CRS("+init=epsg:4326")

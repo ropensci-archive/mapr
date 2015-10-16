@@ -4,6 +4,7 @@
 #' @param x Input, object of class \code{occdat}
 #' @param map (character) One of world, world2, state, usa, county, france, italy, or nz
 #' @param point_color Default color of your points
+#' @return A ggplot2 map, of class \code{gg/ggplot}
 #' @examples \dontrun{
 #' library("spocc")
 #' dat <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
@@ -14,7 +15,7 @@
 map_ggplot <- function(x, map = "world", point_color = "#86161f") {
   latitude <- longitude <- lat <- long <- group <- NA
   dt <- occ2df(x)
-  dt <- dt[complete.cases(dt), ]
+  dt <- dt[complete.cases(dt$latitude, dt$longitude), ]
   wmap <- map_data(map)
   ggplot(dt, aes(longitude, latitude)) +
     geom_point(color = point_color, size = 3) +

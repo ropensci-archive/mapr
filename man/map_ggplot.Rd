@@ -13,6 +13,9 @@ map_ggplot(x, map = "world", point_color = "#86161f")
 
 \item{point_color}{Default color of your points}
 }
+\value{
+A ggplot2 map, of class \code{gg/ggplot}
+}
 \description{
 ggplot2 visualization of species occurences
 }

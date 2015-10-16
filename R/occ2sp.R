@@ -1,6 +1,5 @@
 #' Create a spatial points dataframe from a spocc search
 #'
-#' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
 #' @export
 #'
 #' @param x The resuslts of a spocc search called by occ()
@@ -27,7 +26,7 @@ occ2sp <- function(x, coord_string = "+proj=longlat +datum=WGS84", just_coords =
   points <- occ2df(x)
 
   # remove NA rows
-  points <- points[complete.cases(points), ]
+  points <- points[complete.cases(points$latitude, points$longitude), ]
 
   # check valid coords
   index <- 1:dim(points)[1]

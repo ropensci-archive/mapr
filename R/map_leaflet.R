@@ -1,6 +1,5 @@
 #' Make an interactive map to view in the browser
 #'
-#' @importFrom leafletR toGeoJSON leaflet
 #' @export
 #'
 #' @param dat Object of class \code{occdat} as returned by \code{\link[spocc]{occ}}.
@@ -44,10 +43,10 @@ map_leaflet <- function(dat, popup = TRUE, map_provider = "osm", zoom = 3, title
   size, centerview = c(30, -73.9), dest = ".", overwrite = TRUE, incl.data = TRUE) {
 
   data <- occ2df(dat)
-  data <- data[complete.cases(data),]
+  data <- data[complete.cases(data$latitude, data$longitude), ]
   dest <- ifelse(is.null(dest), tempdir(), dest)
-  geojson <- toGeoJSON(data = data, dest = dest, lat.lon = c("latitude", "longitude"))
-  map <- leaflet(geojson, title = title, size = size, base.map = map_provider, center = centerview,
+  geojson <- leafletR::toGeoJSON(data = data, dest = dest, lat.lon = c("latitude", "longitude"))
+  map <- leafletR::leaflet(geojson, title = title, size = size, base.map = map_provider, center = centerview,
                  zoom = zoom, popup = popup, overwrite = overwrite, incl.data = incl.data)
   browseURL(map)
 }
