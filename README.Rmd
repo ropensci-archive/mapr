@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
 [![Build Status](https://api.travis-ci.org/ropensci/spoccutils.png)](https://travis-ci.org/ropensci/spoccutils)
 [![Build status](https://ci.appveyor.com/api/projects/status/3tyojycmeqmj2pcw?svg=true)](https://ci.appveyor.com/project/sckott/spoccutils)
 [![codecov.io](https://codecov.io/github/ropensci/spoccutils/coverage.svg?branch=master)](https://codecov.io/github/ropensci/spoccutils?branch=master)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/spoccutils?color=FAB657)](https://github.com/metacran/cranlogs.app)
+[![cran version](http://www.r-pkg.org/badges/version/spoccutils)](http://cran.rstudio.com/web/packages/spoccutils)
 
 Helper for [spocc](https://github.com/ropensci/spocc) - a client for getting species occurrence data from many sources.
 
