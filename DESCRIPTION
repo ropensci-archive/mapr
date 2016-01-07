@@ -1,18 +1,17 @@
-Package: spoccutils
-Title: Utilities for Use with 'spocc'
-Description: Utilities for use with 'spocc'. Includes functions to
-    clean occurrence data, find and remove duplicates, combine data,
-    and make maps with base 'R' plots, 'ggplot2', and various interactive
+Package: mapr
+Title: Visualize Species Occurrence Data
+Description: Utilities for vizualizing species occurrence data. Includes functions to
+    help vizualize occurrence data from 'spocc', 'rgbif', and other packages. Mapping
+    options includeed for base R plots, 'ggplot2', and various interactive
     maps.
-Version: 0.1.0.9400
+Version: 0.1.4.9000
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
-URL: https://github.com/ropensci/spoccutils
-BugReports: https://github.com/ropensci/spoccutils/issues
+URL: https://github.com/ropensci/mapr
+BugReports: https://github.com/ropensci/mapr/issues
 LazyData: true
 VignetteBuilder: knitr
-Roxygen: list(wrap = FALSE)
 Imports:
     methods,
     utils,
@@ -23,7 +22,7 @@ Imports:
     sp,
     rworldmap,
     RColorBrewer,
-    httr,
+    httr (>= 1.0.0),
     leafletR (>= 0.2-0),
     gistr
 Suggests:

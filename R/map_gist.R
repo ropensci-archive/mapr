@@ -1,7 +1,6 @@
 #' Make an interactive map to view in the browser as a Github gist
 #'
 #' @export
-#' @importFrom gistr gist_create
 #'
 #' @param data A data.frame, with any number of columns, but with at least the
 #'    following: name (the taxonomic name), latitude (in dec. deg.), longitude

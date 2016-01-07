@@ -1,15 +1,17 @@
-spoccutils
-==========
+mapr
+====
 
 
 
-[![Build Status](https://api.travis-ci.org/ropensci/spoccutils.png)](https://travis-ci.org/ropensci/spoccutils)
-[![Build status](https://ci.appveyor.com/api/projects/status/3tyojycmeqmj2pcw?svg=true)](https://ci.appveyor.com/project/sckott/spoccutils)
-[![codecov.io](https://codecov.io/github/ropensci/spoccutils/coverage.svg?branch=master)](https://codecov.io/github/ropensci/spoccutils?branch=master)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/spoccutils?color=FAB657)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/spoccutils)](http://cran.rstudio.com/web/packages/spoccutils)
+[![Build Status](https://api.travis-ci.org/ropensci/mapr.png)](https://travis-ci.org/ropensci/mapr)
+[![Build status](https://ci.appveyor.com/api/projects/status/3tyojycmeqmj2pcw?svg=true)](https://ci.appveyor.com/project/sckott/mapr)
+[![codecov.io](https://codecov.io/github/ropensci/mapr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mapr?branch=master)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mapr?color=FAB657)](https://github.com/metacran/cranlogs.app)
 
-Helper for [spocc](https://github.com/ropensci/spocc) - a client for getting species occurrence data from many sources.
+Helper for making maps of species occurrence data, including for:
+
+* [spocc](https://github.com/ropensci/spocc)
+* [rgbif](https://github.com/ropensci/rgbif)
 
 This package has utilities for:
 
@@ -20,31 +22,25 @@ This package has utilities for:
     * GitHub Gists
     * ...
 
-We split this package off from `spocc` to make `spocc` lighter weight so that users that just want data don't have to install a bunch of other dependencies for mapping, etc.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md)
-
 ## Installation
 
-Install `spoccutils`
+Install `mapr`
 
 
 ```r
-install.packages("spoccutils", dependencies = TRUE)
+install.packages("mapr", dependencies = TRUE)
 ```
 
 Or the development version from GitHub
 
 
 ```r
-devtools::install_github("ropensci/spoccutils")
+devtools::install_github("ropensci/mapr")
 ```
 
 
 ```r
-library("spoccutils")
+library("mapr")
 library("spocc")
 ```
 
@@ -88,7 +84,6 @@ map_ggmaps(ecoengine_data)
 
 ```r
 map_ggplot(ecoengine_data, "usa")
-#> Error in occ2df(x): object 'ecoengine_data' not found
 ```
 
 ![ggplot2](http://f.cl.ly/items/1k2a012u1F1H1E13370U/Screen%20Shot%202015-07-02%20at%203.21.31%20PM.png)
@@ -104,8 +99,9 @@ map_plot(dat, cex = 1, pch = 10)
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropensci/spoccutils/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/mapr/issues).
 * License: MIT
-* Get citation information for `spoccutils` in R doing `citation(package = 'spoccutils')`
+* Get citation information for `mapr` in R doing `citation(package = 'mapr')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 [![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)

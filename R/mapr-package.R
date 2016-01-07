@@ -1,4 +1,4 @@
-#' Utility functions for use with the spocc package
+#' Vizualize species occurrence data
 #'
 #' @importFrom methods as is
 #' @importFrom stats na.omit complete.cases setNames
@@ -9,9 +9,12 @@
 #' @importFrom httr POST stop_for_status content upload_file
 #' @importFrom leafletR toGeoJSON leaflet
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
+#' @importFrom rworldmap getMap
+#' @importFrom gistr gist_create
+#' @importFrom RColorBrewer brewer.pal
 #' @import spocc
-#' @name spoccutils-package
-#' @aliases spoccutils
+#' @name mapr-package
+#' @aliases mapr
 #' @docType package
 #' @keywords package
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
