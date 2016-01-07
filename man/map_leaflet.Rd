@@ -26,8 +26,8 @@ a fullscreen (browser window) map is generated.}
 
 \item{title}{Map title}
 
-\item{size}{Size of the map on the website in pixels, as numeric vector –
-c(width, height). Optional – if missing, a fullscreen (browser window) map is
+\item{size}{Size of the map on the website in pixels, as numeric vector -
+c(width, height). Optional - if missing, a fullscreen (browser window) map is
 generated.}
 
 \item{centerview}{Lat/long position to center map}

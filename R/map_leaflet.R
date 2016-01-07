@@ -13,8 +13,8 @@
 #'    \code{\link[leafletR]{leaflet}} for more information.
 #'    @param size Height and width (in pixels) of map as a length 2 vector. If missing,
 #'    a fullscreen (browser window) map is generated.
-#' @param size Size of the map on the website in pixels, as numeric vector –
-#'    c(width, height). Optional – if missing, a fullscreen (browser window) map is
+#' @param size Size of the map on the website in pixels, as numeric vector -
+#'    c(width, height). Optional - if missing, a fullscreen (browser window) map is
 #'    generated.
 #' @param centerview Lat/long position to center map
 #' @param dest Specify a path to save an html file of your map. You can open this

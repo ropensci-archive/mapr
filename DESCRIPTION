@@ -22,7 +22,7 @@ Imports:
     sp,
     rworldmap,
     RColorBrewer,
-    httr,
+    httr (>= 1.0.0),
     leafletR (>= 0.2-0),
     gistr
 Suggests:
