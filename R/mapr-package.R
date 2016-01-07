@@ -9,6 +9,9 @@
 #' @importFrom httr POST stop_for_status content upload_file
 #' @importFrom leafletR toGeoJSON leaflet
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
+#' @importFrom rworldmap getMap
+#' @importFrom gistr gist_create
+#' @importFrom RColorBrewer brewer.pal
 #' @import spocc
 #' @name mapr-package
 #' @aliases mapr

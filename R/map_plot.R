@@ -1,6 +1,5 @@
 #' Use base R plotting method to visualize spocc data.
 #'
-#' @importFrom rworldmap getMap
 #' @export
 #' @param x Input, an object of class \code{occdat}
 #' @param ... Further args to \code{\link{points}}
