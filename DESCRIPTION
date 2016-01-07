@@ -1,4 +1,4 @@
-Package: visr
+Package: mapr
 Title: Visualize Species Occurrence Data
 Description: Utilities for vizualizing species occurrence data. Includes functions to
     help vizualize occurrence data from 'spocc', 'rgbif', and other packages. Mapping
@@ -8,8 +8,8 @@ Version: 0.1.4.9000
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
-URL: https://github.com/ropensci/visr
-BugReports: https://github.com/ropensci/visr/issues
+URL: https://github.com/ropensci/mapr
+BugReports: https://github.com/ropensci/mapr/issues
 LazyData: true
 VignetteBuilder: knitr
 Imports:

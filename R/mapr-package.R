@@ -10,8 +10,8 @@
 #' @importFrom leafletR toGeoJSON leaflet
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
 #' @import spocc
-#' @name visr-package
-#' @aliases visr
+#' @name mapr-package
+#' @aliases mapr
 #' @docType package
 #' @keywords package
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}

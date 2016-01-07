@@ -53,3 +53,15 @@ map_leaflet <- function(dat, popup = TRUE, map_provider = "osm", zoom = 3, title
                  zoom = zoom, popup = popup, overwrite = overwrite, incl.data = incl.data)
   browseURL(map)
 }
+
+# map_leaflet <- function(dat, popup = TRUE, map_provider = "osm", zoom = 3, title = "map",
+#                         size, centerview = c(30, -73.9), dest = ".", overwrite = TRUE, incl.data = TRUE) {
+#
+#   data <- occ2df(dat)
+#   data <- data[complete.cases(data$latitude, data$longitude), ]
+#   dest <- ifelse(is.null(dest), tempdir(), dest)
+#   geojson <- leafletR::toGeoJSON(data = data, dest = dest, lat.lon = c("latitude", "longitude"))
+#   map <- leafletR::leaflet(geojson, title = title, size = size, base.map = map_provider, center = centerview,
+#                            zoom = zoom, popup = popup, overwrite = overwrite, incl.data = incl.data)
+#   browseURL(map)
+# }
