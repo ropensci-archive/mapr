@@ -1,14 +1,7 @@
 mapr
 ====
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(
-  warning = FALSE,
-  message = FALSE,
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+
 
 [![Build Status](https://api.travis-ci.org/ropensci/mapr.png)](https://travis-ci.org/ropensci/mapr)
 [![Build status](https://ci.appveyor.com/api/projects/status/3tyojycmeqmj2pcw?svg=true)](https://ci.appveyor.com/project/sckott/mapr)
@@ -33,17 +26,20 @@ This package has utilities for:
 
 Install `mapr`
 
-```{r eval=FALSE}
+
+```r
 install.packages("mapr", dependencies = TRUE)
 ```
 
 Or the development version from GitHub
 
-```{r eval=FALSE}
+
+```r
 devtools::install_github("ropensci/mapr")
 ```
 
-```{r}
+
+```r
 library("mapr")
 library("spocc")
 ```
@@ -52,7 +48,8 @@ library("spocc")
 
 ### Leaflet
 
-```{r eval=FALSE}
+
+```r
 spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
 dat <- occ(query = spp, from = 'gbif', has_coords = TRUE)
 map_leaflet(dat, dest = ".")
@@ -62,7 +59,8 @@ map_leaflet(dat, dest = ".")
 
 ### Github gist
 
-```{r eval=FALSE}
+
+```r
 dat <- fixnames(dat)
 map_gist(dat, color = c("#976AAE","#6B944D","#BD5945"))
 ```
@@ -73,7 +71,8 @@ map_gist(dat, color = c("#976AAE","#6B944D","#BD5945"))
 
 #### ggmaps
 
-```{r eval=FALSE}
+
+```r
 ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit = 100)
 map_ggmaps(ecoengine_data)
 ```
@@ -82,7 +81,8 @@ map_ggmaps(ecoengine_data)
 
 #### ggplot
 
-```{r eval=FALSE}
+
+```r
 map_ggplot(ecoengine_data, "usa")
 ```
 
@@ -90,7 +90,8 @@ map_ggplot(ecoengine_data, "usa")
 
 ### Base R plots
 
-```{r eval=FALSE}
+
+```r
 map_plot(dat, cex = 1, pch = 10)
 ```
 
