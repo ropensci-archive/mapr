@@ -16,3 +16,4 @@ appveyor.yml
 README.Rmd
 ^\.httr-oauth$
 gistmap*
+^CONDUCT\.md$
