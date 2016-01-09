@@ -7,6 +7,7 @@ r_binary_packages:
 r_github_packages:
   - jimhester/covr
   - hadley/ggplot2
+  - ropensci/spocc
 
 before_install:
   - sudo apt-get install libv8-dev
