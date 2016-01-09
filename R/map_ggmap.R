@@ -4,6 +4,7 @@
 #' @param x Input, object of class \code{occdat}
 #' @param zoom zoom level for map. Adjust depending on how your data look.
 #' @param point_color Default color of your points
+#' @param ... Ignored
 #' @examples \dontrun{
 #' library("spocc")
 #' ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
@@ -13,7 +14,12 @@
 #' bison_data <- occ(query = 'Accipiter striatus', from = 'bison', limit=100)
 #' map_ggmap(bison_data)
 #'}
-map_ggmap <- function(x, zoom = 5, point_color = "#86161f") {
+map_ggmap <- function(x, zoom = 5, point_color = "#86161f", ...) {
+  UseMethod("map_ggmap")
+}
+
+#' @export
+map_ggmap.occdat <- function(x, zoom = 5, point_color = "#86161f", ...) {
   check4pkg("ggmap")
   dt <- occ2df(x)
   latitude <- NA
@@ -38,3 +44,8 @@ map_ggmap <- function(x, zoom = 5, point_color = "#86161f") {
 }
 # [BUGS]: Can't figure out why it leaves out points even after I center the plot
 # on the data. Setting zoom = 'auto' leaves out even more points.
+
+#' @export
+map_ggmap.default <- function(x, ...) {
+  stop(sprintf("map_ggmap does not support input of class '%s'", class(x)), call. = FALSE)
+}

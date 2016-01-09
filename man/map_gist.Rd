@@ -2,15 +2,11 @@
 % Please edit documentation in R/map_gist.R
 \name{map_gist}
 \alias{map_gist}
-\title{Make an interactive map to view in the browser as a Github gist}
+\title{Make an interactive map to view in the browser as a GitHub gist}
 \usage{
-map_gist(data, description = "", public = TRUE, browse = TRUE, ...)
+map_gist(x, description = "", public = TRUE, browse = TRUE, ...)
 }
 \arguments{
-\item{data}{A data.frame, with any number of columns, but with at least the
-following: name (the taxonomic name), latitude (in dec. deg.), longitude
-(in dec. deg.)}
-
 \item{description}{Description for the Github gist, or leave to default (=no description)}
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
@@ -18,30 +14,40 @@ following: name (the taxonomic name), latitude (in dec. deg.), longitude
 \item{browse}{If TRUE (default) the map opens in your default browser.}
 
 \item{...}{Further arguments passed on to \code{\link{style_geojson}}}
+
+\item{data}{A data.frame, with any number of columns, but with at least the
+following: name (the taxonomic name), latitude (in dec. deg.), longitude
+(in dec. deg.)}
 }
 \description{
-Make an interactive map to view in the browser as a Github gist
+Make an interactive map to view in the browser as a GitHub gist
 }
 \details{
 See \code{\link[gistr]{gist_auth}} for help on authentication
 }
 \examples{
 \dontrun{
+## spocc
 library("spocc")
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(spp, from=c('gbif','ecoengine'), limit=30, gbifopts=list(hasCoordinate=TRUE))
 dat <- fixnames(dat, "query")
 
 # Define colors
-map_gist(data=dat, color=c('#976AAE','#6B944D','#BD5945'))
-map_gist(data=dat$gbif, color=c('#976AAE','#6B944D','#BD5945'))
-map_gist(data=dat$ecoengine, color=c('#976AAE','#6B944D','#BD5945'))
+map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'))
+map_gist(dat$gbif, color=c('#976AAE','#6B944D','#BD5945'))
+map_gist(dat$ecoengine, color=c('#976AAE','#6B944D','#BD5945'))
 
 # Define colors and marker size
-map_gist(data=dat, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
 
 # Define symbols
-map_gist(data=dat, symbol=c('park','zoo','garden'))
+map_gist(dat, symbol=c('park','zoo','garden'))
+
+## rgbif
+library("rgbif")
+res <- occ_search(scientificName = "Puma concolor", limit = 100)
+map_gist(res)
 }
 }
 

@@ -4,7 +4,7 @@
 \alias{map_ggmap}
 \title{ggpmap visualization of species occurences}
 \usage{
-map_ggmap(x, zoom = 5, point_color = "#86161f")
+map_ggmap(x, zoom = 5, point_color = "#86161f", ...)
 }
 \arguments{
 \item{x}{Input, object of class \code{occdat}}
@@ -12,6 +12,8 @@ map_ggmap(x, zoom = 5, point_color = "#86161f")
 \item{zoom}{zoom level for map. Adjust depending on how your data look.}
 
 \item{point_color}{Default color of your points}
+
+\item{...}{Ignored}
 }
 \description{
 ggpmap visualization of species occurences

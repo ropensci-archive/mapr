@@ -7,12 +7,12 @@
 #' @importFrom ggplot2 geom_point aes ggtitle labs map_data
 #' ggplot geom_point geom_polygon element_blank theme
 #' @importFrom httr POST stop_for_status content upload_file
-#' @importFrom leafletR toGeoJSON leaflet
+#' @import leaflet
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
 #' @importFrom rworldmap getMap
 #' @importFrom gistr gist_create
 #' @importFrom RColorBrewer brewer.pal
-#' @import spocc
+#' @importFrom spocc occ2df
 #' @name mapr-package
 #' @aliases mapr
 #' @docType package

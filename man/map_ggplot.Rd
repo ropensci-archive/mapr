@@ -2,9 +2,9 @@
 % Please edit documentation in R/map_ggplot.R
 \name{map_ggplot}
 \alias{map_ggplot}
-\title{ggplot2 visualization of species occurences}
+\title{ggplot2 mapping}
 \usage{
-map_ggplot(x, map = "world", point_color = "#86161f")
+map_ggplot(x, map = "world", point_color = "#86161f", ...)
 }
 \arguments{
 \item{x}{Input, object of class \code{occdat}}
@@ -12,20 +12,28 @@ map_ggplot(x, map = "world", point_color = "#86161f")
 \item{map}{(character) One of world, world2, state, usa, county, france, italy, or nz}
 
 \item{point_color}{Default color of your points}
+
+\item{...}{Ignored}
 }
 \value{
 A ggplot2 map, of class \code{gg/ggplot}
 }
 \description{
-ggplot2 visualization of species occurences
+ggplot2 mapping
 }
 \examples{
 \dontrun{
+## spocc
 library("spocc")
 dat <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
 map_ggplot(dat)
 map_ggplot(dat, "usa")
 map_ggplot(dat, "county")
+
+## rgbif
+library("rgbif")
+res <- occ_search(scientificName = "Puma concolor", limit = 100)
+map_ggplot(res)
 }
 }
 

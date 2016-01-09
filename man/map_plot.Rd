@@ -2,7 +2,7 @@
 % Please edit documentation in R/map_plot.R
 \name{map_plot}
 \alias{map_plot}
-\title{Use base R plotting method to visualize spocc data.}
+\title{Base R mapping}
 \usage{
 map_plot(x, ...)
 }
@@ -12,13 +12,19 @@ map_plot(x, ...)
 \item{...}{Further args to \code{\link{points}}}
 }
 \description{
-Use base R plotting method to visualize spocc data.
+Base R mapping
 }
 \examples{
 \dontrun{
+## spocc
 library("spocc")
 (out <- occ(query='Accipiter striatus', from='gbif', limit=100, has_coords=TRUE))
 map_plot(out)
+
+## rgbif
+library("rgbif")
+res <- occ_search(scientificName = "Puma concolor", limit = 100)
+map_plot(res)
 }
 }
 
