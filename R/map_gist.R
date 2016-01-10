@@ -2,7 +2,7 @@
 #'
 #' @export
 #'
-#' @param data A data.frame, with any number of columns, but with at least the
+#' @param x A data.frame, with any number of columns, but with at least the
 #'    following: name (the taxonomic name), latitude (in dec. deg.), longitude
 #'    (in dec. deg.)
 #' @param description Description for the Github gist, or leave to default (=no description)

@@ -3,6 +3,8 @@
 #' @export
 #'
 #' @param x Input
+#' @param lon Longitude variable name
+#' @param lat Latitude variable name
 #' @param ... Further args to \code{\link{points}}
 #' @examples \dontrun{
 #' ## spocc

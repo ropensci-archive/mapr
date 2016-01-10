@@ -1,2 +1,2 @@
 library('testthat')
-test_check("spoccutils")
+test_check("mapr")

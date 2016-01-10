@@ -7,6 +7,10 @@
 map_gist(x, description = "", public = TRUE, browse = TRUE, ...)
 }
 \arguments{
+\item{x}{A data.frame, with any number of columns, but with at least the
+following: name (the taxonomic name), latitude (in dec. deg.), longitude
+(in dec. deg.)}
+
 \item{description}{Description for the Github gist, or leave to default (=no description)}
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
@@ -14,10 +18,6 @@ map_gist(x, description = "", public = TRUE, browse = TRUE, ...)
 \item{browse}{If TRUE (default) the map opens in your default browser.}
 
 \item{...}{Further arguments passed on to \code{\link{style_geojson}}}
-
-\item{data}{A data.frame, with any number of columns, but with at least the
-following: name (the taxonomic name), latitude (in dec. deg.), longitude
-(in dec. deg.)}
 }
 \description{
 Make an interactive map to view in the browser as a GitHub gist

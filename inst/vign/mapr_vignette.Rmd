@@ -1,27 +1,27 @@
 <!--
 %\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Introduction to spoccutils}
+%\VignetteIndexEntry{Introduction to mapr}
 %\VignetteEncoding{UTF-8}
 -->
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(
   fig.path = "img/",
-  comment = "#>", 
-  warning = FALSE, 
+  comment = "#>",
+  warning = FALSE,
   message = FALSE
 )
 ```
 
-Introduction to spoccutils
-==========================
+Introduction to mapr
+====================
 
 
-## Load spocc and spoccutils
+## Load spocc and mapr
 
 ```{r}
 library("spocc")
-library("spoccutils")
+library("mapr")
 ```
 
 ## Interactive maps

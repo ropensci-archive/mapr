@@ -9,6 +9,10 @@ map_leaflet(x, lon = "longitude", lat = "latitude", ...)
 \arguments{
 \item{x}{Input}
 
+\item{lon}{Longitude variable name}
+
+\item{lat}{Latitude variable name}
+
 \item{...}{Further args to \code{\link{points}}}
 }
 \description{
