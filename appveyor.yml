@@ -11,7 +11,7 @@ install:
   ps: Bootstrap
 
 build_script:
-  - travis-tool.sh install_github hadley/ggplot2
+  - travis-tool.sh install_github ropensci/spocc
   - travis-tool.sh r_install ggmap
   - travis-tool.sh install_deps
 
