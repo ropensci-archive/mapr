@@ -4,7 +4,7 @@ mapr
 
 
 [![Build Status](https://api.travis-ci.org/ropensci/mapr.png)](https://travis-ci.org/ropensci/mapr)
-[![Build status](https://ci.appveyor.com/api/projects/status/3tyojycmeqmj2pcw?svg=true)](https://ci.appveyor.com/project/sckott/mapr)
+[![Build status](https://ci.appveyor.com/api/projects/status/p0vje85d0us1q2pa?svg=true)](https://ci.appveyor.com/project/sckott/mapr)
 [![codecov.io](https://codecov.io/github/ropensci/mapr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mapr?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mapr?color=FAB657)](https://github.com/metacran/cranlogs.app)
 
