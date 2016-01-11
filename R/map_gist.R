@@ -1,10 +1,7 @@
 #' Make an interactive map to view in the browser as a GitHub gist
 #'
 #' @export
-#'
-#' @param x A data.frame, with any number of columns, but with at least the
-#'    following: name (the taxonomic name), latitude (in dec. deg.), longitude
-#'    (in dec. deg.)
+#' @template args
 #' @param description Description for the Github gist, or leave to default (=no description)
 #' @param public (logical) Whether gist is public (default: TRUE)
 #' @param browse If TRUE (default) the map opens in your default browser.
@@ -34,23 +31,33 @@
 #' library("rgbif")
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
 #' map_gist(res)
+#'
+#' ## data.frame
+#' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+#'                  longitude = c(-120, -121, -121),
+#'                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+#' map_gist(df)
 #' }
-map_gist <- function(x, description = "", public = TRUE, browse = TRUE, ...) {
+map_gist <- function(x, description = "", public = TRUE, browse = TRUE,
+                     lon = 'longitude', lat = 'latitude', ...) {
   UseMethod("map_gist")
 }
 
 #' @export
-map_gist.occdat <- function(x, description = "", public = TRUE, browse = TRUE, ...) {
+map_gist.occdat <- function(x, description = "", public = TRUE, browse = TRUE,
+                            lon = 'longitude', lat = 'latitude', ...) {
   map_gister(spocc::occ2df(x), description, public, browse, ...)
 }
 
 #' @export
-map_gist.occdatind <- function(x, description = "", public = TRUE, browse = TRUE, ...) {
+map_gist.occdatind <- function(x, description = "", public = TRUE, browse = TRUE,
+                               lon = 'longitude', lat = 'latitude', ...) {
   map_gister(spocc::occ2df(x), description, public, browse, ...)
 }
 
 #' @export
-map_gist.gbif <- function(x, description = "", public = TRUE, browse = TRUE, ...) {
+map_gist.gbif <- function(x, description = "", public = TRUE, browse = TRUE,
+                          lon = 'longitude', lat = 'latitude', ...) {
   x <- x$data
   x <- re_name(x, c('decimalLatitude' = 'latitude'))
   x <- re_name(x, c('decimalLongitude' = 'longitude'))
@@ -58,7 +65,16 @@ map_gist.gbif <- function(x, description = "", public = TRUE, browse = TRUE, ...
 }
 
 #' @export
-map_gist.default <- function(x, description = "", public = TRUE, browse = TRUE, ...) {
+map_gist.data.frame <- function(x, description = "", public = TRUE, browse = TRUE,
+                                lon = 'longitude', lat = 'latitude', ...) {
+
+  x <- guess_latlon(x, lat, lon)
+  map_gister(x, description, public, browse, ...)
+}
+
+#' @export
+map_gist.default <- function(x, description = "", public = TRUE, browse = TRUE,
+                             lon = 'longitude', lat = 'latitude', ...) {
   stop(sprintf("map_gist does not support input of class '%s'", class(x)), call. = FALSE)
 }
 

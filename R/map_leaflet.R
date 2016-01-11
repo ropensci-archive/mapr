@@ -2,9 +2,7 @@
 #'
 #' @export
 #'
-#' @param x Input
-#' @param lon Longitude variable name
-#' @param lat Latitude variable name
+#' @template args
 #' @param ... Further args to \code{\link{points}}
 #' @examples \dontrun{
 #' ## spocc
@@ -21,7 +19,9 @@
 #' map_leaflet(res)
 #'
 #' ## data.frame
-#' df <- data.frame(longitude = c(-120,-121), latitude = c(41, 42), stringsAsFactors = FALSE)
+#' df <- data.frame(name = c('Poa annua', 'Puma concolor'),
+#'                  longitude = c(-120,-121),
+#'                  latitude = c(41, 42), stringsAsFactors = FALSE)
 #' map_leaflet(df)
 #' }
 map_leaflet <- function(x, lon = 'longitude', lat = 'latitude', ...) {

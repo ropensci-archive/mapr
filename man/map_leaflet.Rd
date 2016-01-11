@@ -7,11 +7,15 @@
 map_leaflet(x, lon = "longitude", lat = "latitude", ...)
 }
 \arguments{
-\item{x}{Input}
+\item{x}{The data. An object of class \code{occdat}, \code{occdatind},
+\code{gbif}, or \code{data.frame}. The package \pkg{spocc} needed for
+the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
+input, any number of columns allowed, but with at least the following:
+name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
-\item{lon}{Longitude variable name}
-
-\item{lat}{Latitude variable name}
+\item{lon, lat}{(character) Longitude and latitude variable names. Ignored
+unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
+if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
 
 \item{...}{Further args to \code{\link{points}}}
 }
@@ -34,7 +38,9 @@ res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_leaflet(res)
 
 ## data.frame
-df <- data.frame(longitude = c(-120,-121), latitude = c(41, 42), stringsAsFactors = FALSE)
+df <- data.frame(name = c('Poa annua', 'Puma concolor'),
+                 longitude = c(-120,-121),
+                 latitude = c(41, 42), stringsAsFactors = FALSE)
 map_leaflet(df)
 }
 }

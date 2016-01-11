@@ -4,10 +4,18 @@
 \alias{map_plot}
 \title{Base R mapping}
 \usage{
-map_plot(x, ...)
+map_plot(x, lon = "longitude", lat = "latitude", ...)
 }
 \arguments{
-\item{x}{Input, an object of class \code{occdat}}
+\item{x}{The data. An object of class \code{occdat}, \code{occdatind},
+\code{gbif}, or \code{data.frame}. The package \pkg{spocc} needed for
+the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
+input, any number of columns allowed, but with at least the following:
+name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
+
+\item{lon, lat}{(character) Longitude and latitude variable names. Ignored
+unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
+if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
 
 \item{...}{Further args to \code{\link{points}}}
 }
@@ -18,13 +26,22 @@ Base R mapping
 \dontrun{
 ## spocc
 library("spocc")
-(out <- occ(query='Accipiter striatus', from='gbif', limit=100, has_coords=TRUE))
+(out <- occ(query='Accipiter striatus', from='gbif', limit=25, has_coords=TRUE))
+### class occdat
 map_plot(out)
+### class occdatind
+map_plot(out$gbif)
 
 ## rgbif
 library("rgbif")
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_plot(res)
+
+## data.frame
+df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+                 longitude = c(-120, -121, -121),
+                 latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+map_plot(df)
 }
 }
 

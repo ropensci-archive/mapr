@@ -1,25 +1,37 @@
 #' ggpmap visualization of species occurences
 #'
 #' @export
-#' @param x Input, object of class \code{occdat}
+#' @template args
 #' @param zoom zoom level for map. Adjust depending on how your data look.
 #' @param point_color Default color of your points
 #' @param ... Ignored
 #' @examples \dontrun{
+#' ## spocc
 #' library("spocc")
-#' ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
-#' map_ggmap(ecoengine_data)
-#' gbif_data <- occ(query = 'Accipiter striatus', from = 'gbif', limit=100)
-#' map_ggmap(gbif_data)
-#' bison_data <- occ(query = 'Accipiter striatus', from = 'bison', limit=100)
-#' map_ggmap(bison_data)
+#' ed <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
+#' map_ggmap(ed)
+#' gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=100)
+#' map_ggmap(gd)
+#' bd <- occ(query = 'Accipiter striatus', from = 'bison', limit=100)
+#' map_ggmap(bd)
+#'
+#' ## gbif
+#' 'xxxx'
+#'
+#' ## data.frame
+#' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+#'                  longitude = c(-120, -121, -121),
+#'                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+#' map_ggpmap(df)
 #'}
-map_ggmap <- function(x, zoom = 5, point_color = "#86161f", ...) {
+map_ggmap <- function(x, zoom = 5, point_color = "#86161f",
+                      lon = 'longitude', lat = 'latitude', ...) {
   UseMethod("map_ggmap")
 }
 
 #' @export
-map_ggmap.occdat <- function(x, zoom = 5, point_color = "#86161f", ...) {
+map_ggmap.occdat <- function(x, zoom = 5, point_color = "#86161f",
+                             lon = 'longitude', lat = 'latitude', ...) {
   check4pkg("ggmap")
   dt <- occ2df(x)
   latitude <- NA
@@ -46,6 +58,7 @@ map_ggmap.occdat <- function(x, zoom = 5, point_color = "#86161f", ...) {
 # on the data. Setting zoom = 'auto' leaves out even more points.
 
 #' @export
-map_ggmap.default <- function(x, ...) {
+map_ggmap.default <- function(x, zoom = 5, point_color = "#86161f",
+                              lon = 'longitude', lat = 'latitude', ...) {
   stop(sprintf("map_ggmap does not support input of class '%s'", class(x)), call. = FALSE)
 }

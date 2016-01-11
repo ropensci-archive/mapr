@@ -4,18 +4,25 @@
 \alias{map_gist}
 \title{Make an interactive map to view in the browser as a GitHub gist}
 \usage{
-map_gist(x, description = "", public = TRUE, browse = TRUE, ...)
+map_gist(x, description = "", public = TRUE, browse = TRUE,
+  lon = "longitude", lat = "latitude", ...)
 }
 \arguments{
-\item{x}{A data.frame, with any number of columns, but with at least the
-following: name (the taxonomic name), latitude (in dec. deg.), longitude
-(in dec. deg.)}
+\item{x}{The data. An object of class \code{occdat}, \code{occdatind},
+\code{gbif}, or \code{data.frame}. The package \pkg{spocc} needed for
+the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
+input, any number of columns allowed, but with at least the following:
+name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
 \item{description}{Description for the Github gist, or leave to default (=no description)}
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
 \item{browse}{If TRUE (default) the map opens in your default browser.}
+
+\item{lon, lat}{(character) Longitude and latitude variable names. Ignored
+unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
+if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
 
 \item{...}{Further arguments passed on to \code{\link{style_geojson}}}
 }
@@ -48,6 +55,12 @@ map_gist(dat, symbol=c('park','zoo','garden'))
 library("rgbif")
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_gist(res)
+
+## data.frame
+df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+                 longitude = c(-120, -121, -121),
+                 latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+map_gist(df)
 }
 }
 

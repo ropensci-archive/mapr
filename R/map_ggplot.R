@@ -1,7 +1,7 @@
 #' ggplot2 mapping
 #'
 #' @export
-#' @param x Input, object of class \code{occdat}
+#' @template args
 #' @param map (character) One of world, world2, state, usa, county, france, italy, or nz
 #' @param point_color Default color of your points
 #' @param ... Ignored
@@ -18,13 +18,21 @@
 #' library("rgbif")
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
 #' map_ggplot(res)
+#'
+#' ## data.frame
+#' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+#'                  longitude = c(-120, -121, -121),
+#'                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+#' map_ggplot(df)
 #'}
-map_ggplot <- function(x, map = "world", point_color = "#86161f", ...) {
+map_ggplot <- function(x, map = "world", point_color = "#86161f",
+                       lon = 'longitude', lat = 'latitude', ...) {
   UseMethod("map_ggplot")
 }
 
 #' @export
-map_ggplot.occdat <- function(x, map = "world", point_color = "#86161f", ...) {
+map_ggplot.occdat <- function(x, map = "world", point_color = "#86161f",
+                              lon = 'longitude', lat = 'latitude', ...) {
   latitude <- longitude <- lat <- long <- decimalLongitude <- decimalLatitude <- group <- NA
   dt <- occ2df(x)
   dt <- dt[complete.cases(dt$latitude, dt$longitude), ]
@@ -36,7 +44,8 @@ map_ggplot.occdat <- function(x, map = "world", point_color = "#86161f", ...) {
 }
 
 #' @export
-map_ggplot.gbif <- function(x, map = "world", point_color = "#86161f", ...) {
+map_ggplot.gbif <- function(x, map = "world", point_color = "#86161f",
+                            lon = 'longitude', lat = 'latitude', ...) {
   latitude <- longitude <- lat <- long <- decimalLongitude <- decimalLatitude <- group <- NA
   dt <- x$data
   dt <- dt[complete.cases(dt$decimalLatitude, dt$decimalLongitude), ]
@@ -48,7 +57,21 @@ map_ggplot.gbif <- function(x, map = "world", point_color = "#86161f", ...) {
 }
 
 #' @export
-map_ggplot.default <- function(x, ...) {
+map_ggplot.data.frame <- function(x, map = "world", point_color = "#86161f",
+                                  lon = 'longitude', lat = 'latitude', ...) {
+  x <- guess_latlon(x, lat, lon)
+  x <- x[complete.cases(x$latitude, x$longitude), ]
+  wmap <- suppressMessages(map_data(map))
+  latitude <- longitude <- lat <- long <- decimalLongitude <- decimalLatitude <- group <- NA
+  ggplot(x, aes(longitude, latitude)) +
+    geom_point(color = point_color, size = 3) +
+    geom_polygon(aes(long, lat, group = group), fill = NA, colour = "black", data = wmap) +
+    sutils_blank_theme()
+}
+
+#' @export
+map_ggplot.default <- function(x, map = "world", point_color = "#86161f",
+                               lon = 'longitude', lat = 'latitude', ...) {
   stop(sprintf("map_ggplot does not support input of class '%s'", class(x)), call. = FALSE)
 }
 

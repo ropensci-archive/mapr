@@ -1,34 +1,46 @@
 #' Base R mapping
 #'
 #' @export
-#' @param x Input, an object of class \code{occdat}
+#' @template args
 #' @param ... Further args to \code{\link{points}}
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")
-#' (out <- occ(query='Accipiter striatus', from='gbif', limit=100, has_coords=TRUE))
+#' (out <- occ(query='Accipiter striatus', from='gbif', limit=25, has_coords=TRUE))
+#' ### class occdat
 #' map_plot(out)
+#' ### class occdatind
+#' map_plot(out$gbif)
 #'
 #' ## rgbif
 #' library("rgbif")
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
 #' map_plot(res)
+#'
+#' ## data.frame
+#' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+#'                  longitude = c(-120, -121, -121),
+#'                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+#' map_plot(df)
 #' }
-map_plot <- function(x, ...) {
+map_plot <- function(x, lon = 'longitude', lat = 'latitude', ...) {
   UseMethod("map_plot")
 }
 
 #' @export
-map_plot.occdat <- function(x, ...) {
+map_plot.occdat <- function(x, lon = 'longitude', lat = 'latitude', ...) {
   df <- spocc::occ2df(x)
-  df <- df[complete.cases(df$latitude, df$longitude), ]
-  df <- df[df$longitude != 0, ]
-  sp::coordinates(df) <- ~longitude + latitude
-  plot_er(df, ...)
+  plot_er(plot_prep(df), ...)
 }
 
 #' @export
-map_plot.gbif <- function(x, ...) {
+map_plot.occdatind <- function(x, lon = 'longitude', lat = 'latitude', ...) {
+  df <- spocc::occ2df(x)
+  plot_er(plot_prep(df), ...)
+}
+
+#' @export
+map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', ...) {
   df <- x$data
   df <- df[complete.cases(df$decimalLatitude, df$decimalLongitude), ]
   df <- df[df$decimalLongitude != 0, ]
@@ -37,8 +49,21 @@ map_plot.gbif <- function(x, ...) {
 }
 
 #' @export
-map_plot.default <- function(x, ...) {
+map_plot.data.frame <- function(x, lon = 'longitude', lat = 'latitude', ...) {
+  x <- guess_latlon(x, lat, lon)
+  plot_er(plot_prep(x), ...)
+}
+
+#' @export
+map_plot.default <- function(x, lon = 'longitude', lat = 'latitude', ...) {
   stop(sprintf("map_plot does not support input of class '%s'", class(x)), call. = FALSE)
+}
+
+plot_prep <- function(x) {
+  x <- x[complete.cases(x$latitude, x$longitude), ]
+  x <- x[x$longitude != 0, ]
+  sp::coordinates(x) <- ~longitude + latitude
+  x
 }
 
 plot_er <- function(x, ...) {
