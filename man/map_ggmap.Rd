@@ -4,7 +4,7 @@
 \alias{map_ggmap}
 \title{ggpmap visualization of species occurences}
 \usage{
-map_ggmap(x, zoom = 5, point_color = "#86161f", lon = "longitude",
+map_ggmap(x, zoom = 3, point_color = "#86161f", lon = "longitude",
   lat = "latitude", ...)
 }
 \arguments{
@@ -31,21 +31,20 @@ ggpmap visualization of species occurences
 \dontrun{
 ## spocc
 library("spocc")
-ed <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
-map_ggmap(ed)
-gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=100)
+gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75, has_coords = TRUE)
 map_ggmap(gd)
-bd <- occ(query = 'Accipiter striatus', from = 'bison', limit=100)
-map_ggmap(bd)
+map_ggmap(gd$gbif)
 
-## gbif
-'xxxx'
+## rgbif
+library("rgbif")
+res <- occ_search(scientificName = "Puma concolor", limit = 100)
+map_ggmap(res)
 
 ## data.frame
 df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
-                 longitude = c(-120, -121, -121),
+                 longitude = c(-120, -121, -123),
                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
-map_ggpmap(df)
+map_ggmap(df)
 }
 }
 

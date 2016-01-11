@@ -8,57 +8,80 @@
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")
-#' ed <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
-#' map_ggmap(ed)
-#' gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=100)
+#' gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75, has_coords = TRUE)
 #' map_ggmap(gd)
-#' bd <- occ(query = 'Accipiter striatus', from = 'bison', limit=100)
-#' map_ggmap(bd)
+#' map_ggmap(gd$gbif)
 #'
-#' ## gbif
-#' 'xxxx'
+#' ## rgbif
+#' library("rgbif")
+#' res <- occ_search(scientificName = "Puma concolor", limit = 100)
+#' map_ggmap(res)
 #'
 #' ## data.frame
 #' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
-#'                  longitude = c(-120, -121, -121),
+#'                  longitude = c(-120, -121, -123),
 #'                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
-#' map_ggpmap(df)
+#' map_ggmap(df)
 #'}
-map_ggmap <- function(x, zoom = 5, point_color = "#86161f",
+map_ggmap <- function(x, zoom = 3, point_color = "#86161f",
                       lon = 'longitude', lat = 'latitude', ...) {
   UseMethod("map_ggmap")
 }
 
 #' @export
-map_ggmap.occdat <- function(x, zoom = 5, point_color = "#86161f",
+map_ggmap.occdat <- function(x, zoom = 3, point_color = "#86161f",
                              lon = 'longitude', lat = 'latitude', ...) {
-  check4pkg("ggmap")
-  dt <- occ2df(x)
-  latitude <- NA
-  longitude <- NA
-  # Remove rows with missing data
-  dt <- dt[complete.cases(dt$latitude, dt$longitude), ]
-  min_lat <- min(dt$latitude, na.rm = TRUE)
-  max_lat <- max(dt$latitude, na.rm = TRUE)
-  min_long <- min(dt$longitude, na.rm = TRUE)
-  max_long <- max(dt$longitude, na.rm = TRUE)
-  species <- unique(dt$name)
-  center_lat <- min_lat + (max_lat - min_lat)/2
-  center_long <- min_long + (max_long - min_long)/2
-  map_center <- c(lon = center_long, lat = center_lat)
-  species_map <- ggmap::get_map(location = map_center, zoom = zoom, maptype = "terrain")
-  temp <- dt[, c("latitude", "longitude")]
-  ggmap::ggmap(species_map) +
-    geom_point(data = temp,
-               aes(x = longitude, y = latitude), color = point_color, size = 3) +
-    ggtitle(paste0("Distribution of ", species)) +
-    labs(x = "Longitude", y = "Latitude")
+  x <- spocc::occ2df(x)
+  map_ggmapper(x, zoom, point_color)
 }
-# [BUGS]: Can't figure out why it leaves out points even after I center the plot
-# on the data. Setting zoom = 'auto' leaves out even more points.
 
 #' @export
-map_ggmap.default <- function(x, zoom = 5, point_color = "#86161f",
+map_ggmap.occdatind <- function(x, zoom = 3, point_color = "#86161f",
+                                lon = 'longitude', lat = 'latitude', ...) {
+  x <- spocc::occ2df(x)
+  map_ggmapper(x, zoom, point_color)
+}
+
+#' @export
+map_ggmap.gbif <- function(x, zoom = 3, point_color = "#86161f",
+                           lon = 'longitude', lat = 'latitude', ...) {
+  x <- guess_latlon(x$data, lon = 'decimalLongitude', lat = 'decimalLatitude')
+  map_ggmapper(x, zoom, point_color)
+}
+
+#' @export
+map_ggmap.data.frame <- function(x, zoom = 3, point_color = "#86161f",
+                           lon = 'longitude', lat = 'latitude', ...) {
+  x <- guess_latlon(x, lat, lon)
+  map_ggmapper(x, zoom, point_color)
+}
+
+#' @export
+map_ggmap.default <- function(x, zoom = 3, point_color = "#86161f",
                               lon = 'longitude', lat = 'latitude', ...) {
   stop(sprintf("map_ggmap does not support input of class '%s'", class(x)), call. = FALSE)
+}
+
+## helpers ---------------------
+map_center <- function(x) {
+  min_lat <- min(x$latitude, na.rm = TRUE)
+  max_lat <- max(x$latitude, na.rm = TRUE)
+  min_long <- min(x$longitude, na.rm = TRUE)
+  max_long <- max(x$longitude, na.rm = TRUE)
+  center_lat <- min_lat + (max_lat - min_lat)/2
+  center_long <- min_long + (max_long - min_long)/2
+  c(lon = center_long, lat = center_lat)
+}
+
+map_ggmapper <- function(x, zoom, point_color) {
+  check4pkg("ggmap")
+  x <- x[complete.cases(x$latitude, x$longitude), ]
+  x <- x[!x$latitude == 0 & !x$longitude == 0, ]
+  species_map <- ggmap::get_map(location = map_center(x), zoom = zoom, maptype = "terrain")
+  latitude <- longitude <- NA
+  ggmap::ggmap(species_map) +
+    ggplot2::geom_point(data = x[, c("latitude", "longitude")],
+                        ggplot2::aes(x = longitude, y = latitude), color = point_color, size = 3) +
+    ggplot2::ggtitle(paste0("Distribution of ", unique(x$name))) +
+    ggplot2::labs(x = "Longitude", y = "Latitude")
 }
