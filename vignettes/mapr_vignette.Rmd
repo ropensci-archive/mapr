@@ -4,14 +4,7 @@
 %\VignetteEncoding{UTF-8}
 -->
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(
-  fig.path = "img/",
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE
-)
-```
+
 
 Introduction to mapr
 ====================
@@ -19,7 +12,8 @@ Introduction to mapr
 
 ## Load spocc and mapr
 
-```{r}
+
+```r
 library("spocc")
 library("mapr")
 ```
@@ -32,7 +26,8 @@ library("mapr")
 
 An example:
 
-```{r eval=FALSE}
+
+```r
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(query = spp, from = 'gbif', has_coords = TRUE, limit = 100)
 map_leaflet(dat)
@@ -44,7 +39,8 @@ map_leaflet(dat)
 
 You can also create interactive maps via the `mapgist` function. You have to have a Github account to use this function. Github accounts are free though, and great for versioning and collaborating on code or papers. When you run the `map_gist` function it will ask for your Github username and password. You can alternatively store those in your `.Rprofile` file by adding entries for username (`options(github.username = 'username')`) and password (`options(github.password = 'password')`).
 
-```{r eval=FALSE}
+
+```r
 spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
 dat <- occ(query = spp, from = 'gbif', has_coords = TRUE, limit = 100)
 dat <- fixnames(dat)
@@ -59,28 +55,37 @@ map_gist(dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 
 Base plots, or the built in plotting facility in R accessed via `plot()`, is quite fast, but not easy or efficient to use, but are good for a quick glance at some data.
 
-```{r}
+
+```r
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 out <- occ(query = spnames, from = 'gbif', has_coords = TRUE, limit = 100)
 map_plot(out, cex = 1, pch = 10)
 ```
 
+![plot of chunk unnamed-chunk-5](img/unnamed-chunk-5-1.png)
+
 ### ggplot2
 
 `ggplot2` is a powerful package for making visualizations in R. Read more about it [here](https://cran.rstudio.com/web/packages/ggplot2/).
 
-```{r}
+
+```r
 dat <- occ(query = 'Lynx rufus californicus', from = 'gbif', has_coords = TRUE, limit = 200)
 map_ggplot(dat, map = "usa")
 ```
+
+![plot of chunk unnamed-chunk-6](img/unnamed-chunk-6-1.png)
 
 ### ggmap
 
 Using the `ggmap` package we can create a ggplot, but with map data behind the points.
 
-```{r}
+
+```r
 map_ggmap(dat)
 ```
+
+![plot of chunk unnamed-chunk-7](img/unnamed-chunk-7-1.png)
 
 ## Various inputs
 
