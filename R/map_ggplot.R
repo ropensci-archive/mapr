@@ -9,10 +9,19 @@
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")
-#' dat <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
+#' dat <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit=100)
 #' map_ggplot(dat)
+#' map_ggplot(dat$gbif)
 #' map_ggplot(dat, "usa")
 #' map_ggplot(dat, "county")
+#'
+#' ### usage of occ2sp()
+#' #### SpatialPoints
+#' spdat <- occ2sp(dat)
+#' map_ggplot(spdat)
+#' #### SpatialPointsDataFrame
+#' spdatdf <- as(spdat, "SpatialPointsDataFrame")
+#' map_ggplot(spdatdf)
 #'
 #' ## rgbif
 #' library("rgbif")
@@ -33,40 +42,40 @@ map_ggplot <- function(x, map = "world", point_color = "#86161f",
 #' @export
 map_ggplot.occdat <- function(x, map = "world", point_color = "#86161f",
                               lon = 'longitude', lat = 'latitude', ...) {
-  latitude <- longitude <- lat <- long <- decimalLongitude <- decimalLatitude <- group <- NA
-  dt <- occ2df(x)
-  dt <- dt[complete.cases(dt$latitude, dt$longitude), ]
-  wmap <- map_data(map)
-  ggplot(dt, aes(longitude, latitude)) +
-    geom_point(color = point_color, size = 3) +
-    geom_polygon(aes(long, lat, group = group), fill = NA, colour = "black", data = wmap) +
-    sutils_blank_theme()
+
+  x <- spocc::occ2df(x)
+  make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map, point_color)
+}
+
+#' @export
+map_ggplot.occdatind <- function(x, map = "world", point_color = "#86161f",
+                              lon = 'longitude', lat = 'latitude', ...) {
+  x <- spocc::occ2df(x)
+  make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map, point_color)
 }
 
 #' @export
 map_ggplot.gbif <- function(x, map = "world", point_color = "#86161f",
                             lon = 'longitude', lat = 'latitude', ...) {
-  latitude <- longitude <- lat <- long <- decimalLongitude <- decimalLatitude <- group <- NA
-  dt <- x$data
-  dt <- dt[complete.cases(dt$decimalLatitude, dt$decimalLongitude), ]
-  wmap <- map_data(map)
-  ggplot(dt, aes(decimalLongitude, decimalLatitude)) +
-    geom_point(color = point_color, size = 3) +
-    geom_polygon(aes(long, lat, group = group), fill = NA, colour = "black", data = wmap) +
-    sutils_blank_theme()
+  make_amap(dat_cleaner(x$data, lon = 'decimalLongitude', lat = 'decimalLatitude'), map, point_color)
+}
+
+#' @export
+map_ggplot.SpatialPoints <- function(x, map = "world", point_color = "#86161f",
+                    lon = 'longitude', lat = 'latitude', ...) {
+  make_amap(data.frame(x), map, point_color)
+}
+
+#' @export
+map_ggplot.SpatialPointsDataFrame <- function(x, map = "world", point_color = "#86161f",
+                    lon = 'longitude', lat = 'latitude', ...) {
+  make_amap(data.frame(x), map, point_color)
 }
 
 #' @export
 map_ggplot.data.frame <- function(x, map = "world", point_color = "#86161f",
                                   lon = 'longitude', lat = 'latitude', ...) {
-  x <- guess_latlon(x, lat, lon)
-  x <- x[complete.cases(x$latitude, x$longitude), ]
-  wmap <- suppressMessages(map_data(map))
-  latitude <- longitude <- lat <- long <- decimalLongitude <- decimalLatitude <- group <- NA
-  ggplot(x, aes(longitude, latitude)) +
-    geom_point(color = point_color, size = 3) +
-    geom_polygon(aes(long, lat, group = group), fill = NA, colour = "black", data = wmap) +
-    sutils_blank_theme()
+  make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map, point_color)
 }
 
 #' @export
@@ -75,6 +84,7 @@ map_ggplot.default <- function(x, map = "world", point_color = "#86161f",
   stop(sprintf("map_ggplot does not support input of class '%s'", class(x)), call. = FALSE)
 }
 
+### helpers ------------------------------------------
 sutils_blank_theme <- function(){
   theme(axis.line = element_blank(),
         axis.text.x = element_blank(),
@@ -88,4 +98,13 @@ sutils_blank_theme <- function(){
         panel.grid.minor = element_blank(),
         plot.background = element_blank(),
         plot.margin = rep(ggplot2::unit(0, "null"), 4))
+}
+
+make_amap <- function(x, map, point_color) {
+  wmap <- suppressMessages(ggplot2::map_data(map))
+  latitude <- longitude <- lat <- long <- decimalLongitude <- decimalLatitude <- group <- NA
+  ggplot(x, aes(longitude, latitude)) +
+    geom_point(color = point_color, size = 3) +
+    geom_polygon(aes(long, lat, group = group), fill = NA, colour = "black", data = wmap) +
+    sutils_blank_theme()
 }

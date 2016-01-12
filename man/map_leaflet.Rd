@@ -8,7 +8,8 @@ map_leaflet(x, lon = "longitude", lat = "latitude", ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
-\code{gbif}, or \code{data.frame}. The package \pkg{spocc} needed for
+\code{gbif}, \code{SpatialPoints}, \code{SpatialPointsDataFrame}, or
+\code{data.frame}. The package \pkg{spocc} needed for
 the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
 name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
@@ -17,7 +18,7 @@ name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
 if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
 
-\item{...}{Further args to \code{\link{points}}}
+\item{...}{Ignored}
 }
 \description{
 Make an interactive map with Leaflet.js
@@ -31,11 +32,28 @@ library("spocc")
 map_leaflet(out)
 ### with class occdatind
 map_leaflet(out$gbif)
+### use occ2sp
+map_leaflet(occ2sp(out))
 
 ## rgbif
 library("rgbif")
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_leaflet(res)
+
+## SpatialPoints class
+df <- data.frame(longitude = c(-120,-121),
+                 latitude = c(41, 42), stringsAsFactors = FALSE)
+x <- SpatialPoints(df)
+map_leaflet(x)
+
+## SpatialPointsDataFrame class
+library("rgbif")
+res <- occ_search(scientificName = "Puma concolor", limit = 100)
+x <- res$data
+library("sp")
+x <- x[complete.cases(x$decimalLatitude, x$decimalLongitude), ]
+coordinates(x) <- ~decimalLongitude+decimalLatitude
+map_leaflet(x)
 
 ## data.frame
 df <- data.frame(name = c('Poa annua', 'Puma concolor'),

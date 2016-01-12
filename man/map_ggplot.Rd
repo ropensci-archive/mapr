@@ -9,7 +9,8 @@ map_ggplot(x, map = "world", point_color = "#86161f", lon = "longitude",
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
-\code{gbif}, or \code{data.frame}. The package \pkg{spocc} needed for
+\code{gbif}, \code{SpatialPoints}, \code{SpatialPointsDataFrame}, or
+\code{data.frame}. The package \pkg{spocc} needed for
 the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
 name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
@@ -34,10 +35,19 @@ ggplot2 mapping
 \dontrun{
 ## spocc
 library("spocc")
-dat <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit=100)
+dat <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit=100)
 map_ggplot(dat)
+map_ggplot(dat$gbif)
 map_ggplot(dat, "usa")
 map_ggplot(dat, "county")
+
+### usage of occ2sp()
+#### SpatialPoints
+spdat <- occ2sp(dat)
+map_ggplot(spdat)
+#### SpatialPointsDataFrame
+spdatdf <- as(spdat, "SpatialPointsDataFrame")
+map_ggplot(spdatdf)
 
 ## rgbif
 library("rgbif")
