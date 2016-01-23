@@ -3,14 +3,16 @@
 #' @section Many inputs:
 #' All functions take the following four kinds of inputs
 #' \itemize{
-#'  \item An object of class `occdat`, from the package `spocc`. An object of
-#'  this class is composed of many objects of class `occdatind`
-#'  \item An object of class `occdatind`, from the package `spocc`
-#'  \item An object of class `gbif`, from the package `rgbif`
-#'  \item An object of class `data.frame`. This data.frame can have any columns,
-#'  but must include a column for taxonomic names (e.g., `name`), and for latitude
+#'  \item An object of class \code{occdat}, from the package \code{spocc}. An object of
+#'  this class is composed of many objects of class \code{occdatind}
+#'  \item An object of class \code{occdatind}, from the package \code{spocc}
+#'  \item An object of class \code{gbif}, from the package \code{rgbif}
+#'  \item An object of class \code{data.frame}. This data.frame can have any columns,
+#'  but must include a column for taxonomic names (e.g., \code{name}), and for latitude
 #'  and longitude (we guess your lat/long columns, starting with the default
-#'  `latitude` and `longitude`)
+#'  \code{latitude} and \code{longitude})
+#'  \item An object of class \code{SpatialPoints}
+#'  \item An object of class \code{SpatialPointsDatFrame}
 #' }
 #'
 #' @section Mapping options:

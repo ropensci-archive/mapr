@@ -22,6 +22,14 @@
 #'                  longitude = c(-120, -121, -121),
 #'                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
 #' map_plot(df)
+#'
+#' ### usage of occ2sp()
+#' #### SpatialPoints
+#' spdat <- occ2sp(out)
+#' map_plot(spdat)
+#' #### SpatialPointsDataFrame
+#' spdatdf <- as(spdat, "SpatialPointsDataFrame")
+#' map_plot(spdatdf)
 #' }
 map_plot <- function(x, lon = 'longitude', lat = 'latitude', ...) {
   UseMethod("map_plot")
@@ -50,6 +58,20 @@ map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', ...) {
 
 #' @export
 map_plot.data.frame <- function(x, lon = 'longitude', lat = 'latitude', ...) {
+  x <- guess_latlon(x, lat, lon)
+  plot_er(plot_prep(x), ...)
+}
+
+#' @export
+map_plot.SpatialPoints <- function(x, lon = 'longitude', lat = 'latitude', ...) {
+  x <- data.frame(x)
+  x <- guess_latlon(x, lat, lon)
+  plot_er(plot_prep(x), ...)
+}
+
+#' @export
+map_plot.SpatialPointsDataFrame <- function(x, lon = 'longitude', lat = 'latitude', ...) {
+  x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
   plot_er(plot_prep(x), ...)
 }

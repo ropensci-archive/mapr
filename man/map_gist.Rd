@@ -37,7 +37,7 @@ See \code{\link[gistr]{gist_auth}} for help on authentication
 \dontrun{
 ## spocc
 library("spocc")
-spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
 dat <- occ(spp, from=c('gbif','ecoengine'), limit=30, gbifopts=list(hasCoordinate=TRUE))
 dat <- fixnames(dat, "query")
 
@@ -62,6 +62,14 @@ df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
                  longitude = c(-120, -121, -121),
                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
 map_gist(df)
+
+### usage of occ2sp()
+#### SpatialPoints
+spdat <- occ2sp(dat)
+map_gist(spdat)
+#### SpatialPointsDataFrame
+spdatdf <- as(spdat, "SpatialPointsDataFrame")
+map_gist(spdatdf)
 }
 }
 

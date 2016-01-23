@@ -46,6 +46,14 @@ df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
                  longitude = c(-120, -121, -123),
                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
 map_ggmap(df)
+
+### usage of occ2sp()
+#### SpatialPoints
+spdat <- occ2sp(gd)
+map_ggmap(spdat)
+#### SpatialPointsDataFrame
+spdatdf <- as(spdat, "SpatialPointsDataFrame")
+map_ggmap(spdatdf)
 }
 }
 

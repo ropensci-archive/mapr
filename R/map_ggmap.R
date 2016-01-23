@@ -22,6 +22,14 @@
 #'                  longitude = c(-120, -121, -123),
 #'                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
 #' map_ggmap(df)
+#'
+#' ### usage of occ2sp()
+#' #### SpatialPoints
+#' spdat <- occ2sp(gd)
+#' map_ggmap(spdat)
+#' #### SpatialPointsDataFrame
+#' spdatdf <- as(spdat, "SpatialPointsDataFrame")
+#' map_ggmap(spdatdf)
 #'}
 map_ggmap <- function(x, zoom = 3, point_color = "#86161f",
                       lon = 'longitude', lat = 'latitude', ...) {
@@ -51,7 +59,23 @@ map_ggmap.gbif <- function(x, zoom = 3, point_color = "#86161f",
 
 #' @export
 map_ggmap.data.frame <- function(x, zoom = 3, point_color = "#86161f",
-                           lon = 'longitude', lat = 'latitude', ...) {
+                                 lon = 'longitude', lat = 'latitude', ...) {
+  x <- guess_latlon(x, lat, lon)
+  map_ggmapper(x, zoom, point_color)
+}
+
+#' @export
+map_ggmap.SpatialPoints <- function(x, zoom = 3, point_color = "#86161f",
+                                    lon = 'longitude', lat = 'latitude', ...) {
+  x <- data.frame(x)
+  x <- guess_latlon(x, lat, lon)
+  map_ggmapper(x, zoom, point_color)
+}
+
+#' @export
+map_ggmap.SpatialPointsDataFrame <- function(x, zoom = 3, point_color = "#86161f",
+                                             lon = 'longitude', lat = 'latitude', ...) {
+  x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
   map_ggmapper(x, zoom, point_color)
 }

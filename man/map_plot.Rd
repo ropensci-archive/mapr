@@ -43,6 +43,14 @@ df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
                  longitude = c(-120, -121, -121),
                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
 map_plot(df)
+
+### usage of occ2sp()
+#### SpatialPoints
+spdat <- occ2sp(out)
+map_plot(spdat)
+#### SpatialPointsDataFrame
+spdatdf <- as(spdat, "SpatialPointsDataFrame")
+map_plot(spdatdf)
 }
 }
 
