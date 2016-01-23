@@ -73,8 +73,8 @@ map_gist(dat, color = c("#976AAE","#6B944D","#BD5945"))
 
 
 ```r
-ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', limit = 100)
-map_ggmaps(ecoengine_data)
+x <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit = 100)
+map_ggmaps(x)
 ```
 
 ![ggmaps](http://f.cl.ly/items/1L3r0b3k1W2o1Z3j2I3r/Screen%20Shot%202015-07-02%20at%202.55.59%20PM.png)
@@ -83,7 +83,7 @@ map_ggmaps(ecoengine_data)
 
 
 ```r
-map_ggplot(ecoengine_data, "usa")
+map_ggplot(x, "usa")
 ```
 
 ![ggplot2](http://f.cl.ly/items/1k2a012u1F1H1E13370U/Screen%20Shot%202015-07-02%20at%203.21.31%20PM.png)
@@ -96,6 +96,19 @@ map_plot(dat, cex = 1, pch = 10)
 ```
 
 ![basremap](http://f.cl.ly/items/2J3d1z1t0U3r410o2T3d/Screen%20Shot%202015-07-02%20at%202.57.04%20PM.png)
+
+### via dismo
+
+if that's your jam, though you might find `rgbif` easier
+
+
+```r
+library("dismo")
+g <- gbif('Batrachoseps', 'luciae', geo = TRUE, end = 300)
+map_leaflet(g, "lon", "lat")
+```
+
+![dismomap](http://f.cl.ly/items/2u2V0n0B3Y2y0p1d0f1M/Screen%20Shot%202016-01-22%20at%204.46.12%20PM.png)
 
 ## Meta
 
