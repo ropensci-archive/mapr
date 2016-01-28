@@ -84,7 +84,7 @@ map_ggmap(dat)
 
 ## The supported inputs
 
-All functions take the following four kinds of inputs:
+All functions take the following kinds of inputs:
 
 * An object of class `occdat`, from the package `spocc`. An object of 
 this class is composed of many objects of class `occdatind`

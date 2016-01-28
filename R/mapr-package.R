@@ -1,12 +1,12 @@
 #' Vizualize species occurrence data
 #'
 #' @section Many inputs:
-#' All functions take the following four kinds of inputs
+#' All functions take the following kinds of inputs:
 #' \itemize{
-#'  \item An object of class \code{occdat}, from the package \code{spocc}. An object of
+#'  \item An object of class \code{occdat}, from the package \pkg{spocc}. An object of
 #'  this class is composed of many objects of class \code{occdatind}
-#'  \item An object of class \code{occdatind}, from the package \code{spocc}
-#'  \item An object of class \code{gbif}, from the package \code{rgbif}
+#'  \item An object of class \code{occdatind}, from the package \pkg{spocc}
+#'  \item An object of class \code{gbif}, from the package \pkg{rgbif}
 #'  \item An object of class \code{data.frame}. This data.frame can have any columns,
 #'  but must include a column for taxonomic names (e.g., \code{name}), and for latitude
 #'  and longitude (we guess your lat/long columns, starting with the default
@@ -15,13 +15,13 @@
 #'  \item An object of class \code{SpatialPointsDatFrame}
 #' }
 #'
-#' @section Mapping options:
+#' @section Package API:
 #' \itemize{
-#'  \item \code{\link{map_plot}} - Base R plots
-#'  \item \code{\link{map_ggplot}} - ggplot2 plots
-#'  \item \code{\link{map_ggmap}} - ggplot2 plots with map layers
-#'  \item \code{\link{map_leaflet}} - Leaflet.js interactive maps
-#'  \item \code{\link{map_gist}} - Ineractive, shareable maps on GitHub Gists
+#'  \item \code{\link{map_plot}} - static Base R plots
+#'  \item \code{\link{map_ggplot}} - static ggplot2 plots
+#'  \item \code{\link{map_ggmap}} - static ggplot2 plots with map layers
+#'  \item \code{\link{map_leaflet}} - interactive Leaflet.js interactive maps
+#'  \item \code{\link{map_gist}} - ineractive, shareable maps on GitHub Gists
 #' }
 #'
 #' @importFrom methods as is

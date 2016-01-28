@@ -19,15 +19,15 @@ Helper for making maps of species occurrence data, including for:
 
 * [spocc](https://github.com/ropensci/spocc)
 * [rgbif](https://github.com/ropensci/rgbif)
+* and some `sp` classes
 
-This package has utilities for:
+This package has utilities for making maps with:
 
-* Making maps, with:
-    * base R
-    * ggplot2
-    * Leaflet
-    * GitHub Gists
-    * ...
+* base R
+* ggplot2
+* ggplot2 with map layers - via `ggmap` pkg
+* Leaflet - via `leaflet` pkg
+* GitHub Gists - via `gistr` package
 
 ## Installation
 

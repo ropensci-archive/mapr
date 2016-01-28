@@ -87,9 +87,9 @@ map_ggmap(dat)
 
 ![plot of chunk unnamed-chunk-7](img/unnamed-chunk-7-1.png)
 
-## Various inputs
+## The supported inputs
 
-All functions take the following four kinds of inputs:
+All functions take the following kinds of inputs:
 
 * An object of class `occdat`, from the package `spocc`. An object of 
 this class is composed of many objects of class `occdatind`
@@ -99,3 +99,5 @@ this class is composed of many objects of class `occdatind`
 must include a column for taxonomic names (e.g., `name`), and for latitude 
 and longitude (we guess your lat/long columns, starting with the default 
 `latitude` and `longitude`). 
+* An object of class `SpatialPoints`
+* An object of class `SpatialPointsDatFrame`
