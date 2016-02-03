@@ -61,7 +61,7 @@ togeojson2 <- function(input) {
   url <- "http://ogre.adc4gis.com/convert"
   tt <- POST(url, body = list(upload = upload_file(input)))
   stop_for_status(tt)
-  out <- content(tt, as = "text")
+  out <- content(tt, as = "text", encoding = "UTF-8")
   geofile <- tempfile(fileext = ".geojson")
   geofileConn <- file(geofile)
   writeLines(out, geofileConn)
