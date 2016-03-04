@@ -75,7 +75,7 @@ map_gist(dat, color = c("#976AAE","#6B944D","#BD5945"))
 
 ```{r eval=FALSE}
 x <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit = 100)
-map_ggmaps(x)
+map_ggmap(x)
 ```
 
 ![ggmaps](http://f.cl.ly/items/1L3r0b3k1W2o1Z3j2I3r/Screen%20Shot%202015-07-02%20at%202.55.59%20PM.png)
