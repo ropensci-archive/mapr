@@ -1,14 +1,14 @@
 language: r
-sudo: required
+sudo: false
+cache: packages
 
-r_binary_packages:
+r_packages:
   - ggmap
 
-r_github_packages:
-  - jimhester/covr
-
-before_install:
-  - sudo apt-get install libv8-dev
+addons:
+  apt:
+    packages:
+      - libv8-dev
 
 after_success:
   - Rscript -e 'covr::codecov()'
