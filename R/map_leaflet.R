@@ -21,6 +21,7 @@
 #' map_leaflet(res)
 #'
 #' ## SpatialPoints class
+#' library("sp")
 #' df <- data.frame(longitude = c(-120,-121),
 #'                  latitude = c(41, 42), stringsAsFactors = FALSE)
 #' x <- SpatialPoints(df)
