@@ -25,6 +25,9 @@ if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
 
 \item{...}{Further args to \code{\link{points}}}
 }
+\value{
+Plots a world scale map
+}
 \description{
 Base R mapping
 }
@@ -59,11 +62,11 @@ map_plot(spdatdf)
 
 # many species, each gets a different color
 library("spocc")
-spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta', 'Ursus americanus')
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE, gbifopts = list(country = 'US'))
 map_plot(dat)
 ## diff. color for each taxon
-map_plot(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
+map_plot(dat, color = c('#976AAE', '#6B944D', '#BD5945', 'red'))
 }
 }
 

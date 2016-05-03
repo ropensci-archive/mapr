@@ -5,6 +5,7 @@
 #' @param color Default color of your points.
 #' @param size point size, Default: 1
 #' @param ... Further args to \code{\link{points}}
+#' @return Plots a world scale map
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")
@@ -35,11 +36,11 @@
 #'
 #' # many species, each gets a different color
 #' library("spocc")
-#' spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-#' dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+#' spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta', 'Ursus americanus')
+#' dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE, gbifopts = list(country = 'US'))
 #' map_plot(dat)
 #' ## diff. color for each taxon
-#' map_plot(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
+#' map_plot(dat, color = c('#976AAE', '#6B944D', '#BD5945', 'red'))
 #' }
 map_plot <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, size = 1, ...) {
   UseMethod("map_plot")
@@ -48,13 +49,14 @@ map_plot <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, size 
 #' @export
 map_plot.occdat <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, size = 1, ...) {
   df <- spocc::occ2df(x)
-  plot_er(plot_prep(df), color, size, ...)
+  df <- check_colors(df, color)
+  plot_er(plot_prep(df), size, ...)
 }
 
 #' @export
 map_plot.occdatind <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, size = 1, ...) {
   df <- spocc::occ2df(x)
-  plot_er(plot_prep(df), color, size, ...)
+  plot_er(plot_prep(df), size, ...)
 }
 
 #' @export
@@ -62,28 +64,32 @@ map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, 
   df <- x$data
   df <- df[complete.cases(df$decimalLatitude, df$decimalLongitude), ]
   df <- df[df$decimalLongitude != 0, ]
+  df <- check_colors(df, color)
   sp::coordinates(df) <- ~decimalLongitude + decimalLatitude
-  plot_er(df, color, size, ...)
+  plot_er(df, size, ...)
 }
 
 #' @export
 map_plot.data.frame <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, size = 1, ...) {
   x <- guess_latlon(x, lat, lon)
-  plot_er(plot_prep(x), color, size, ...)
+  x <- check_colors(x, color)
+  plot_er(plot_prep(x), size, ...)
 }
 
 #' @export
 map_plot.SpatialPoints <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, size = 1, ...) {
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
-  plot_er(plot_prep(x), color, size, ...)
+  x <- check_colors(x, color)
+  plot_er(plot_prep(x), size, ...)
 }
 
 #' @export
 map_plot.SpatialPointsDataFrame <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, size = 1, ...) {
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
-  plot_er(plot_prep(x), color, size, ...)
+  x <- check_colors(x, color)
+  plot_er(plot_prep(x), size, ...)
 }
 
 #' @export
@@ -100,10 +106,11 @@ plot_prep <- function(x) {
   x
 }
 
-plot_er <- function(x, color, size, ...) {
-  x <- check_colors(x, color)
+plot_er <- function(x, size, ...) {
   sp::proj4string(x) <- sp::CRS("+init=epsg:4326")
-  sp::plot(rworldmap::getMap())
+  sp::plot(rworldmap::getMap(), mar = c(1,1,1,1))
   graphics::points(x, pch = 16, col = x$color, cex = size, ...)
-  #graphics::points(x, pch = 16, col = x$color, cex = x$size, ...)
+  if (length(unique(x$color)) > 1) {
+    graphics::legend(x = -180, y = -20, unique(x$name), pch = 16, col = unique(x$color), bty = "n", cex = 0.8)
+  }
 }
