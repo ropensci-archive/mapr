@@ -4,8 +4,8 @@
 \alias{map_ggplot}
 \title{ggplot2 mapping}
 \usage{
-map_ggplot(x, map = "world", point_color = "#86161f", lon = "longitude",
-  lat = "latitude", ...)
+map_ggplot(x, map = "world", point_color = "#86161f", color = NULL,
+  size = 3, lon = "longitude", lat = "latitude", ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -17,7 +17,11 @@ name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
 \item{map}{(character) One of world, world2, state, usa, county, france, italy, or nz}
 
-\item{point_color}{Default color of your points}
+\item{point_color}{Default color of your points. Deprecated, use \code{color}}
+
+\item{color}{Default color of your points.}
+
+\item{size}{point size, Default: 3}
 
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
 unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
@@ -59,6 +63,12 @@ df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
                  longitude = c(-120, -121, -121),
                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
 map_ggplot(df)
+
+# many species, each gets a different color
+library("spocc")
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+map_ggplot(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
 }
 }
 

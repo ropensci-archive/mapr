@@ -4,7 +4,8 @@
 \alias{map_plot}
 \title{Base R mapping}
 \usage{
-map_plot(x, lon = "longitude", lat = "latitude", ...)
+map_plot(x, lon = "longitude", lat = "latitude", color = NULL, size = 1,
+  ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -17,6 +18,10 @@ name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
 unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
 if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
+
+\item{color}{Default color of your points.}
+
+\item{size}{point size, Default: 1}
 
 \item{...}{Further args to \code{\link{points}}}
 }
@@ -51,6 +56,14 @@ map_plot(spdat)
 #### SpatialPointsDataFrame
 spdatdf <- as(spdat, "SpatialPointsDataFrame")
 map_plot(spdatdf)
+
+# many species, each gets a different color
+library("spocc")
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+map_plot(dat)
+## diff. color for each taxon
+map_plot(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
 }
 }
 

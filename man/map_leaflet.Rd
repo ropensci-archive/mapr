@@ -4,7 +4,8 @@
 \alias{map_leaflet}
 \title{Make an interactive map with Leaflet.js}
 \usage{
-map_leaflet(x, lon = "longitude", lat = "latitude", ...)
+map_leaflet(x, lon = "longitude", lat = "latitude", color = NULL,
+  size = 13, ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -17,6 +18,10 @@ name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
 unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
 if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
+
+\item{color}{Default color of your points.}
+
+\item{size}{point size, Default: 13}
 
 \item{...}{Ignored}
 }
@@ -61,6 +66,14 @@ df <- data.frame(name = c('Poa annua', 'Puma concolor'),
                  longitude = c(-120,-121),
                  latitude = c(41, 42), stringsAsFactors = FALSE)
 map_leaflet(df)
+
+# many species
+library("spocc")
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+map_leaflet(dat)
+map_leaflet(dat, color = c('#AFFF71', '#AFFF71', '#AFFF71'))
+map_leaflet(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
 }
 }
 
