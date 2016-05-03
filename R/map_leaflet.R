@@ -6,6 +6,9 @@
 #' @param color Default color of your points.
 #' @param size point size, Default: 13
 #' @param ... Ignored
+#' @details We add popups by default, and add all columns to the popup. The html is
+#' escaped with \code{\link[htmltools]{htmlEscape}}
+#' @return a Leaflet map in Viewer in Rstudio, or in your default browser otherwise
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")
@@ -105,7 +108,25 @@ make_map <- function(x, color, size) {
 
 make_map_ll <- function(x, color, size) {
   x <- check_colors(x, color)
+  x$popups <- make_popups(x)
   lf <- leaflet::leaflet(data = x)
   lf <- leaflet::addTiles(lf)
-  leaflet::addCircleMarkers(lf, ~longitude, ~latitude, color = ~color, radius = size)
+  leaflet::addCircleMarkers(
+    lf, ~longitude, ~latitude,
+    color = ~color, radius = size,
+    popup = ~popups
+  )
+}
+
+make_popups <- function(x) {
+  res <- c()
+  for (i in seq_len(NROW(x))) {
+    temp <- c()
+    for (j in seq_along(x[i, ])) {
+      temp[j] <- sprintf('<tr><td><strong>%s</strong></td><td>%s</td></tr>', names(x)[j], x[i,j])
+    }
+    res[i] <- htmlEscape(sprintf('<table>\n%s\n</table>', paste0(temp, collapse = "\n")))
+    temp <- NULL
+  }
+  res
 }

@@ -25,8 +25,15 @@ if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
 
 \item{...}{Ignored}
 }
+\value{
+a Leaflet map in Viewer in Rstudio, or in your default browser otherwise
+}
 \description{
 Make an interactive map with Leaflet.js
+}
+\details{
+We add popups by default, and add all columns to the popup. The html is
+escaped with \code{\link[htmltools]{htmlEscape}}
 }
 \examples{
 \dontrun{

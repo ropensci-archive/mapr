@@ -36,6 +36,7 @@
 #' @importFrom gistr gist_create
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom spocc occ2df
+#' @importFrom htmltools htmlEscape
 #' @import leaflet
 #' @name mapr-package
 #' @aliases mapr
