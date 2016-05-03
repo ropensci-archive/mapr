@@ -52,6 +52,7 @@ map_ggplot <- function(x, map = "world", point_color = "#86161f", color = NULL, 
 map_ggplot.occdat <- function(x, map = "world", point_color = "#86161f", color = NULL, size = 3,
                               lon = 'longitude', lat = 'latitude', ...) {
 
+  check_inputs(match.call())
   x <- spocc::occ2df(x)
   make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map, color, size)
 }
@@ -59,6 +60,7 @@ map_ggplot.occdat <- function(x, map = "world", point_color = "#86161f", color =
 #' @export
 map_ggplot.occdatind <- function(x, map = "world", point_color = "#86161f", color = NULL, size = 3,
                               lon = 'longitude', lat = 'latitude', ...) {
+  check_inputs(match.call())
   x <- spocc::occ2df(x)
   make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map, color, size)
 }
@@ -66,24 +68,28 @@ map_ggplot.occdatind <- function(x, map = "world", point_color = "#86161f", colo
 #' @export
 map_ggplot.gbif <- function(x, map = "world", point_color = "#86161f", color = NULL, size = 3,
                             lon = 'longitude', lat = 'latitude', ...) {
+  check_inputs(match.call())
   make_amap(dat_cleaner(x$data, lon = 'decimalLongitude', lat = 'decimalLatitude'), map, color, size)
 }
 
 #' @export
 map_ggplot.SpatialPoints <- function(x, map = "world", point_color = "#86161f", color = NULL, size = 3,
                     lon = 'longitude', lat = 'latitude', ...) {
+  check_inputs(match.call())
   make_amap(data.frame(x), map, color, size)
 }
 
 #' @export
 map_ggplot.SpatialPointsDataFrame <- function(x, map = "world", point_color = "#86161f",
                     color = NULL, size = 3, lon = 'longitude', lat = 'latitude', ...) {
+  check_inputs(match.call())
   make_amap(data.frame(x), map, color, size)
 }
 
 #' @export
 map_ggplot.data.frame <- function(x, map = "world", point_color = "#86161f",  color = NULL, size = 3,
                                   lon = 'longitude', lat = 'latitude', ...) {
+  check_inputs(match.call())
   make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map, color, size)
 }
 

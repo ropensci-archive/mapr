@@ -4,8 +4,9 @@
 \alias{map_ggmap}
 \title{ggpmap visualization of species occurences}
 \usage{
-map_ggmap(x, zoom = 3, point_color = "#86161f", lon = "longitude",
-  lat = "latitude", ...)
+map_ggmap(x, zoom = 3, point_color = "#86161f", color = NULL, size = 3,
+  lon = "longitude", lat = "latitude", maptype = "terrain",
+  source = "google", ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -17,11 +18,21 @@ name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
 \item{zoom}{zoom level for map. Adjust depending on how your data look.}
 
-\item{point_color}{Default color of your points}
+\item{point_color}{Default color of your points. Deprecated, use \code{color}}
+
+\item{color}{Default color of your points.}
+
+\item{size}{point size, Default: 3}
 
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
 unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
 if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
+
+\item{maptype}{(character) map theme. see \code{get_map} in \code{ggmap} for options.
+Default: none}
+
+\item{source}{(character) Google Maps ("google"), OpenStreetMap ("osm"),
+Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: \code{osm}}
 
 \item{...}{Ignored}
 }
@@ -48,12 +59,18 @@ df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
 map_ggmap(df)
 
 ### usage of occ2sp()
-#### SpatialPoints
+#### SpatialPointsDataFrame
 spdat <- occ2sp(gd)
 map_ggmap(spdat)
-#### SpatialPointsDataFrame
-spdatdf <- as(spdat, "SpatialPointsDataFrame")
-map_ggmap(spdatdf)
+
+# many species, each gets a different color
+library("spocc")
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE, gbifopts = list(country = 'US'))
+map_ggmap(dat)
+map_ggmap(dat, zoom = 5)
+map_ggmap(dat, color = '#6B944D')
+map_ggmap(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
 }
 }
 
