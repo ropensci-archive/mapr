@@ -54,6 +54,10 @@
 #' map_leaflet(dat)
 #' map_leaflet(dat, color = c('#AFFF71', '#AFFF71', '#AFFF71'))
 #' map_leaflet(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
+#'
+#' # add a convex hull
+#' ## map_leaflet(dat) %>% hull()  # using pipes
+#' hull(map_leaflet(dat))
 #' }
 map_leaflet <- function(x, lon = 'longitude', lat = 'latitude', color = NULL, size = 13, ...) {
   UseMethod("map_leaflet")
