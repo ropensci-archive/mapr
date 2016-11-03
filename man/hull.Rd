@@ -2,16 +2,41 @@
 % Please edit documentation in R/hull.R
 \name{hull}
 \alias{hull}
-\title{Conex hull}
+\title{Add a convex hull to a map}
 \usage{
 hull(x, ...)
 }
 \arguments{
 \item{x}{input}
 
-\item{...}{further args, ignored}
+\item{...}{ignored}
 }
 \description{
-Conex hull
+Add a convex hull to a map
+}
+\details{
+Can be used with \code{\link{map_leaflet}}, \code{\link{map_plot}},
+and \code{\link{map_ggplot}}. Other methods in this package may be supported
+in the future.
+}
+\examples{
+\dontrun{
+# leaflet
+library("spocc")
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+hull(map_leaflet(dat))
+
+# ggplot
+library("rgbif")
+res <- occ_search(scientificName = "Puma concolor", limit = 100)
+hull(map_ggplot(res))
+
+# base plots
+library("spocc")
+out <- occ(query='Accipiter striatus', from='gbif', limit=25,
+  has_coords=TRUE)
+map_plot(out, hull = TRUE)
+}
 }
 

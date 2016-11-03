@@ -39,6 +39,9 @@ Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: \code{osm}}
 \description{
 ggpmap visualization of species occurences
 }
+\details{
+Does not support adding a convex hull via \code{\link{hull}}
+}
 \examples{
 \dontrun{
 ## spocc

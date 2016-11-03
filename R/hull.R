@@ -1,10 +1,31 @@
-#' Conex hull
+#' Add a convex hull to a map
 #'
 #' @export
 #' @param x input
-#' @param ... further args, ignored
+#' @param ... ignored
+#' @details Can be used with \code{\link{map_leaflet}}, \code{\link{map_plot}},
+#' and \code{\link{map_ggplot}}. Other methods in this package may be supported
+#' in the future.
+#' @examples \dontrun{
+#' # leaflet
+#' library("spocc")
+#' spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+#' dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+#' hull(map_leaflet(dat))
+#'
+#' # ggplot
+#' library("rgbif")
+#' res <- occ_search(scientificName = "Puma concolor", limit = 100)
+#' hull(map_ggplot(res))
+#'
+#' # base plots
+#' library("spocc")
+#' out <- occ(query='Accipiter striatus', from='gbif', limit=25,
+#'   has_coords=TRUE)
+#' map_plot(out, hull = TRUE)
+#' }
 hull <- function(x, ...) {
- UseMethod("hull")
+  UseMethod("hull")
 }
 
 #' @export
@@ -24,13 +45,5 @@ hull.gg <- function(x, ...) {
   longitude <- latitude <- NA
   outline <- x$data[grDevices::chull(x$data$longitude, x$data$latitude), ]
   x + geom_polygon(data = outline, aes(x = longitude, y = latitude),
-               fill = NA, size = 1, colour = "black")
-}
-
-hull.gbif <- function(x, ...) {
-  dat <- x$data[,c('decimalLongitude', 'decimalLatitude')]
-  dat <- na.omit(dat)
-  hpts <- grDevices::chull(dat$decimalLongitude, dat$decimalLatitude)
-  hpts <- c(hpts, hpts[1])
-  graphics::lines(x[hpts, ])
+                   fill = NA, size = 1, colour = "black")
 }

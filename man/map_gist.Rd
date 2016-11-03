@@ -33,6 +33,8 @@ Make an interactive map to view in the browser as a GitHub gist
 }
 \details{
 See \code{\link[gistr]{gist_auth}} for help on authentication
+
+Does not support adding a convex hull via \code{\link{hull}}
 }
 \examples{
 \dontrun{

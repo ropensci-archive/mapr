@@ -11,6 +11,7 @@
 #' Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: \code{osm}
 #' @param point_color Default color of your points. Deprecated, use \code{color}
 #' @param ... Ignored
+#' @details Does not support adding a convex hull via \code{\link{hull}}
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")
@@ -44,7 +45,7 @@
 #' map_ggmap(dat, zoom = 5)
 #' map_ggmap(dat, color = '#6B944D')
 #' map_ggmap(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
-#'}
+#' }
 map_ggmap <- function(x, zoom = 3, point_color = "#86161f", color = NULL,
                       size = 3, lon = 'longitude', lat = 'latitude',
                       maptype = "terrain", source = "google", ...) {

@@ -10,6 +10,8 @@
 #'
 #' @details See \code{\link[gistr]{gist_auth}} for help on authentication
 #'
+#' Does not support adding a convex hull via \code{\link{hull}}
+#'
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")
