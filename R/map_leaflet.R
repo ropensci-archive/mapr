@@ -1,4 +1,4 @@
-#' Make an interactive map with Leaflet.js
+#' Make interactive maps with Leaflet.js
 #'
 #' @export
 #'
@@ -52,7 +52,7 @@
 #' # many species
 #' library("spocc")
 #' spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-#' dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+#' dat <- occ(spp, from = 'gbif', limit = 50, has_coords = TRUE)
 #' map_leaflet(dat)
 #' map_leaflet(dat, color = c('#AFFF71', '#AFFF71', '#AFFF71'))
 #' map_leaflet(dat, color = c('#976AAE', '#6B944D', '#BD5945'))

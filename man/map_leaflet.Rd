@@ -2,7 +2,7 @@
 % Please edit documentation in R/map_leaflet.R
 \name{map_leaflet}
 \alias{map_leaflet}
-\title{Make an interactive map with Leaflet.js}
+\title{Make interactive maps with Leaflet.js}
 \usage{
 map_leaflet(x, lon = "longitude", lat = "latitude", color = NULL,
   size = 13, ...)
@@ -30,7 +30,7 @@ a Leaflet map in Viewer in Rstudio, or in your default browser
 otherwise
 }
 \description{
-Make an interactive map with Leaflet.js
+Make interactive maps with Leaflet.js
 }
 \details{
 We add popups by default, and add all columns to the popup. The
@@ -79,7 +79,7 @@ map_leaflet(df)
 # many species
 library("spocc")
 spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+dat <- occ(spp, from = 'gbif', limit = 50, has_coords = TRUE)
 map_leaflet(dat)
 map_leaflet(dat, color = c('#AFFF71', '#AFFF71', '#AFFF71'))
 map_leaflet(dat, color = c('#976AAE', '#6B944D', '#BD5945'))

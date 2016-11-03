@@ -8,6 +8,7 @@ mapr.Rproj
 vignettes/margins.sty
 inst/shinydumb
 inst/shiny
+inst/shinysingle
 inst/vign
 inst/ignore
 CONTRIBUTING.md
