@@ -7,7 +7,8 @@
 #' @param var_sym The variable to map symbols to.
 #' @param var_size The variable to map size to.
 #' @param color Valid RGB hex color
-#' @param symbol An icon ID from the Maki project \url{http://www.mapbox.com/maki/} or
+#' @param symbol An icon ID from the Maki project
+#'   \url{http://www.mapbox.com/maki/} or
 #'    a single alphanumeric character (a-z or 0-9).
 #' @param size One of 'small', 'medium', or 'large'
 style_geojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
@@ -51,7 +52,8 @@ style_geojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
     } else {
         size_vec <- NULL
     }
-    output <- do.call(cbind, sc(list(input, `marker-color` = color_vec, `marker-symbol` = symbol_vec,
+    output <- do.call(cbind, sc(list(input, `marker-color` = color_vec,
+                                     `marker-symbol` = symbol_vec,
         `marker-size` = size_vec)))
     return(output)
 }

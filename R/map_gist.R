@@ -2,7 +2,8 @@
 #'
 #' @export
 #' @template args
-#' @param description Description for the Github gist, or leave to default (=no description)
+#' @param description Description for the Github gist, or leave to
+#' default (=no description)
 #' @param public (logical) Whether gist is public (default: TRUE)
 #' @param browse If TRUE (default) the map opens in your default browser.
 #' @param ... Further arguments passed on to \code{\link{style_geojson}}
@@ -13,7 +14,8 @@
 #' ## spocc
 #' library("spocc")
 #' spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-#' dat <- occ(spp, from=c('gbif','ecoengine'), limit=30, gbifopts=list(hasCoordinate=TRUE))
+#' dat <- occ(spp, from=c('gbif','ecoengine'), limit=30,
+#'   gbifopts=list(hasCoordinate=TRUE))
 #' dat <- fixnames(dat, "query")
 #'
 #' # Define colors
@@ -22,7 +24,8 @@
 #' map_gist(dat$ecoengine, color=c('#976AAE','#6B944D','#BD5945'))
 #'
 #' # Define colors and marker size
-#' map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+#' map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'),
+#'   size=c('small','medium','large'))
 #'
 #' # Define symbols
 #' map_gist(dat, symbol=c('park','zoo','garden'))
@@ -73,24 +76,27 @@ map_gist.gbif <- function(x, description = "", public = TRUE, browse = TRUE,
 }
 
 #' @export
-map_gist.data.frame <- function(x, description = "", public = TRUE, browse = TRUE,
-                                lon = 'longitude', lat = 'latitude', ...) {
+map_gist.data.frame <- function(x, description = "", public = TRUE,
+                                browse = TRUE, lon = 'longitude',
+                                lat = 'latitude', ...) {
 
   x <- guess_latlon(x, lat, lon)
   map_gister(x, description, public, browse, ...)
 }
 
 #' @export
-map_gist.SpatialPoints <- function(x, description = "", public = TRUE, browse = TRUE,
-                                   lon = 'longitude', lat = 'latitude', ...) {
+map_gist.SpatialPoints <- function(x, description = "", public = TRUE,
+                                   browse = TRUE, lon = 'longitude',
+                                   lat = 'latitude', ...) {
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
   map_gister(x, description, public, browse, ...)
 }
 
 #' @export
-map_gist.SpatialPointsDataFrame <- function(x, description = "", public = TRUE, browse = TRUE,
-                                            lon = 'longitude', lat = 'latitude', ...) {
+map_gist.SpatialPointsDataFrame <- function(x, description = "", public = TRUE,
+                                            browse = TRUE, lon = 'longitude',
+                                            lat = 'latitude', ...) {
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
   map_gister(x, description, public, browse, ...)
@@ -99,7 +105,8 @@ map_gist.SpatialPointsDataFrame <- function(x, description = "", public = TRUE, 
 #' @export
 map_gist.default <- function(x, description = "", public = TRUE, browse = TRUE,
                              lon = 'longitude', lat = 'latitude', ...) {
-  stop(sprintf("map_gist does not support input of class '%s'", class(x)), call. = FALSE)
+  stop(sprintf("map_gist does not support input of class '%s'", class(x)),
+       call. = FALSE)
 }
 
 # helpers
@@ -108,5 +115,6 @@ map_gister <- function(x, description, public, browse, ...) {
   file <- tempfile(fileext = ".csv")
   write.csv(datgeojson, file)
   geofile <- togeojson2(file)
-  gistr::gist_create(geofile, description = description, public = public, browse = browse)
+  gistr::gist_create(geofile, description = description, public = public,
+                     browse = browse)
 }

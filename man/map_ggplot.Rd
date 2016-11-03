@@ -15,9 +15,11 @@ the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
 name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
-\item{map}{(character) One of world, world2, state, usa, county, france, italy, or nz}
+\item{map}{(character) One of world, world2, state, usa, county, france,
+italy, or nz}
 
-\item{point_color}{Default color of your points. Deprecated, use \code{color}}
+\item{point_color}{Default color of your points. Deprecated, use
+\code{color}}
 
 \item{color}{Default color of your points.}
 

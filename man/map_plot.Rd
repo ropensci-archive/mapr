@@ -39,7 +39,8 @@ Base R mapping
 \dontrun{
 ## spocc
 library("spocc")
-(out <- occ(query='Accipiter striatus', from='gbif', limit=25, has_coords=TRUE))
+(out <- occ(query='Accipiter striatus', from='gbif', limit=25,
+  has_coords=TRUE))
 ### class occdat
 map_plot(out)
 map_plot(out, hull = TRUE)
@@ -54,9 +55,10 @@ map_plot(res)
 map_plot(res, hull = TRUE)
 
 ## data.frame
-df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar', 'Stuff things'),
-                 longitude = c(-125, -123, -121, -110),
-                 latitude = c(41, 42, 45, 30), stringsAsFactors = FALSE)
+df <- data.frame(
+  name = c('Poa annua', 'Puma concolor', 'Foo bar', 'Stuff things'),
+  longitude = c(-125, -123, -121, -110),
+  latitude = c(41, 42, 45, 30), stringsAsFactors = FALSE)
 map_plot(df)
 map_plot(df, hull = TRUE)
 
@@ -73,8 +75,10 @@ map_plot(spdatdf, hull = TRUE)
 
 # many species, each gets a different color
 library("spocc")
-spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta', 'Ursus americanus')
-dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE, gbifopts = list(country = 'US'))
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta',
+  'Ursus americanus')
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE,
+  gbifopts = list(country = 'US'))
 map_plot(dat)
 map_plot(dat, hull = TRUE)
 ## diff. color for each taxon

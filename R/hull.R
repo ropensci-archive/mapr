@@ -9,8 +9,10 @@ hull <- function(x, ...) {
 
 #' @export
 hull.leaflet <- function(x, ...) {
-  dat <- Filter(function(z) z$method == "addMarkers" || z$method == "addCircleMarkers", x$x$calls)[[1]]
-  dat <- data.frame(long = dat$args[[2]], lat = dat$args[[1]], stringsAsFactors = FALSE)
+  dat <- Filter(function(z) z$method == "addMarkers" ||
+                  z$method == "addCircleMarkers", x$x$calls)[[1]]
+  dat <- data.frame(long = dat$args[[2]], lat = dat$args[[1]],
+                    stringsAsFactors = FALSE)
   outline <- dat[grDevices::chull(dat$long, dat$lat), ]
   x %>%
     addPolygons(data = outline, lng = ~long, lat = ~lat,
@@ -25,10 +27,10 @@ hull.gg <- function(x, ...) {
                fill = NA, size = 1, colour = "black")
 }
 
-# hull.gbif <- function(x, ...) {
-#   dat <- x$data[,c('decimalLongitude', 'decimalLatitude')]
-#   dat <- na.omit(dat)
-#   hpts <- grDevices::chull(dat$decimalLongitude, dat$decimalLatitude)
-#   hpts <- c(hpts, hpts[1])
-#   graphics::lines(x[hpts, ])
-# }
+hull.gbif <- function(x, ...) {
+  dat <- x$data[,c('decimalLongitude', 'decimalLatitude')]
+  dat <- na.omit(dat)
+  hpts <- grDevices::chull(dat$decimalLongitude, dat$decimalLatitude)
+  hpts <- c(hpts, hpts[1])
+  graphics::lines(x[hpts, ])
+}

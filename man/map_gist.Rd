@@ -15,7 +15,8 @@ the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
 name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
-\item{description}{Description for the Github gist, or leave to default (=no description)}
+\item{description}{Description for the Github gist, or leave to
+default (=no description)}
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
@@ -38,7 +39,8 @@ See \code{\link[gistr]{gist_auth}} for help on authentication
 ## spocc
 library("spocc")
 spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-dat <- occ(spp, from=c('gbif','ecoengine'), limit=30, gbifopts=list(hasCoordinate=TRUE))
+dat <- occ(spp, from=c('gbif','ecoengine'), limit=30,
+  gbifopts=list(hasCoordinate=TRUE))
 dat <- fixnames(dat, "query")
 
 # Define colors
@@ -47,7 +49,8 @@ map_gist(dat$gbif, color=c('#976AAE','#6B944D','#BD5945'))
 map_gist(dat$ecoengine, color=c('#976AAE','#6B944D','#BD5945'))
 
 # Define colors and marker size
-map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'), size=c('small','medium','large'))
+map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'),
+  size=c('small','medium','large'))
 
 # Define symbols
 map_gist(dat, symbol=c('park','zoo','garden'))
