@@ -148,8 +148,8 @@ make_popups <- function(x) {
       temp[j] <- sprintf('<tr><td><strong>%s</strong></td><td>%s</td></tr>',
                          names(x)[j], x[i,j])
     }
-    res[i] <- htmltools::htmlEscape(sprintf('<table>\n%s\n</table>',
-                                            paste0(temp, collapse = "\n")))
+    res[i] <- sprintf('<table>\n%s\n</table>',
+                      paste0(temp, collapse = "\n"))
     temp <- NULL
   }
   res

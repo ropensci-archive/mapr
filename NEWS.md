@@ -3,21 +3,11 @@ mapr 0.3.0
 
 ### NEW FEATURES
 
-* xxx (#xx)
-* xxx (#xx)
-* xxx (#xx)
-
-### MINOR IMPROVEMENTS
-
-* xxx (#xx)
-* xxx (#xx)
-* xxx (#xx)
-
-### BUG FIXES
-
-* xxx (#xx)
-* xxx (#xx)
-* xxx (#xx)
+* Now in all functions, when there's more than 1 taxon, we'll do a separate
+color for each taxon and draw a legend if applicable (#21) (#22)
+* Added support for adding convex hulls to some of the plot types (#23)
+thanks to @rossmounce for the feature request
+* `map_leaflet()` now adds metadata as a popup to each marker (#18) (#25)
 
 
 mapr 0.2.0

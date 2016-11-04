@@ -4,7 +4,7 @@ Description: Utilities for 'vizualizing' species occurrence data. Includes
     functions to 'vizualize' occurrence data from 'spocc', 'rgbif',
     and other packages. Mapping options included for base R plots, 'ggplot2',
     'ggmap', 'leaflet' and 'GitHub' 'gists'.
-Version: 0.2.9.9300
+Version: 0.2.9.9800
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
@@ -20,9 +20,8 @@ Imports:
     sp,
     rworldmap,
     RColorBrewer,
-    httr (>= 1.0.0),
-    gistr,
-    htmltools
+    httr (>= 1.2.0),
+    gistr
 Suggests:
     testthat,
     ggmap,
