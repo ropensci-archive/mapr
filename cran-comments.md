@@ -21,7 +21,11 @@ There are no reverse dependencies.
 
 ---
 
-This version ...
+This version adds better support for automatic color selection 
+for plots, adds a function to create convex hulls, and 
+adds popups to leaflet maps.
+
+Some examples now run on check, using datasets in the package.
 
 Thanks! 
 Scott Chamberlain
