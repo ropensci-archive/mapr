@@ -10,6 +10,16 @@
 #' \code{color}
 #' @param ... Ignored
 #' @return A ggplot2 map, of class \code{gg/ggplot}
+#'
+#' @examples
+#' # map spocc output, here using a built in object
+#' data(occdat_eg1)
+#' map_ggplot(occdat_eg1)
+#'
+#' # map rgbif output, here using a built in object
+#' data(gbif_eg1)
+#' map_ggplot(gbif_eg1)
+#'
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")

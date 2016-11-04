@@ -6,6 +6,18 @@
 #' @details Can be used with \code{\link{map_leaflet}}, \code{\link{map_plot}},
 #' and \code{\link{map_ggplot}}. Other methods in this package may be supported
 #' in the future.
+#'
+#' @return Adds a convex hull to the plot. See \code{\link[grDevices]{chull}}
+#' for info.
+#'
+#' @examples
+#' # map spocc output, here using a built in object
+#' data(occdat_eg1)
+#' map_plot(occdat_eg1, hull = TRUE)
+#'
+#' # map rgbif output, here using a built in object
+#' hull(map_ggplot(occdat_eg1))
+#'
 #' @examples \dontrun{
 #' # leaflet
 #' library("spocc")

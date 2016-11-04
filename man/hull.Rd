@@ -11,6 +11,10 @@ hull(x, ...)
 
 \item{...}{ignored}
 }
+\value{
+Adds a convex hull to the plot. See \code{\link[grDevices]{chull}}
+for info.
+}
 \description{
 Add a convex hull to a map
 }
@@ -20,23 +24,12 @@ and \code{\link{map_ggplot}}. Other methods in this package may be supported
 in the future.
 }
 \examples{
-\dontrun{
-# leaflet
-library("spocc")
-spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
-hull(map_leaflet(dat))
+# map spocc output, here using a built in object
+data(occdat_eg1)
+map_plot(occdat_eg1, hull = TRUE)
 
-# ggplot
-library("rgbif")
-res <- occ_search(scientificName = "Puma concolor", limit = 100)
-hull(map_ggplot(res))
+# map rgbif output, here using a built in object
+hull(map_ggplot(occdat_eg1))
 
-# base plots
-library("spocc")
-out <- occ(query='Accipiter striatus', from='gbif', limit=25,
-  has_coords=TRUE)
-map_plot(out, hull = TRUE)
-}
 }
 

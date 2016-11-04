@@ -8,6 +8,16 @@
 #' @param hull (logical) whether to add a convex hull. Default: \code{FALSE}
 #' @param ... Further args to \code{\link{points}}
 #' @return Plots a world scale map
+#'
+#' @examples
+#' # map spocc output, here using a built in object
+#' data(occdat_eg1)
+#' map_plot(occdat_eg1)
+#'
+#' # map rgbif output, here using a built in object
+#' data(gbif_eg1)
+#' map_plot(gbif_eg1)
+#'
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")

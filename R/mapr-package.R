@@ -41,3 +41,29 @@
 #' @keywords package
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 NULL
+
+#' Example dataset: output from call to \code{\link[spocc]{occ}}
+#'
+#' A dataset with 25 rows, and 62 columns, from the query:
+#' \code{
+#' spocc::occ(query='Accipiter striatus', from='gbif', limit=25, has_coords=TRUE)
+#' }
+#'
+#' @docType data
+#' @keywords datasets
+#' @format A data frame with 25 rows and 62 variables
+#' @name occdat_eg1
+NULL
+
+#' Example dataset: output from call to \code{\link[rgbif]{occ_search}}
+#'
+#' A dataset with 50 rows, and 101 columns, from the query:
+#' \code{
+#' rgbif::occ_search(scientificName = "Puma concolor", limit = 100)
+#' }
+#'
+#' @docType data
+#' @keywords datasets
+#' @format A data frame with 50 rows and 101 variables
+#' @name gbif_eg1
+NULL
