@@ -3,7 +3,7 @@ Title: 'Visualize' Species Occurrence Data
 Description: Utilities for 'vizualizing' species occurrence data. Includes
     functions to 'vizualize' occurrence data from 'spocc', 'rgbif',
     and other packages. Mapping options included for base R plots, 'ggplot2',
-    'ggmap', 'leaflet' and Github 'gists'.
+    'ggmap', 'leaflet' and 'GitHub' 'gists'.
 Version: 0.2.9.9300
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
