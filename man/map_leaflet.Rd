@@ -66,7 +66,7 @@ library("rgbif")
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 x <- res$data
 library("sp")
-x <- x[complete.cases(x$decimalLatitude, x$decimalLongitude), ]
+x <- x[stats::complete.cases(x$decimalLatitude, x$decimalLongitude), ]
 coordinates(x) <- ~decimalLongitude+decimalLatitude
 map_leaflet(x)
 

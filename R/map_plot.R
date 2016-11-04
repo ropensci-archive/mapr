@@ -90,7 +90,7 @@ map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
                           size = 1, pch = 16, hull = FALSE, ...) {
   df <- x$data
   df <- guess_latlon(df)
-  df <- df[complete.cases(df$latitude, df$longitude), ]
+  df <- df[stats::complete.cases(df$latitude, df$longitude), ]
   df <- df[df$longitude != 0, ]
   df <- check_colors(df, color)
   sp::coordinates(df) <- ~longitude + latitude
@@ -140,7 +140,7 @@ map_plot.default <- function(x, lon = 'longitude', lat = 'latitude',
 
 ##### helpers --------------------
 plot_prep <- function(x) {
-  x <- x[complete.cases(x$latitude, x$longitude), ]
+  x <- x[stats::complete.cases(x$latitude, x$longitude), ]
   x <- x[x$longitude != 0, ]
   sp::coordinates(x) <- ~longitude + latitude
   x

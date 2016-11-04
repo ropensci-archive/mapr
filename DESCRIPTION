@@ -3,8 +3,8 @@ Title: 'Visualize' Species Occurrence Data
 Description: Utilities for 'vizualizing' species occurrence data. Includes
     functions to 'vizualize' occurrence data from 'spocc', 'rgbif',
     and other packages. Mapping options included for base R plots, 'ggplot2',
-    and various interactive maps.
-Version: 0.2.1.9000
+    'ggmap', 'leaflet' and Github 'gists'.
+Version: 0.2.9.9100
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
@@ -13,10 +13,6 @@ BugReports: https://github.com/ropensci/mapr/issues
 LazyData: true
 VignetteBuilder: knitr
 Imports:
-    methods,
-    utils,
-    stats,
-    graphics,
     ggplot2,
     leaflet,
     spocc (>= 0.5.4),

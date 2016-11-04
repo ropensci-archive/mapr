@@ -115,7 +115,7 @@ map_gist.default <- function(x, description = "", public = TRUE, browse = TRUE,
 map_gister <- function(x, description, public, browse, ...) {
   datgeojson <- style_geojson(input = x, var = "name", ...)
   file <- tempfile(fileext = ".csv")
-  write.csv(datgeojson, file)
+  utils::write.csv(datgeojson, file)
   geofile <- togeojson2(file)
   gistr::gist_create(geofile, description = description, public = public,
                      browse = browse)

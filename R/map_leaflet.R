@@ -39,7 +39,7 @@
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
 #' x <- res$data
 #' library("sp")
-#' x <- x[complete.cases(x$decimalLatitude, x$decimalLongitude), ]
+#' x <- x[stats::complete.cases(x$decimalLatitude, x$decimalLongitude), ]
 #' coordinates(x) <- ~decimalLongitude+decimalLatitude
 #' map_leaflet(x)
 #'
@@ -119,7 +119,7 @@ map_leaflet.default <- function(x, lon = 'longitude', lat = 'latitude',
 # helpers ------------------------------------
 dat_cleaner <- function(x, lon = 'longitude', lat = 'latitude') {
   x <- guess_latlon(x, lat, lon)
-  x[complete.cases(x$latitude, x$longitude), ]
+  x[stats::complete.cases(x$latitude, x$longitude), ]
 }
 
 make_map <- function(x, color, size) {

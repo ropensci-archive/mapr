@@ -35,7 +35,7 @@ occ2sp <- function(x, coord_string = "+proj=longlat +datum=WGS84",
   x$latitude <- as.numeric(x$latitude)
 
   # remove NA rows
-  x <- x[complete.cases(x$latitude, x$longitude), ]
+  x <- x[stats::complete.cases(x$latitude, x$longitude), ]
 
   # check valid coords
   index <- 1:dim(x)[1]

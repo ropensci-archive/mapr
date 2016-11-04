@@ -143,7 +143,7 @@ map_bbox <- function(x) {
 
 map_ggmapper <- function(x, zoom, color, size, maptype, source) {
   check4pkg("ggmap")
-  x <- x[complete.cases(x$latitude, x$longitude), ]
+  x <- x[stats::complete.cases(x$latitude, x$longitude), ]
   x <- x[!x$latitude == 0 & !x$longitude == 0, ]
   species_map <- ggmap::get_map(location = map_center(x), zoom = zoom,
                                 maptype = maptype, source = source)

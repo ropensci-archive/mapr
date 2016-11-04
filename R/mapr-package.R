@@ -25,10 +25,6 @@
 #'  \item \code{\link{map_gist}} - ineractive, shareable maps on GitHub Gists
 #' }
 #'
-#' @importFrom methods as is
-#' @importFrom stats na.omit complete.cases setNames
-#' @importFrom utils write.csv browseURL
-#' @importFrom graphics points
 #' @importFrom ggplot2 geom_point aes ggtitle labs map_data
 #' ggplot geom_point geom_polygon element_blank theme scale_color_manual
 #' scale_color_brewer
@@ -36,7 +32,6 @@
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
 #' @importFrom rworldmap getMap
 #' @importFrom gistr gist_create
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom spocc occ2df
 #' @importFrom htmltools htmlEscape
 #' @import leaflet
