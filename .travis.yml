@@ -1,9 +1,11 @@
 language: r
-sudo: false
 cache: packages
 
 r_packages:
   - ggmap
+
+before_install:
+  - sudo apt-get install libproj-dev libgeos++-dev
 
 addons:
   apt:
