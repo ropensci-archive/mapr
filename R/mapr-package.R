@@ -31,9 +31,6 @@
 #' @importFrom httr POST stop_for_status content upload_file
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
 #' @importFrom rworldmap getMap
-#' @importFrom gistr gist_create
-#' @importFrom spocc occ2df
-#' @importFrom htmltools htmlEscape
 #' @import leaflet
 #' @name mapr-package
 #' @aliases mapr
