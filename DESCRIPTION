@@ -19,7 +19,7 @@ Imports:
     graphics,
     ggplot2,
     leaflet,
-    spocc (>= 0.4.5),
+    spocc (>= 0.5.4),
     sp,
     rworldmap,
     RColorBrewer,

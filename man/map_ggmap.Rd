@@ -28,8 +28,8 @@ name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
 if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
 
-\item{maptype}{(character) map theme. see \code{get_map} in \code{ggmap} for options.
-Default: none}
+\item{maptype}{(character) map theme. see \code{get_map} in \code{ggmap}
+for options. Default: none}
 
 \item{source}{(character) Google Maps ("google"), OpenStreetMap ("osm"),
 Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: \code{osm}}
@@ -39,11 +39,15 @@ Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: \code{osm}}
 \description{
 ggpmap visualization of species occurences
 }
+\details{
+Does not support adding a convex hull via \code{\link{hull}}
+}
 \examples{
 \dontrun{
 ## spocc
 library("spocc")
-gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75, has_coords = TRUE)
+gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75,
+  has_coords = TRUE)
 map_ggmap(gd)
 map_ggmap(gd$gbif)
 
@@ -66,7 +70,8 @@ map_ggmap(spdat)
 # many species, each gets a different color
 library("spocc")
 spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE, gbifopts = list(country = 'US'))
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE,
+  gbifopts = list(country = 'US'))
 map_ggmap(dat)
 map_ggmap(dat, zoom = 5)
 map_ggmap(dat, color = '#6B944D')

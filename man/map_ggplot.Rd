@@ -15,9 +15,11 @@ the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
 name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
-\item{map}{(character) One of world, world2, state, usa, county, france, italy, or nz}
+\item{map}{(character) One of world, world2, state, usa, county, france,
+italy, or nz}
 
-\item{point_color}{Default color of your points. Deprecated, use \code{color}}
+\item{point_color}{Default color of your points. Deprecated, use
+\code{color}}
 
 \item{color}{Default color of your points.}
 
@@ -39,15 +41,15 @@ ggplot2 mapping
 \dontrun{
 ## spocc
 library("spocc")
-dat <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit=100)
-map_ggplot(dat)
-map_ggplot(dat$gbif)
-map_ggplot(dat, "usa")
-map_ggplot(dat, "county")
+ddat <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit=100)
+map_ggplot(ddat)
+map_ggplot(ddat$gbif)
+map_ggplot(v, "usa")
+map_ggplot(ddat, "county")
 
 ### usage of occ2sp()
 #### SpatialPoints
-spdat <- occ2sp(dat)
+spdat <- occ2sp(ddat)
 map_ggplot(spdat)
 #### SpatialPointsDataFrame
 spdatdf <- as(spdat, "SpatialPointsDataFrame")
@@ -55,8 +57,11 @@ map_ggplot(spdatdf)
 
 ## rgbif
 library("rgbif")
+library("ggplot2")
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_ggplot(res)
+## add a convex hull
+map_ggplot(res) + hull()
 
 ## data.frame
 df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),

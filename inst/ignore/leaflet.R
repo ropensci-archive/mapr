@@ -12,7 +12,10 @@
 #' spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
 #' dat <- occ(spp, from = c('gbif', 'ecoengine'), limit=30, has_coords = TRUE)
 #' dat <- fixnames(dat, "query")
-#' map_leaflet(dat)
+#' (x <- map_leaflet(dat))
+#'
+#' # add a convex hull
+#' x %>% hull()
 #' }
 map_leaflet <- function(x, ...) {
   stopifnot(is(x, "occdatind") | is(x, "occdat"))

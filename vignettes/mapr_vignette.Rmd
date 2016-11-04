@@ -22,7 +22,7 @@ library("mapr")
 
 ### Leaflet.js
 
-[Leaflet JS](http://leafletjs.com/) is an open source mapping library that can leverage various layers from multiple sources. Using the [`leaflet`](http://cran.rstudio.com/package=leaflet) library, we can generate a local interactive map of species occurrence data.
+[Leaflet JS](http://leafletjs.com/) is an open source mapping library that can leverage various layers from multiple sources. Using the [`leaflet`](https://cran.r-project.org/package=leaflet) library, we can generate a local interactive map of species occurrence data.
 
 An example:
 
@@ -59,14 +59,14 @@ Base plots, or the built in plotting facility in R accessed via `plot()`, is qui
 ```r
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
 out <- occ(query = spnames, from = 'gbif', has_coords = TRUE, limit = 100)
-map_plot(out, cex = 1, pch = 10)
+map_plot(out, size = 1, pch = 10)
 ```
 
 ![plot of chunk unnamed-chunk-5](img/unnamed-chunk-5-1.png)
 
 ### ggplot2
 
-`ggplot2` is a powerful package for making visualizations in R. Read more about it [here](https://cran.rstudio.com/web/packages/ggplot2/).
+`ggplot2` is a powerful package for making visualizations in R. Read more about it [here](https://cran.r-project.org/package=ggplot2).
 
 
 ```r
@@ -91,13 +91,13 @@ map_ggmap(dat)
 
 All functions take the following kinds of inputs:
 
-* An object of class `occdat`, from the package `spocc`. An object of 
+* An object of class `occdat`, from the package `spocc`. An object of
 this class is composed of many objects of class `occdatind`
 * An object of class `occdatind`, from the package `spocc`
 * An object of class `gbif`, from the package `rgbif`
 * An object of class `data.frame`. This data.frame can have any columns, but
-must include a column for taxonomic names (e.g., `name`), and for latitude 
-and longitude (we guess your lat/long columns, starting with the default 
-`latitude` and `longitude`). 
+must include a column for taxonomic names (e.g., `name`), and for latitude
+and longitude (we guess your lat/long columns, starting with the default
+`latitude` and `longitude`).
 * An object of class `SpatialPoints`
 * An object of class `SpatialPointsDatFrame`
