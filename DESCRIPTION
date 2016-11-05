@@ -1,7 +1,7 @@
 Package: mapr
-Title: 'Visualize' Species Occurrence Data
-Description: Utilities for 'vizualizing' species occurrence data. Includes
-    functions to 'vizualize' occurrence data from 'spocc', 'rgbif',
+Title: Visualize Species Occurrence Data
+Description: Utilities for visualizing species occurrence data. Includes
+    functions to visualize occurrence data from 'spocc', 'rgbif',
     and other packages. Mapping options included for base R plots, 'ggplot2',
     'ggmap', 'leaflet' and 'GitHub' 'gists'.
 Version: 0.3.0

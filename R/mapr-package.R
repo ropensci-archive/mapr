@@ -1,4 +1,4 @@
-#' Vizualize species occurrence data
+#' Visualize species occurrence data
 #'
 #' @section Many inputs:
 #' All functions take the following kinds of inputs:

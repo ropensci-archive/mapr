@@ -4,9 +4,9 @@
 \name{mapr-package}
 \alias{mapr}
 \alias{mapr-package}
-\title{Vizualize species occurrence data}
+\title{Visualize species occurrence data}
 \description{
-Vizualize species occurrence data
+Visualize species occurrence data
 }
 \section{Many inputs}{
 
