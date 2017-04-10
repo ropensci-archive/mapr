@@ -28,7 +28,6 @@
 #' @importFrom ggplot2 geom_point aes ggtitle labs map_data
 #' ggplot geom_point geom_polygon element_blank theme scale_color_manual
 #' scale_color_brewer
-#' @importFrom httr POST stop_for_status content upload_file
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
 #' @importFrom rworldmap getMap
 #' @import leaflet

@@ -59,14 +59,20 @@ style_geojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
 }
 
 # param - input The file being uploaded, path to the file on your machine.
-togeojson2 <- function(input) {
-  url <- "http://ogre.adc4gis.com/convert"
-  tt <- POST(url, body = list(upload = upload_file(input)))
-  stop_for_status(tt)
-  out <- content(tt, as = "text", encoding = "UTF-8")
+togeojson2 <- function(x) {
+  ff <- list(type = "FeatureCollection", features = Map(function(z) {
+    list(
+      type = "Feature",
+      properties = as.list(z),
+      geometry = list(
+        type = "Point",
+        coordinates = c(as.numeric(z$longitude), as.numeric(z$latitude))
+      )
+    )
+  }, unname(apply(x, 1, as.list))))
+  ffj <- jsonlite::toJSON(ff, auto_unbox = TRUE)
   geofile <- tempfile(fileext = ".geojson")
   geofileConn <- file(geofile)
-  writeLines(out, geofileConn)
-  close(geofileConn)
+  writeLines(ffj, geofileConn)
   return(geofile)
 }
