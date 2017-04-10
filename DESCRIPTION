@@ -21,6 +21,7 @@ Imports:
     sp,
     rworldmap,
     RColorBrewer,
+    jsonlite,
     gistr
 Suggests:
     testthat,

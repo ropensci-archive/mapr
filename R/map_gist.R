@@ -114,7 +114,7 @@ map_gist.default <- function(x, description = "", public = TRUE, browse = TRUE,
 
 # helpers
 map_gister <- function(x, description, public, browse, ...) {
-  x <- x[complete.cases(x$latitude, x$longitude), ]
+  x <- x[stats::complete.cases(x$latitude, x$longitude), ]
   datgeojson <- style_geojson(input = x, var = "name", ...)
   geofile <- togeojson2(datgeojson)
   gistr::gist_create(geofile, description = description, public = public,
