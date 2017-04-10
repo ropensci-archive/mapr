@@ -3,11 +3,11 @@
 #' @export
 #' @param x input
 #' @param ... ignored
-#' @details Can be used with \code{\link{map_leaflet}}, \code{\link{map_plot}},
-#' and \code{\link{map_ggplot}}. Other methods in this package may be supported
+#' @details Can be used with [map_leaflet()], [map_plot()],
+#' and [map_ggplot()]. Other methods in this package may be supported
 #' in the future.
 #'
-#' @return Adds a convex hull to the plot. See \code{\link[grDevices]{chull}}
+#' @return Adds a convex hull to the plot. See [grDevices::chull()]
 #' for info.
 #'
 #' @examples

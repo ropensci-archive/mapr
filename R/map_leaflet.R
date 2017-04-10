@@ -7,7 +7,7 @@
 #' @param size point size, Default: 13
 #' @param ... Ignored
 #' @details We add popups by default, and add all columns to the popup. The
-#' html is escaped with \code{\link[htmltools]{htmlEscape}}
+#' html is escaped with [htmltools::htmlEscape()]
 #' @return a Leaflet map in Viewer in Rstudio, or in your default browser
 #' otherwise
 #' @examples \dontrun{

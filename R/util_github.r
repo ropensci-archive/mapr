@@ -8,8 +8,8 @@
 #' @param var_size The variable to map size to.
 #' @param color Valid RGB hex color
 #' @param symbol An icon ID from the Maki project
-#'   \url{http://www.mapbox.com/maki/} or
-#'    a single alphanumeric character (a-z or 0-9).
+#' <http://www.mapbox.com/maki/> or a single alphanumeric character
+#' (a-z or 0-9).
 #' @param size One of 'small', 'medium', or 'large'
 style_geojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
     var_size = NULL, color = NULL, symbol = NULL, size = NULL) {

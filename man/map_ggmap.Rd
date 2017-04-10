@@ -40,7 +40,7 @@ Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: \code{osm}}
 ggpmap visualization of species occurences
 }
 \details{
-Does not support adding a convex hull via \code{\link{hull}}
+Does not support adding a convex hull via \code{\link[=hull]{hull()}}
 }
 \examples{
 \dontrun{
@@ -78,4 +78,3 @@ map_ggmap(dat, color = '#6B944D')
 map_ggmap(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
 }
 }
-

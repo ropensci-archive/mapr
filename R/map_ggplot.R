@@ -7,9 +7,9 @@
 #' @param color Default color of your points.
 #' @param size point size, Default: 3
 #' @param point_color Default color of your points. Deprecated, use
-#' \code{color}
+#' `color`
 #' @param ... Ignored
-#' @return A ggplot2 map, of class \code{gg/ggplot}
+#' @return A ggplot2 map, of class `gg/ggplot`
 #'
 #' @examples
 #' # map spocc output, here using a built in object

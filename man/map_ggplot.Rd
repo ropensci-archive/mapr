@@ -46,5 +46,41 @@ map_ggplot(occdat_eg1)
 data(gbif_eg1)
 map_ggplot(gbif_eg1)
 
-}
+\dontrun{
+## spocc
+library("spocc")
+ddat <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit=100)
+map_ggplot(ddat)
+map_ggplot(ddat$gbif)
+map_ggplot(v, "usa")
+map_ggplot(ddat, "county")
 
+### usage of occ2sp()
+#### SpatialPoints
+spdat <- occ2sp(ddat)
+map_ggplot(spdat)
+#### SpatialPointsDataFrame
+spdatdf <- as(spdat, "SpatialPointsDataFrame")
+map_ggplot(spdatdf)
+
+## rgbif
+library("rgbif")
+library("ggplot2")
+res <- occ_search(scientificName = "Puma concolor", limit = 100)
+map_ggplot(res)
+## add a convex hull
+map_ggplot(res) + hull()
+
+## data.frame
+df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+                 longitude = c(-120, -121, -121),
+                 latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+map_ggplot(df)
+
+# many species, each gets a different color
+library("spocc")
+spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
+map_ggplot(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
+}
+}

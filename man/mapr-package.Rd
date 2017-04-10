@@ -2,8 +2,8 @@
 % Please edit documentation in R/mapr-package.R
 \docType{package}
 \name{mapr-package}
-\alias{mapr}
 \alias{mapr-package}
+\alias{mapr}
 \title{Visualize species occurrence data}
 \description{
 Visualize species occurrence data
@@ -12,32 +12,32 @@ Visualize species occurrence data
 
 All functions take the following kinds of inputs:
 \itemize{
- \item An object of class \code{occdat}, from the package \pkg{spocc}.
- An object of this class is composed of many objects of class
- \code{occdatind}
- \item An object of class \code{occdatind}, from the package \pkg{spocc}
- \item An object of class \code{gbif}, from the package \pkg{rgbif}
- \item An object of class \code{data.frame}. This data.frame can have any
- columns, but must include a column for taxonomic names (e.g., \code{name}),
- and for latitude and longitude (we guess your lat/long columns, starting
- with the default \code{latitude} and \code{longitude})
- \item An object of class \code{SpatialPoints}
- \item An object of class \code{SpatialPointsDatFrame}
+\item An object of class \code{occdat}, from the package \pkg{spocc}.
+An object of this class is composed of many objects of class
+\code{occdatind}
+\item An object of class \code{occdatind}, from the package \pkg{spocc}
+\item An object of class \code{gbif}, from the package \pkg{rgbif}
+\item An object of class \code{data.frame}. This data.frame can have any
+columns, but must include a column for taxonomic names (e.g., \code{name}),
+and for latitude and longitude (we guess your lat/long columns, starting
+with the default \code{latitude} and \code{longitude})
+\item An object of class \code{SpatialPoints}
+\item An object of class \code{SpatialPointsDatFrame}
 }
 }
 
 \section{Package API}{
 
 \itemize{
- \item \code{\link{map_plot}} - static Base R plots
- \item \code{\link{map_ggplot}} - static ggplot2 plots
- \item \code{\link{map_ggmap}} - static ggplot2 plots with map layers
- \item \code{\link{map_leaflet}} - interactive Leaflet.js interactive maps
- \item \code{\link{map_gist}} - ineractive, shareable maps on GitHub Gists
+\item \code{\link[=map_plot]{map_plot()}} - static Base R plots
+\item \code{\link[=map_ggplot]{map_ggplot()}} - static ggplot2 plots
+\item \code{\link[=map_ggmap]{map_ggmap()}} - static ggplot2 plots with map layers
+\item \code{\link[=map_leaflet]{map_leaflet()}} - interactive Leaflet.js interactive maps
+\item \code{\link[=map_gist]{map_gist()}} - ineractive, shareable maps on GitHub Gists
 }
 }
+
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 }
 \keyword{package}
-

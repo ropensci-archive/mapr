@@ -5,13 +5,13 @@
 #' @param zoom zoom level for map. Adjust depending on how your data look.
 #' @param color Default color of your points.
 #' @param size point size, Default: 3
-#' @param maptype (character) map theme. see \code{get_map} in \code{ggmap}
+#' @param maptype (character) map theme. see `get_map` in `ggmap`
 #' for options. Default: none
 #' @param source (character) Google Maps ("google"), OpenStreetMap ("osm"),
-#' Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: \code{osm}
-#' @param point_color Default color of your points. Deprecated, use \code{color}
+#' Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: `osm`
+#' @param point_color Default color of your points. Deprecated, use `color`
 #' @param ... Ignored
-#' @details Does not support adding a convex hull via \code{\link{hull}}
+#' @details Does not support adding a convex hull via [hull()]
 #' @examples \dontrun{
 #' ## spocc
 #' library("spocc")
@@ -102,7 +102,8 @@ map_ggmap.SpatialPoints <- function(x, zoom = 3, point_color = "#86161f",
 }
 
 #' @export
-map_ggmap.SpatialPointsDataFrame <- function(x, zoom = 3, point_color = "#86161f",
+map_ggmap.SpatialPointsDataFrame <- function(x, zoom = 3,
+        point_color = "#86161f",
         color = NULL, size = 3, lon = 'longitude', lat = 'latitude',
         maptype = "terrain", source = "google", ...) {
   check_inputs(match.call())

@@ -7,7 +7,8 @@ check_colors <- function(x, color) {
       warning(warning_color_vec, call. = FALSE)
       ref <- data.frame(
         name = unique(x$name),
-        color = RColorBrewer::brewer.pal(length(unique(x$name)), name = "Set1"),
+        color = RColorBrewer::brewer.pal(length(unique(x$name)),
+                                         name = "Set1"),
         stringsAsFactors = FALSE)
     } else {
       ref <- data.frame(name = unique(x$name), color = color,
@@ -22,7 +23,8 @@ check_colors <- function(x, color) {
       color = {
         if (length(unique(x$name)) >= 3) {
           if (length(unique(x$name)) > 9) {
-            message("no. taxa > 9, using single color - consider passing in colors")
+            message(
+              "no. taxa > 9, using single color - consider passing in colors")
             "#F7766D"
           } else {
             RColorBrewer::brewer.pal(length(unique(x$name)), name = "Set1")

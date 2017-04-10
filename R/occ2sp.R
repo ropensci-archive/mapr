@@ -2,7 +2,7 @@
 #'
 #' @export
 #'
-#' @param x The resuslts of a spocc search called by occ()
+#' @param x The resuslts of a spocc search called by [spocc::occ()]
 #' @param coord_string A valid EPGS cooridate string from the sp package,
 #' the default is WSGS 84
 #' @param just_coords Return data frame with specios names and provenance or
@@ -12,7 +12,7 @@
 #' spatial points object. Conversion to spatial points objects allows spocc
 #' searches to interact with other spatial data sources. More coordinate system
 #' codes can be found at the EPGS registry:
-#' \url{http://www.epsg-registry.org/}
+#' <http://www.epsg-registry.org/>
 #'
 #' @examples \dontrun{
 #' ### See points on a map

@@ -34,7 +34,7 @@ Make interactive maps with Leaflet.js
 }
 \details{
 We add popups by default, and add all columns to the popup. The
-html is escaped with \code{\link[htmltools]{htmlEscape}}
+html is escaped with \code{\link[htmltools:htmlEscape]{htmltools::htmlEscape()}}
 }
 \examples{
 \dontrun{
@@ -89,4 +89,3 @@ map_leaflet(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
 hull(map_leaflet(dat))
 }
 }
-

@@ -4,7 +4,7 @@ Description: Utilities for visualizing species occurrence data. Includes
     functions to visualize occurrence data from 'spocc', 'rgbif',
     and other packages. Mapping options included for base R plots, 'ggplot2',
     'ggmap', 'leaflet' and 'GitHub' 'gists'.
-Version: 0.3.0
+Version: 0.3.1.9100
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
@@ -13,6 +13,7 @@ BugReports: https://github.com/ropensci/mapr/issues
 LazyData: true
 LazyLoad: true
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
 Imports:
     ggplot2,
     leaflet,
@@ -27,6 +28,5 @@ Suggests:
     ggmap,
     knitr,
     taxize,
-    maptools,
-    covr
-RoxygenNote: 5.0.1
+    maptools
+RoxygenNote: 6.0.1

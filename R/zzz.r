@@ -24,6 +24,7 @@ check_inputs <- function(x) {
   calls <- names(sapply(x, deparse))[-1]
   calls_vec <- "point_color" %in% calls
   if (any(calls_vec)) {
-    stop("The parameter 'point_color' has been replaced by 'color'", call. = FALSE)
+    stop("The parameter 'point_color' has been replaced by 'color'",
+         call. = FALSE)
   }
 }

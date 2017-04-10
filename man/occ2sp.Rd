@@ -7,7 +7,7 @@
 occ2sp(x, coord_string = "+proj=longlat +datum=WGS84", just_coords = FALSE)
 }
 \arguments{
-\item{x}{The resuslts of a spocc search called by occ()}
+\item{x}{The resuslts of a spocc search called by \code{\link[spocc:occ]{spocc::occ()}}}
 
 \item{coord_string}{A valid EPGS cooridate string from the sp package,
 the default is WSGS 84}
@@ -38,4 +38,3 @@ xx <- occ2sp(out, just_coords = TRUE)
 points(xx, col = 2)
 }
 }
-

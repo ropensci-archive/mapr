@@ -18,23 +18,23 @@ name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 \item{description}{Description for the Github gist, or leave to
 default (=no description)}
 
-\item{public}{(logical) Whether gist is public (default: TRUE)}
+\item{public}{(logical) Whether gist is public (default: \code{TRUE})}
 
-\item{browse}{If TRUE (default) the map opens in your default browser.}
+\item{browse}{If \code{TRUE} (default) the map opens in your default browser.}
 
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
 unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
 if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
 
-\item{...}{Further arguments passed on to \code{\link{style_geojson}}}
+\item{...}{Further arguments passed on to \code{\link[=style_geojson]{style_geojson()}}}
 }
 \description{
 Make an interactive map to view in the browser as a GitHub gist
 }
 \details{
-See \code{\link[gistr]{gist_auth}} for help on authentication
+See \code{\link[gistr:gist_auth]{gistr::gist_auth()}} for help on authentication
 
-Does not support adding a convex hull via \code{\link{hull}}
+Does not support adding a convex hull via \code{\link[=hull]{hull()}}
 }
 \examples{
 \dontrun{
@@ -77,4 +77,3 @@ spdatdf <- as(spdat, "SpatialPointsDataFrame")
 map_gist(spdatdf)
 }
 }
-

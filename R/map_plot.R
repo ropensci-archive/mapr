@@ -5,8 +5,8 @@
 #' @param color Default color of your points.
 #' @param size point size, Default: 1
 #' @param pch point symbol shape, Default: 16
-#' @param hull (logical) whether to add a convex hull. Default: \code{FALSE}
-#' @param ... Further args to \code{\link{points}}
+#' @param hull (logical) whether to add a convex hull. Default: `FALSE`
+#' @param ... Further args to [graphics::points()]
 #' @return Plots a world scale map
 #'
 #' @examples
@@ -79,8 +79,9 @@ map_plot <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
 }
 
 #' @export
-map_plot.occdat <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
-                            size = 1, pch = 16, hull = FALSE, ...) {
+map_plot.occdat <- function(x, lon = 'longitude', lat = 'latitude',
+                            color = NULL, size = 1, pch = 16,
+                            hull = FALSE, ...) {
   df <- spocc::occ2df(x)
   df <- check_colors(df, color)
   plot_er(plot_prep(df), size, hull, ...)

@@ -3,13 +3,10 @@
 \docType{data}
 \name{gbif_eg1}
 \alias{gbif_eg1}
-\title{Example dataset: output from call to \code{\link[rgbif]{occ_search}}}
+\title{Example dataset: output from call to \code{\link[rgbif:occ_search]{rgbif::occ_search()}}}
 \format{A data frame with 50 rows and 101 variables}
 \description{
 A dataset with 50 rows, and 101 columns, from the query:
-\code{
-rgbif::occ_search(scientificName = "Puma concolor", limit = 100)
-}
+\code{rgbif::occ_search(scientificName = "Puma concolor", limit = 100)}
 }
 \keyword{datasets}
-
