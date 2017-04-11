@@ -12,7 +12,18 @@
 #' @param point_color Default color of your points. Deprecated, use `color`
 #' @param ... Ignored
 #' @details Does not support adding a convex hull via [hull()]
+#'
+#' @note **BEWARE**: this may error for you with a message like
+#' _GeomRasterAnn was built with an incompatible version of ggproto_. This
+#' is fixed in the dev version of `ggmap`, but not in the CRAN version.
+#' Apologies for the problem.
+#'
 #' @examples \dontrun{
+#' # BEWARE: this may error for you with a message like
+#' # "GeomRasterAnn was built with an incompatible version of ggproto".
+#' # This is fixed in the dev version of `ggmap`, but not in the CRAN
+#' # version. Apologies for the problem.
+#'
 #' ## spocc
 #' library("spocc")
 #' gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75,

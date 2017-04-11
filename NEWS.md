@@ -1,3 +1,18 @@
+mapr 0.3.4
+==============
+
+### MINOR IMPROVEMENTS
+
+* Now using markdown for docs (#27)
+* Replaced `httr` with `crul` as http client (#26)
+
+### Problem with ggmap
+
+* Note that there is a problem with `map_ggmap` due to a bug in 
+`ggmap`. It is fixed in the `ggmap` dev version, so should be fixed
+in the CRAN version soon, hopefully.
+
+
 mapr 0.3.0
 ==============
 
