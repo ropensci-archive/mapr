@@ -31,7 +31,7 @@
       "givenName": "Scott",
       "familyName": "Chamberlain",
       "email": "myrmecocystus@gmail.com",
-      "@id": "orcid.org/0000-0003-1444-9135"
+      "@id": "http://orcid.org/0000-0003-1444-9135"
     }
   ],
   "maintainer": {
@@ -39,7 +39,7 @@
     "givenName": "Scott",
     "familyName": "Chamberlain",
     "email": "myrmecocystus@gmail.com",
-    "@id": "orcid.org/0000-0003-1444-9135"
+    "@id": "http://orcid.org/0000-0003-1444-9135"
   },
   "softwareSuggestions": [
     {
@@ -203,5 +203,5 @@
   "contIntegration": "https://travis-ci.org/ropensci/mapr",
   "releaseNotes": "https://github.com/ropensci/mapr/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/mapr/blob/master/README.md",
-  "fileSize": "508.615KB"
+  "fileSize": "508.612KB"
 }
