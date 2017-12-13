@@ -19,3 +19,4 @@ README.Rmd
 gistmap*
 ^CONDUCT\.md$
 ^cran-comments\.md$
+^codemeta\.json$
