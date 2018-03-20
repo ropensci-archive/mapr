@@ -33,8 +33,14 @@
 #'
 #' ## rgbif
 #' library("rgbif")
+#' ### occ_search() output
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
 #' map_ggmap(res)
+#' 
+#' ### occ_data() output
+#' res <- occ_data(scientificName = "Puma concolor", limit = 100)
+#' map_ggmap(res)
+#' 
 #'
 #' ## data.frame
 #' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
@@ -84,6 +90,15 @@ map_ggmap.occdatind <- function(x, zoom = 3, point_color = "#86161f",
 
 #' @export
 map_ggmap.gbif <- function(x, zoom = 3, point_color = "#86161f", color = NULL,
+                           size = 3, lon = 'longitude', lat = 'latitude',
+                           maptype = "terrain", source = "google", ...) {
+  check_inputs(match.call())
+  x <- guess_latlon(x$data, lon = 'decimalLongitude', lat = 'decimalLatitude')
+  map_ggmapper(x, zoom, color, size, maptype, source)
+}
+
+#' @export
+map_ggmap.gbif_data <- function(x, zoom = 3, point_color = "#86161f", color = NULL,
                            size = 3, lon = 'longitude', lat = 'latitude',
                            maptype = "terrain", source = "google", ...) {
   check_inputs(match.call())

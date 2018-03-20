@@ -32,9 +32,14 @@
 #'
 #' ## rgbif
 #' library("rgbif")
+#' ### occ_search() output
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
 #' map_plot(res)
 #' map_plot(res, hull = TRUE)
+#' 
+#' ### occ_data() output
+#' res <- occ_data(scientificName = "Puma concolor", limit = 100)
+#' map_plot(res)
 #'
 #' ## data.frame
 #' df <- data.frame(
@@ -98,6 +103,18 @@ map_plot.occdatind <- function(x, lon = 'longitude', lat = 'latitude',
 
 #' @export
 map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
+                          size = 1, pch = 16, hull = FALSE, ...) {
+  df <- x$data
+  df <- guess_latlon(df)
+  df <- df[stats::complete.cases(df$latitude, df$longitude), ]
+  df <- df[df$longitude != 0, ]
+  df <- check_colors(df, color)
+  sp::coordinates(df) <- ~longitude + latitude
+  plot_er(df, size, hull, ...)
+}
+
+#' @export
+map_plot.gbif_data <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
                           size = 1, pch = 16, hull = FALSE, ...) {
   df <- x$data
   df <- guess_latlon(df)

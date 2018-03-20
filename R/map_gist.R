@@ -34,7 +34,12 @@
 #'
 #' ## rgbif
 #' library("rgbif")
+#' ### occ_search() output
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
+#' map_gist(res)
+#' 
+#' ### occ_data() output
+#' res <- occ_data(scientificName = "Puma concolor", limit = 100)
 #' map_gist(res)
 #'
 #' ## data.frame
@@ -71,6 +76,15 @@ map_gist.occdatind <- function(x, description = "", public = TRUE,
 
 #' @export
 map_gist.gbif <- function(x, description = "", public = TRUE, browse = TRUE,
+                          lon = 'longitude', lat = 'latitude', ...) {
+  x <- x$data
+  x <- re_name(x, c('decimalLatitude' = 'latitude'))
+  x <- re_name(x, c('decimalLongitude' = 'longitude'))
+  map_gister(x, description, public, browse, ...)
+}
+
+#' @export
+map_gist.gbif_data <- function(x, description = "", public = TRUE, browse = TRUE,
                           lon = 'longitude', lat = 'latitude', ...) {
   x <- x$data
   x <- re_name(x, c('decimalLatitude' = 'latitude'))
