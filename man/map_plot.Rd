@@ -9,15 +9,17 @@ map_plot(x, lon = "longitude", lat = "latitude", color = NULL, size = 1,
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
-\code{gbif}, \code{SpatialPoints}, \code{SpatialPointsDataFrame}, or
-\code{data.frame}. The package \pkg{spocc} needed for
+\code{gbif}, \code{gbif_data}, \code{SpatialPoints}, 
+\code{SpatialPointsDataFrame}, or \code{data.frame}. The package 
+\pkg{spocc} needed for
 the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
 name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
-unless \code{data.frame} input to \code{x} parameter. We attempt to guess, but
-if nothing close, we stop. Default: \code{longitude} and \code{latitude}}
+unless \code{data.frame} input to \code{x} parameter. We attempt to guess, 
+but if nothing close, we stop. Default: \code{longitude} and 
+\code{latitude}}
 
 \item{color}{Default color of your points.}
 
@@ -58,9 +60,20 @@ map_plot(out$gbif, hull = TRUE)
 
 ## rgbif
 library("rgbif")
+### occ_search() output
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_plot(res)
 map_plot(res, hull = TRUE)
+
+### occ_data() output
+res <- occ_data(scientificName = "Puma concolor", limit = 100)
+map_plot(res)
+#### many taxa
+res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
+   limit = 30)
+res
+map_plot(res)
+
 
 ## data.frame
 df <- data.frame(

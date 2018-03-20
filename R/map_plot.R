@@ -40,6 +40,12 @@
 #' ### occ_data() output
 #' res <- occ_data(scientificName = "Puma concolor", limit = 100)
 #' map_plot(res)
+#' #### many taxa
+#' res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
+#'    limit = 30)
+#' res
+#' map_plot(res)
+#' 
 #'
 #' ## data.frame
 #' df <- data.frame(
@@ -104,7 +110,7 @@ map_plot.occdatind <- function(x, lon = 'longitude', lat = 'latitude',
 #' @export
 map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
                           size = 1, pch = 16, hull = FALSE, ...) {
-  df <- x$data
+  df <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   df <- guess_latlon(df)
   df <- df[stats::complete.cases(df$latitude, df$longitude), ]
   df <- df[df$longitude != 0, ]
@@ -116,7 +122,7 @@ map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
 #' @export
 map_plot.gbif_data <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
                           size = 1, pch = 16, hull = FALSE, ...) {
-  df <- x$data
+  df <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   df <- guess_latlon(df)
   df <- df[stats::complete.cases(df$latitude, df$longitude), ]
   df <- df[df$longitude != 0, ]

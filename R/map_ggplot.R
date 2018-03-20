@@ -48,6 +48,11 @@
 #' res <- occ_data(scientificName = "Puma concolor", limit = 100)
 #' map_ggplot(res)
 #' 
+#' #### many taxa
+#' res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
+#'    limit = 30)
+#' map_ggplot(res)
+#' 
 #' ### add a convex hull
 #' map_ggplot(res) + hull()
 #' 
@@ -96,7 +101,8 @@ map_ggplot.gbif <- function(x, map = "world", point_color = "#86161f",
                             color = NULL, size = 3, lon = 'longitude',
                             lat = 'latitude', ...) {
   check_inputs(match.call())
-  make_amap(dat_cleaner(x$data, lon = 'decimalLongitude',
+  x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
+  make_amap(dat_cleaner(x, lon = 'decimalLongitude',
                         lat = 'decimalLatitude'), map, color, size)
 }
 
@@ -105,7 +111,8 @@ map_ggplot.gbif_data <- function(x, map = "world", point_color = "#86161f",
                             color = NULL, size = 3, lon = 'longitude',
                             lat = 'latitude', ...) {
   check_inputs(match.call())
-  make_amap(dat_cleaner(x$data, lon = 'decimalLongitude',
+  x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
+  make_amap(dat_cleaner(x, lon = 'decimalLongitude',
                         lat = 'decimalLatitude'), map, color, size)
 }
 

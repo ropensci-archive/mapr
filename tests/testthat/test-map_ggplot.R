@@ -6,7 +6,7 @@ test_that("map_ggplot work as expected", {
   library("ggplot2")
   library("spocc")
 
-	res <- occ(query = "Lynx rufus californicus", from = "gbif")
+  res <- occ(query = "Lynx rufus californicus", from = "gbif")
   map1 <- suppressMessages(map_ggplot(res))
  	res2 <- occ(query = 'Accipiter striatus', from = 'gbif')
 	map2 <- suppressMessages(map_ggplot(res2))

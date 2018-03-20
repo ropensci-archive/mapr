@@ -47,6 +47,13 @@
 #' ### occ_data() output
 #' res <- occ_data(scientificName = "Puma concolor", limit = 100)
 #' map_leaflet(res)
+#' 
+#' #### many taxa
+#' res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
+#'    limit = 30)
+#' res
+#' map_leaflet(res)
+#' 
 #'
 #' ## data.frame
 #' df <- data.frame(name = c('Poa annua', 'Puma concolor'),
@@ -99,8 +106,9 @@ map_leaflet.SpatialPointsDataFrame <- function(x, lon = 'longitude',
 #' @export
 map_leaflet.gbif <- function(x, lon = 'longitude', lat = 'latitude',
                              color = NULL, size = 13, ...) {
+  x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   make_map_ll(
-    dat_cleaner(x$data, lon = 'decimalLongitude', lat = 'decimalLatitude'),
+    dat_cleaner(x, lon = 'decimalLongitude', lat = 'decimalLatitude'),
     color = color,
     size = size
   )
@@ -109,8 +117,9 @@ map_leaflet.gbif <- function(x, lon = 'longitude', lat = 'latitude',
 #' @export
 map_leaflet.gbif_data <- function(x, lon = 'longitude', lat = 'latitude',
                              color = NULL, size = 13, ...) {
+  x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   make_map_ll(
-    dat_cleaner(x$data, lon = 'decimalLongitude', lat = 'decimalLatitude'),
+    dat_cleaner(x, lon = 'decimalLongitude', lat = 'decimalLatitude'),
     color = color,
     size = size
   )

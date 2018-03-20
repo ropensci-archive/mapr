@@ -41,6 +41,13 @@
 #' ### occ_data() output
 #' res <- occ_data(scientificName = "Puma concolor", limit = 100)
 #' map_gist(res)
+#' 
+#' #### many taxa
+#' res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
+#'    limit = 30)
+#' res
+#' map_gist(res)
+#' 
 #'
 #' ## data.frame
 #' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
@@ -77,7 +84,7 @@ map_gist.occdatind <- function(x, description = "", public = TRUE,
 #' @export
 map_gist.gbif <- function(x, description = "", public = TRUE, browse = TRUE,
                           lon = 'longitude', lat = 'latitude', ...) {
-  x <- x$data
+  x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   x <- re_name(x, c('decimalLatitude' = 'latitude'))
   x <- re_name(x, c('decimalLongitude' = 'longitude'))
   map_gister(x, description, public, browse, ...)
@@ -86,7 +93,7 @@ map_gist.gbif <- function(x, description = "", public = TRUE, browse = TRUE,
 #' @export
 map_gist.gbif_data <- function(x, description = "", public = TRUE, browse = TRUE,
                           lon = 'longitude', lat = 'latitude', ...) {
-  x <- x$data
+  x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   x <- re_name(x, c('decimalLatitude' = 'latitude'))
   x <- re_name(x, c('decimalLongitude' = 'longitude'))
   map_gister(x, description, public, browse, ...)

@@ -28,3 +28,9 @@ check_inputs <- function(x) {
          call. = FALSE)
   }
 }
+
+bdt <- function(x) {
+  (bb <- data.table::setDF(
+    data.table::rbindlist(x, fill = TRUE, use.names = TRUE)
+  ))
+}
