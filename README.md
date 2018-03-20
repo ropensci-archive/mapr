@@ -3,10 +3,12 @@ mapr
 
 
 
-[![Build Status](https://api.travis-ci.org/ropensci/mapr.png)](https://travis-ci.org/ropensci/mapr)
+[![Build Status](https://travis-ci.org/ropensci/mapr.svg?branch=master)](https://travis-ci.org/ropensci/mapr)
 [![Build status](https://ci.appveyor.com/api/projects/status/p0vje85d0us1q2pa?svg=true)](https://ci.appveyor.com/project/sckott/mapr)
 [![codecov.io](https://codecov.io/github/ropensci/mapr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mapr?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mapr?color=FAB657)](https://github.com/metacran/cranlogs.app)
+[![cran version](http://www.r-pkg.org/badges/version/mapr)](https://cran.r-project.org/package=mapr)
+
 
 Helper for making maps of species occurrence data, including for:
 
@@ -117,4 +119,4 @@ map_leaflet(g, "lon", "lat")
 * Get citation information for `mapr` in R doing `citation(package = 'mapr')`
 * Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
