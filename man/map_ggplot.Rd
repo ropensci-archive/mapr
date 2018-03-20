@@ -66,10 +66,17 @@ map_ggplot(spdatdf)
 ## rgbif
 library("rgbif")
 library("ggplot2")
+### occ_search() output
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_ggplot(res)
-## add a convex hull
+
+### occ_data() output
+res <- occ_data(scientificName = "Puma concolor", limit = 100)
+map_ggplot(res)
+
+### add a convex hull
 map_ggplot(res) + hull()
+
 
 ## data.frame
 df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),

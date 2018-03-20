@@ -40,10 +40,17 @@
 #' ## rgbif
 #' library("rgbif")
 #' library("ggplot2")
+#' ### occ_search() output
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
 #' map_ggplot(res)
-#' ## add a convex hull
+#' 
+#' ### occ_data() output
+#' res <- occ_data(scientificName = "Puma concolor", limit = 100)
+#' map_ggplot(res)
+#' 
+#' ### add a convex hull
 #' map_ggplot(res) + hull()
+#' 
 #'
 #' ## data.frame
 #' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
@@ -86,6 +93,15 @@ map_ggplot.occdatind <- function(x, map = "world", point_color = "#86161f",
 
 #' @export
 map_ggplot.gbif <- function(x, map = "world", point_color = "#86161f",
+                            color = NULL, size = 3, lon = 'longitude',
+                            lat = 'latitude', ...) {
+  check_inputs(match.call())
+  make_amap(dat_cleaner(x$data, lon = 'decimalLongitude',
+                        lat = 'decimalLatitude'), map, color, size)
+}
+
+#' @export
+map_ggplot.gbif_data <- function(x, map = "world", point_color = "#86161f",
                             color = NULL, size = 3, lon = 'longitude',
                             lat = 'latitude', ...) {
   check_inputs(match.call())
