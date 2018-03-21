@@ -1,5 +1,22 @@
+mapr 0.5.0
+==========
+
+### MINOR IMPROVEMENTS
+
+* xx (#xx)
+* xx (#xx)
+* xx (#xx)
+
+### BUG FIXES
+
+* xx (#xx)
+* xx (#xx)
+* xx (#xx)
+
+
+
 mapr 0.3.4
-==============
+==========
 
 ### MINOR IMPROVEMENTS
 
@@ -14,7 +31,7 @@ in the CRAN version soon, hopefully.
 
 
 mapr 0.3.0
-==============
+==========
 
 ### NEW FEATURES
 
@@ -26,7 +43,7 @@ thanks to @rossmounce for the feature request
 
 
 mapr 0.2.0
-==============
+==========
 
 ### NEW FEATURES
 

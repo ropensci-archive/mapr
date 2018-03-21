@@ -17,7 +17,7 @@ appveyor.yml
 README.Rmd
 ^\.httr-oauth$
 gistmap*
-^CONDUCT\.md$
+^CODE_OF_CONDUCT\.md$
 ^cran-comments\.md$
 ^codemeta\.json$
 \.github
