@@ -1,18 +1,10 @@
-mapr 0.5.0
+mapr 0.4.0
 ==========
 
 ### MINOR IMPROVEMENTS
 
-* xx (#xx)
-* xx (#xx)
-* xx (#xx)
-
-### BUG FIXES
-
-* xx (#xx)
-* xx (#xx)
-* xx (#xx)
-
+* All `map_*()` functions now support `gbif_data` class from the `rgbif` package, which is the output of `rgbif::occ_data()` (#29)
+* Added `.github` files for contributing, issue and PR templates (#30)
 
 
 mapr 0.3.4
