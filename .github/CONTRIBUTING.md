@@ -17,6 +17,10 @@ If you are considering a pull request, you may want to open an issue first to di
 * Push up to your account
 * Submit a pull request to home base (likely master branch, but check to make sure) at `ropensci/mapr`
 
+### Vignette changes
+
+If you want to contribute to the vignette, or add a new one, those are kept in the `inst/vign/` directory. The main vignette is in `inst/vign/mapr_vignette.Rmd`.
+
 ### Discussion forum
 
 Check out our [discussion forum](https://discuss.ropensci.org) if you think your issue requires a longer form discussion.
