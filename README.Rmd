@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
 
 [![Build Status](https://travis-ci.org/ropensci/mapr.svg?branch=master)](https://travis-ci.org/ropensci/mapr)
 [![Build status](https://ci.appveyor.com/api/projects/status/p0vje85d0us1q2pa?svg=true)](https://ci.appveyor.com/project/sckott/mapr)
+[![cran checks](https://cranchecks.info/badges/worst/mapr)](https://cranchecks.info/pkgs/mapr)
 [![codecov.io](https://codecov.io/github/ropensci/mapr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mapr?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mapr?color=FAB657)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/mapr)](https://cran.r-project.org/package=mapr)
