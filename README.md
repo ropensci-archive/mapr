@@ -95,7 +95,7 @@ map_ggplot(x, "usa")
 
 
 ```r
-map_plot(dat, cex = 1, pch = 10)
+map_plot(dat, size = 1, pch = 10)
 ```
 
 ![basremap](http://f.cl.ly/items/2J3d1z1t0U3r410o2T3d/Screen%20Shot%202015-07-02%20at%202.57.04%20PM.png)
@@ -108,7 +108,7 @@ if that's your jam, though you might find `rgbif` easier
 ```r
 library("dismo")
 g <- gbif('Batrachoseps', 'luciae', geo = TRUE, end = 300)
-map_leaflet(g, "lon", "lat")
+map_leaflet(g, lon = "lon", lat = "lat", name = "scientificName")
 ```
 
 ![dismomap](http://f.cl.ly/items/2u2V0n0B3Y2y0p1d0f1M/Screen%20Shot%202016-01-22%20at%204.46.12%20PM.png)
