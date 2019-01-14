@@ -5,12 +5,12 @@
 \title{ggplot2 mapping}
 \usage{
 map_ggplot(x, map = "world", point_color = "#86161f", color = NULL,
-  size = 3, lon = "longitude", lat = "latitude", ...)
+  size = 3, lon = "longitude", lat = "latitude", name = NULL, ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
-\code{gbif}, \code{gbif_data}, \code{SpatialPoints}, 
-\code{SpatialPointsDataFrame}, or \code{data.frame}. The package 
+\code{gbif}, \code{gbif_data}, \code{SpatialPoints},
+\code{SpatialPointsDataFrame}, or \code{data.frame}. The package
 \pkg{spocc} needed for
 the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
@@ -27,9 +27,13 @@ italy, or nz}
 \item{size}{point size, Default: 3}
 
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
-unless \code{data.frame} input to \code{x} parameter. We attempt to guess, 
-but if nothing close, we stop. Default: \code{longitude} and 
+unless \code{data.frame} input to \code{x} parameter. We attempt to guess,
+but if nothing close, we stop. Default: \code{longitude} and
 \code{latitude}}
+
+\item{name}{(character) the column name that contains the name to use in
+creating the map. If left \code{NULL} we look for a "name" column.
+default: \code{NULL}}
 
 \item{...}{Ignored}
 }
@@ -54,7 +58,7 @@ library("spocc")
 ddat <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit=100)
 map_ggplot(ddat)
 map_ggplot(ddat$gbif)
-map_ggplot(v, "usa")
+map_ggplot(ddat$gbif, "usa")
 map_ggplot(ddat, "county")
 
 ### usage of occ2sp()
@@ -82,7 +86,7 @@ res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"),
 map_ggplot(res)
 
 ### add a convex hull
-map_ggplot(res) + hull()
+hull(map_ggplot(res))
 
 
 ## data.frame

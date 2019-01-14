@@ -4,14 +4,14 @@
 \alias{map_ggmap}
 \title{ggpmap visualization of species occurences}
 \usage{
-map_ggmap(x, zoom = 3, point_color = "#86161f", color = NULL, size = 3,
-  lon = "longitude", lat = "latitude", maptype = "terrain",
-  source = "google", ...)
+map_ggmap(x, zoom = 3, point_color = "#86161f", color = NULL,
+  size = 3, lon = "longitude", lat = "latitude",
+  maptype = "terrain", source = "google", ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
-\code{gbif}, \code{gbif_data}, \code{SpatialPoints}, 
-\code{SpatialPointsDataFrame}, or \code{data.frame}. The package 
+\code{gbif}, \code{gbif_data}, \code{SpatialPoints},
+\code{SpatialPointsDataFrame}, or \code{data.frame}. The package
 \pkg{spocc} needed for
 the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
@@ -26,8 +26,8 @@ name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 \item{size}{point size, Default: 3}
 
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
-unless \code{data.frame} input to \code{x} parameter. We attempt to guess, 
-but if nothing close, we stop. Default: \code{longitude} and 
+unless \code{data.frame} input to \code{x} parameter. We attempt to guess,
+but if nothing close, we stop. Default: \code{longitude} and
 \code{latitude}}
 
 \item{maptype}{(character) map theme. see \code{get_map} in \code{ggmap}

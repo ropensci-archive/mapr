@@ -4,21 +4,21 @@
 \alias{map_plot}
 \title{Base R mapping}
 \usage{
-map_plot(x, lon = "longitude", lat = "latitude", color = NULL, size = 1,
-  pch = 16, hull = FALSE, ...)
+map_plot(x, lon = "longitude", lat = "latitude", color = NULL,
+  size = 1, pch = 16, hull = FALSE, ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
-\code{gbif}, \code{gbif_data}, \code{SpatialPoints}, 
-\code{SpatialPointsDataFrame}, or \code{data.frame}. The package 
+\code{gbif}, \code{gbif_data}, \code{SpatialPoints},
+\code{SpatialPointsDataFrame}, or \code{data.frame}. The package
 \pkg{spocc} needed for
 the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
 name (the taxonomic name), latitude (in dec. deg.), longitude (in dec. deg.)}
 
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
-unless \code{data.frame} input to \code{x} parameter. We attempt to guess, 
-but if nothing close, we stop. Default: \code{longitude} and 
+unless \code{data.frame} input to \code{x} parameter. We attempt to guess,
+but if nothing close, we stop. Default: \code{longitude} and
 \code{latitude}}
 
 \item{color}{Default color of your points.}

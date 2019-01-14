@@ -8,6 +8,9 @@
 #' @param size point size, Default: 3
 #' @param point_color Default color of your points. Deprecated, use
 #' `color`
+#' @param name (character) the column name that contains the name to use in 
+#' creating the map. If left `NULL` we look for a "name" column. 
+#' default: `NULL`
 #' @param ... Ignored
 #' @return A ggplot2 map, of class `gg/ggplot`
 #'
@@ -26,7 +29,7 @@
 #' ddat <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit=100)
 #' map_ggplot(ddat)
 #' map_ggplot(ddat$gbif)
-#' map_ggplot(v, "usa")
+#' map_ggplot(ddat$gbif, "usa")
 #' map_ggplot(ddat, "county")
 #'
 #' ### usage of occ2sp()
@@ -54,7 +57,7 @@
 #' map_ggplot(res)
 #' 
 #' ### add a convex hull
-#' map_ggplot(res) + hull()
+#' hull(map_ggplot(res))
 #' 
 #'
 #' ## data.frame
@@ -71,82 +74,85 @@
 #'}
 
 map_ggplot <- function(x, map = "world", point_color = "#86161f", color = NULL,
-                       size = 3, lon = 'longitude', lat = 'latitude', ...) {
+  size = 3, lon = "longitude", lat = "latitude",  name = NULL, ...) {
   UseMethod("map_ggplot")
 }
 
 #' @export
 map_ggplot.occdat <- function(x, map = "world", point_color = "#86161f",
-                              color = NULL, size = 3, lon = 'longitude',
-                              lat = 'latitude', ...) {
+  color = NULL, size = 3, lon = "longitude", lat = "latitude", 
+  name = NULL, ...) {
 
   check_inputs(match.call())
   x <- spocc::occ2df(x)
-  make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map,
+  make_amap(dat_cleaner(x, lon = lon, lat = lat, name = name), map,
             color, size)
 }
 
 #' @export
 map_ggplot.occdatind <- function(x, map = "world", point_color = "#86161f",
-                                 color = NULL, size = 3, lon = 'longitude',
-                                 lat = 'latitude', ...) {
+  color = NULL, size = 3, lon = "longitude", lat = "latitude", 
+  name = NULL, ...) {
+
   check_inputs(match.call())
   x <- spocc::occ2df(x)
-  make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map,
+  make_amap(dat_cleaner(x, lon = lon, lat = lat, name = name), map,
             color, size)
 }
 
 #' @export
 map_ggplot.gbif <- function(x, map = "world", point_color = "#86161f",
-                            color = NULL, size = 3, lon = 'longitude',
-                            lat = 'latitude', ...) {
+  color = NULL, size = 3, lon = "longitude", lat = "latitude", 
+  name = NULL, ...) {
+
   check_inputs(match.call())
   x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
-  make_amap(dat_cleaner(x, lon = 'decimalLongitude',
-                        lat = 'decimalLatitude'), map, color, size)
+  make_amap(dat_cleaner(x, lon = "decimalLongitude", 
+    lat = "decimalLatitude", name = name), map, color, size)
 }
 
 #' @export
 map_ggplot.gbif_data <- function(x, map = "world", point_color = "#86161f",
-                            color = NULL, size = 3, lon = 'longitude',
-                            lat = 'latitude', ...) {
+  color = NULL, size = 3, lon = "longitude", lat = "latitude", 
+  name = NULL, ...) {
+
   check_inputs(match.call())
   x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
-  make_amap(dat_cleaner(x, lon = 'decimalLongitude',
-                        lat = 'decimalLatitude'), map, color, size)
+  make_amap(dat_cleaner(x, lon = "decimalLongitude", 
+    lat = "decimalLatitude", name = name), map, color, size)
 }
 
 #' @export
 map_ggplot.SpatialPoints <- function(x, map = "world", point_color = "#86161f",
-                                     color = NULL, size = 3, lon = 'longitude',
-                                     lat = 'latitude', ...) {
+  color = NULL, size = 3, lon = "longitude", lat = "latitude", 
+  name = NULL, ...) {
+
   check_inputs(match.call())
   make_amap(data.frame(x), map, color, size)
 }
 
 #' @export
-map_ggplot.SpatialPointsDataFrame <- function(x, map = "world",
-                                              point_color = "#86161f",
-                                              color = NULL, size = 3,
-                                              lon = 'longitude',
-                                              lat = 'latitude', ...) {
+map_ggplot.SpatialPointsDataFrame <- function(x, map = "world", 
+  point_color = "#86161f", color = NULL, size = 3, lon = "longitude",
+  lat = "latitude", name = NULL, ...) {
+
   check_inputs(match.call())
   make_amap(data.frame(x), map, color, size)
 }
 
 #' @export
 map_ggplot.data.frame <- function(x, map = "world", point_color = "#86161f",
-                                  color = NULL, size = 3, lon = 'longitude',
-                                  lat = 'latitude', ...) {
+  color = NULL, size = 3, lon = "longitude", lat = "latitude", name = NULL, ...) {
+
   check_inputs(match.call())
-  make_amap(dat_cleaner(x, lon = 'longitude', lat = 'latitude'), map,
+  make_amap(dat_cleaner(x, lon = lon, lat = lat, name = name), map,
             color, size)
 }
 
 #' @export
 map_ggplot.default <- function(x, map = "world", point_color = "#86161f",
-                               color = NULL, size = 3, lon = 'longitude',
-                               lat = 'latitude', ...) {
+  color = NULL, size = 3, lon = "longitude", lat = "latitude", name = NULL, ...) {
+  
   stop(
     sprintf("map_ggplot does not support input of class '%s'", class(x)),
     call. = FALSE

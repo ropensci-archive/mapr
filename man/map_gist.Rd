@@ -9,8 +9,8 @@ map_gist(x, description = "", public = TRUE, browse = TRUE,
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
-\code{gbif}, \code{gbif_data}, \code{SpatialPoints}, 
-\code{SpatialPointsDataFrame}, or \code{data.frame}. The package 
+\code{gbif}, \code{gbif_data}, \code{SpatialPoints},
+\code{SpatialPointsDataFrame}, or \code{data.frame}. The package
 \pkg{spocc} needed for
 the first two, and \pkg{rgbif} needed for the third. When \code{data.frame}
 input, any number of columns allowed, but with at least the following:
@@ -24,8 +24,8 @@ default (=no description)}
 \item{browse}{If \code{TRUE} (default) the map opens in your default browser.}
 
 \item{lon, lat}{(character) Longitude and latitude variable names. Ignored
-unless \code{data.frame} input to \code{x} parameter. We attempt to guess, 
-but if nothing close, we stop. Default: \code{longitude} and 
+unless \code{data.frame} input to \code{x} parameter. We attempt to guess,
+but if nothing close, we stop. Default: \code{longitude} and
 \code{latitude}}
 
 \item{...}{Further arguments passed on to \code{\link[=style_geojson]{style_geojson()}}}

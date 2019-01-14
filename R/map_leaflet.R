@@ -141,9 +141,13 @@ map_leaflet.default <- function(x, lon = 'longitude', lat = 'latitude',
 }
 
 # helpers ------------------------------------
-dat_cleaner <- function(x, lon = 'longitude', lat = 'latitude') {
+dat_cleaner <- function(x, lon = 'longitude', lat = 'latitude', name = NULL) {
   x <- guess_latlon(x, lat, lon)
-  x[stats::complete.cases(x$latitude, x$longitude), ]
+  x <- x[stats::complete.cases(x$latitude, x$longitude), ]
+  if (!is.null(name)) {
+    names(x)[which(names(x) == name)] <- "name"
+  } 
+  return(x)
 }
 
 make_map <- function(x, color, size) {
