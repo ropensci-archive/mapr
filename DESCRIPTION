@@ -14,6 +14,7 @@ LazyData: true
 LazyLoad: true
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
+Encoding: UTF-8
 Imports:
     ggplot2,
     leaflet,
@@ -30,7 +31,7 @@ Suggests:
     knitr,
     taxize,
     maptools
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 X-schema.org-applicationCategory: Geospatial
 X-schema.org-keywords: maps, mapping, ggplot, leaflet, interactive, biodiversity, occurrences
 X-schema.org-isPartOf: https://ropensci.org
