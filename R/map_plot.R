@@ -3,9 +3,11 @@
 #' @export
 #' @template args
 #' @param color Default color of your points.
-#' @param size point size, Default: 1
+#' @param size point size, passed to `cex` Default: 1
 #' @param pch point symbol shape, Default: 16
 #' @param hull (logical) whether to add a convex hull. Default: `FALSE`
+#' @param name (character) the column name that contains the name to use in 
+#' creating the map. If left `NULL` we look for a "name" column. 
 #' @param ... Further args to [graphics::points()]
 #' @return Plots a world scale map
 #'
@@ -85,15 +87,16 @@
 #' map_plot(res, hull = TRUE)
 #' }
 map_plot <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
-                     size = 1, pch = 16, hull = FALSE, ...) {
+                     size = 1, pch = 16, hull = FALSE, name = NULL, ...) {
   UseMethod("map_plot")
 }
 
 #' @export
 map_plot.occdat <- function(x, lon = 'longitude', lat = 'latitude',
                             color = NULL, size = 1, pch = 16,
-                            hull = FALSE, ...) {
+                            hull = FALSE, name = NULL, ...) {
   df <- spocc::occ2df(x)
+  x <- check_name(x, name)
   df <- check_colors(df, color)
   plot_er(plot_prep(df), size, hull, ...)
 }
@@ -101,17 +104,19 @@ map_plot.occdat <- function(x, lon = 'longitude', lat = 'latitude',
 #' @export
 map_plot.occdatind <- function(x, lon = 'longitude', lat = 'latitude',
                                color = NULL, size = 1, pch = 16,
-                               hull = FALSE, ...) {
+                               hull = FALSE, name = NULL, ...) {
   df <- spocc::occ2df(x)
+  x <- check_name(x, name)
   df <- check_colors(df, color)
   plot_er(plot_prep(df), size, hull, ...)
 }
 
 #' @export
 map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
-                          size = 1, pch = 16, hull = FALSE, ...) {
+                          size = 1, pch = 16, hull = FALSE, name = NULL, ...) {
   df <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   df <- guess_latlon(df)
+  x <- check_name(x, name)
   df <- df[stats::complete.cases(df$latitude, df$longitude), ]
   df <- df[df$longitude != 0, ]
   df <- check_colors(df, color)
@@ -121,9 +126,10 @@ map_plot.gbif <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
 
 #' @export
 map_plot.gbif_data <- function(x, lon = 'longitude', lat = 'latitude', color = NULL,
-                          size = 1, pch = 16, hull = FALSE, ...) {
+                          size = 1, pch = 16, hull = FALSE, name = NULL, ...) {
   df <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   df <- guess_latlon(df)
+  x <- check_name(x, name)
   df <- df[stats::complete.cases(df$latitude, df$longitude), ]
   df <- df[df$longitude != 0, ]
   df <- check_colors(df, color)
@@ -134,8 +140,9 @@ map_plot.gbif_data <- function(x, lon = 'longitude', lat = 'latitude', color = N
 #' @export
 map_plot.data.frame <- function(x, lon = 'longitude', lat = 'latitude',
                                 color = NULL, size = 1, pch = 16,
-                                hull = FALSE, ...) {
+                                hull = FALSE, name = NULL, ...) {
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   x <- check_colors(x, color)
   plot_er(plot_prep(x), size, hull, ...)
 }
@@ -143,9 +150,10 @@ map_plot.data.frame <- function(x, lon = 'longitude', lat = 'latitude',
 #' @export
 map_plot.SpatialPoints <- function(x, lon = 'longitude', lat = 'latitude',
                                    color = NULL, size = 1, pch = 16,
-                                   hull = FALSE, ...) {
+                                   hull = FALSE, name = NULL, ...) {
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   x <- check_colors(x, color)
   plot_er(plot_prep(x), size, hull, ...)
 }
@@ -154,9 +162,10 @@ map_plot.SpatialPoints <- function(x, lon = 'longitude', lat = 'latitude',
 map_plot.SpatialPointsDataFrame <- function(x, lon = 'longitude',
                                             lat = 'latitude', color = NULL,
                                             size = 1, pch = 16,
-                                            hull = FALSE, ...) {
+                                            hull = FALSE, name = NULL, ...) {
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   x <- check_colors(x, color)
   plot_er(plot_prep(x), size, hull, ...)
 }
@@ -164,7 +173,7 @@ map_plot.SpatialPointsDataFrame <- function(x, lon = 'longitude',
 #' @export
 map_plot.default <- function(x, lon = 'longitude', lat = 'latitude',
                              color = NULL, size = 1, pch = 16,
-                             hull = FALSE, ...) {
+                             hull = FALSE, name = NULL, ...) {
   stop(
     sprintf("map_plot does not support input of class '%s'", class(x)),
     call. = FALSE

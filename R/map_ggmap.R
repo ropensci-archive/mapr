@@ -10,6 +10,8 @@
 #' @param source (character) Google Maps ("google"), OpenStreetMap ("osm"),
 #' Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: `osm`
 #' @param point_color Default color of your points. Deprecated, use `color`
+#' @param name (character) the column name that contains the name to use in 
+#' creating the map. If left `NULL` we look for a "name" column. 
 #' @param ... Ignored
 #' @details Does not support adding a convex hull via [hull()]
 #'
@@ -26,129 +28,140 @@
 #'
 #' ## spocc
 #' library("spocc")
-#' gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75,
-#'   has_coords = TRUE)
-#' map_ggmap(gd)
-#' map_ggmap(gd$gbif)
+#' # gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75,
+#' #   has_coords = TRUE)
+#' # map_ggmap(gd)
+#' # map_ggmap(gd$gbif)
 #'
 #' ## rgbif
-#' library("rgbif")
+#' # library("rgbif")
 #' ### occ_search() output
-#' res <- occ_search(scientificName = "Puma concolor", limit = 100)
-#' map_ggmap(res)
+#' # res <- occ_search(scientificName = "Puma concolor", limit = 100)
+#' # map_ggmap(res)
 #' 
 #' ### occ_data() output
-#' res <- occ_data(scientificName = "Puma concolor", limit = 100)
-#' map_ggmap(res)
+#' # res <- occ_data(scientificName = "Puma concolor", limit = 100)
+#' # map_ggmap(res)
 #' 
 #' #### many taxa
-#' res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
-#'    limit = 30)
-#' map_ggmap(res)
+#' # res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
+#' #    limit = 30)
+#' # map_ggmap(res)
 #'
 #' 
 #' ## data.frame
-#' df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
-#'                  longitude = c(-120, -121, -123),
-#'                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
-#' map_ggmap(df)
+#' # df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+#' #                  longitude = c(-120, -121, -123),
+#' #                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+#' # map_ggmap(df)
 #'
 #' ### usage of occ2sp()
 #' #### SpatialPointsDataFrame
-#' spdat <- occ2sp(gd)
-#' map_ggmap(spdat)
+#' # spdat <- occ2sp(gd)
+#' # map_ggmap(spdat)
 #'
 #' # many species, each gets a different color
-#' library("spocc")
-#' spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-#' dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE,
-#'   gbifopts = list(country = 'US'))
-#' map_ggmap(dat)
-#' map_ggmap(dat, zoom = 5)
-#' map_ggmap(dat, color = '#6B944D')
-#' map_ggmap(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
+#' # library("spocc")
+#' # spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+#' # dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE,
+#' #   gbifopts = list(country = 'US'))
+#' # map_ggmap(dat)
+#' # map_ggmap(dat, zoom = 5)
+#' # map_ggmap(dat, color = '#6B944D')
+#' # map_ggmap(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
 #' }
 map_ggmap <- function(x, zoom = 3, point_color = "#86161f", color = NULL,
-                      size = 3, lon = 'longitude', lat = 'latitude',
-                      maptype = "terrain", source = "google", ...) {
+  size = 3, lon = 'longitude', lat = 'latitude',
+  maptype = "terrain", source = "google", name = NULL, ...) {
+
   UseMethod("map_ggmap")
 }
 
 #' @export
 map_ggmap.occdat <- function(x, zoom = 3, point_color = "#86161f", color = NULL,
-                             size = 3, lon = 'longitude', lat = 'latitude',
-                             maptype = "terrain", source = "google", ...) {
+  size = 3, lon = 'longitude', lat = 'latitude',
+  maptype = "terrain", source = "google", name = NULL, ...) {
+
   check_inputs(match.call())
   x <- spocc::occ2df(x)
+  x <- check_name(x, name)
   map_ggmapper(x, zoom, color, size, maptype, source)
 }
 
 #' @export
 map_ggmap.occdatind <- function(x, zoom = 3, point_color = "#86161f",
-                                color = NULL, size = 3, lon = 'longitude',
-                                lat = 'latitude', maptype = "terrain",
-                                source = "google", ...) {
+  color = NULL, size = 3, lon = 'longitude', lat = 'latitude', 
+  maptype = "terrain", source = "google", name = NULL, ...) {
+
   check_inputs(match.call())
   x <- spocc::occ2df(x)
+  x <- check_name(x, name)
   map_ggmapper(x, zoom, color, size, maptype, source)
 }
 
 #' @export
 map_ggmap.gbif <- function(x, zoom = 3, point_color = "#86161f", color = NULL,
-                           size = 3, lon = 'longitude', lat = 'latitude',
-                           maptype = "terrain", source = "google", ...) {
+  size = 3, lon = 'longitude', lat = 'latitude',
+  maptype = "terrain", source = "google", name = NULL, ...) {
+
   check_inputs(match.call())
   x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   x <- guess_latlon(x, lon = 'decimalLongitude', lat = 'decimalLatitude')
+  x <- check_name(x, name)
   map_ggmapper(x, zoom, color, size, maptype, source)
 }
 
 #' @export
 map_ggmap.gbif_data <- function(x, zoom = 3, point_color = "#86161f", color = NULL,
-                           size = 3, lon = 'longitude', lat = 'latitude',
-                           maptype = "terrain", source = "google", ...) {
+  size = 3, lon = 'longitude', lat = 'latitude',
+  maptype = "terrain", source = "google", name = NULL, ...) {
+
   check_inputs(match.call())
   x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   x <- guess_latlon(x, lon = 'decimalLongitude', lat = 'decimalLatitude')
+  x <- check_name(x, name)
   map_ggmapper(x, zoom, color, size, maptype, source)
 }
 
 #' @export
 map_ggmap.data.frame <- function(x, zoom = 3, point_color = "#86161f",
-                                 color = NULL, size = 3, lon = 'longitude',
-                                 lat = 'latitude', maptype = "terrain",
-                                 source = "google", ...) {
+  color = NULL, size = 3, lon = 'longitude', lat = 'latitude', 
+  maptype = "terrain", source = "google", name = NULL, ...) {
+
   check_inputs(match.call())
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   map_ggmapper(x, zoom, color, size, maptype, source)
 }
 
 #' @export
 map_ggmap.SpatialPoints <- function(x, zoom = 3, point_color = "#86161f",
-                                    color = NULL, size = 3, lon = 'longitude',
-                                    lat = 'latitude', maptype = "terrain",
-                                    source = "google", ...) {
+  color = NULL, size = 3, lon = 'longitude', lat = 'latitude', 
+  maptype = "terrain", source = "google", name = NULL, ...) {
+
   check_inputs(match.call())
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   map_ggmapper(x, zoom, color, size, maptype, source)
 }
 
 #' @export
-map_ggmap.SpatialPointsDataFrame <- function(x, zoom = 3,
-        point_color = "#86161f",
-        color = NULL, size = 3, lon = 'longitude', lat = 'latitude',
-        maptype = "terrain", source = "google", ...) {
+map_ggmap.SpatialPointsDataFrame <- function(x, zoom = 3, 
+  point_color = "#86161f", color = NULL, size = 3, lon = 'longitude', 
+  lat = 'latitude', maptype = "terrain", source = "google", name = NULL, ...) {
+
   check_inputs(match.call())
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   map_ggmapper(x, zoom, color, size, maptype, source)
 }
 
 #' @export
 map_ggmap.default <- function(x, zoom = 3, point_color = "#86161f",
   color = NULL, size = 3, lon = 'longitude', lat = 'latitude',
-  maptype = "terrain", source = "google", ...) {
+  maptype = "terrain", source = "google", name = NULL, ...) {
 
   stop(
     sprintf("map_ggmap does not support input of class '%s'", class(x)),

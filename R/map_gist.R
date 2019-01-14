@@ -6,6 +6,8 @@
 #' default (=no description)
 #' @param public (logical) Whether gist is public (default: `TRUE`)
 #' @param browse If `TRUE` (default) the map opens in your default browser.
+#' @param name (character) the column name that contains the name to use in 
+#' creating the map. If left `NULL` we look for a "name" column. 
 #' @param ... Further arguments passed on to [style_geojson()]
 #'
 #' @details See [gistr::gist_auth()] for help on authentication
@@ -64,71 +66,74 @@
 #' map_gist(spdatdf)
 #' }
 map_gist <- function(x, description = "", public = TRUE, browse = TRUE,
-                     lon = 'longitude', lat = 'latitude', ...) {
+                     lon = 'longitude', lat = 'latitude', name = NULL, ...) {
   UseMethod("map_gist")
 }
 
 #' @export
 map_gist.occdat <- function(x, description = "", public = TRUE, browse = TRUE,
-                            lon = 'longitude', lat = 'latitude', ...) {
+                            lon = 'longitude', lat = 'latitude', 
+                            name = NULL, ...) {
   map_gister(spocc::occ2df(x), description, public, browse, ...)
 }
 
 #' @export
 map_gist.occdatind <- function(x, description = "", public = TRUE,
-                               browse = TRUE, lon = 'longitude',
-                               lat = 'latitude', ...) {
+  browse = TRUE, lon = 'longitude', lat = 'latitude', name = NULL, ...) {
+  x <- check_name(x, name)
   map_gister(spocc::occ2df(x), description, public, browse, ...)
 }
 
 #' @export
 map_gist.gbif <- function(x, description = "", public = TRUE, browse = TRUE,
-                          lon = 'longitude', lat = 'latitude', ...) {
+  lon = 'longitude', lat = 'latitude', name = NULL, ...) {
   x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   x <- re_name(x, c('decimalLatitude' = 'latitude'))
   x <- re_name(x, c('decimalLongitude' = 'longitude'))
+  x <- check_name(x, name)
   map_gister(x, description, public, browse, ...)
 }
 
 #' @export
 map_gist.gbif_data <- function(x, description = "", public = TRUE, browse = TRUE,
-                          lon = 'longitude', lat = 'latitude', ...) {
+  lon = 'longitude', lat = 'latitude', name = NULL, ...) {
   x <- if ("data" %in% names(x)) x$data else bdt(lapply(x, function(z) z$data))
   x <- re_name(x, c('decimalLatitude' = 'latitude'))
   x <- re_name(x, c('decimalLongitude' = 'longitude'))
+  x <- check_name(x, name)
   map_gister(x, description, public, browse, ...)
 }
 
 #' @export
 map_gist.data.frame <- function(x, description = "", public = TRUE,
-                                browse = TRUE, lon = 'longitude',
-                                lat = 'latitude', ...) {
+  browse = TRUE, lon = 'longitude', lat = 'latitude', name = NULL, ...) {
 
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   map_gister(x, description, public, browse, ...)
 }
 
 #' @export
 map_gist.SpatialPoints <- function(x, description = "", public = TRUE,
-                                   browse = TRUE, lon = 'longitude',
-                                   lat = 'latitude', ...) {
+  browse = TRUE, lon = 'longitude', lat = 'latitude', name = NULL, ...) {
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   map_gister(x, description, public, browse, ...)
 }
 
 #' @export
 map_gist.SpatialPointsDataFrame <- function(x, description = "", public = TRUE,
-                                            browse = TRUE, lon = 'longitude',
-                                            lat = 'latitude', ...) {
+  browse = TRUE, lon = 'longitude', lat = 'latitude', name = NULL, ...) {
   x <- data.frame(x)
   x <- guess_latlon(x, lat, lon)
+  x <- check_name(x, name)
   map_gister(x, description, public, browse, ...)
 }
 
 #' @export
 map_gist.default <- function(x, description = "", public = TRUE, browse = TRUE,
-                             lon = 'longitude', lat = 'latitude', ...) {
+  lon = 'longitude', lat = 'latitude', name = NULL, ...) {
   stop(sprintf("map_gist does not support input of class '%s'", class(x)),
        call. = FALSE)
 }

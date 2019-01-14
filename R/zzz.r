@@ -34,3 +34,10 @@ bdt <- function(x) {
     data.table::rbindlist(x, fill = TRUE, use.names = TRUE)
   ))
 }
+
+check_name <- function(x, name = NULL) {
+  if (!is.null(name)) {
+    names(x)[which(names(x) == name)] <- "name"
+  }
+  return(x)
+}

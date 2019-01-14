@@ -6,7 +6,7 @@
 \usage{
 map_ggmap(x, zoom = 3, point_color = "#86161f", color = NULL,
   size = 3, lon = "longitude", lat = "latitude",
-  maptype = "terrain", source = "google", ...)
+  maptype = "terrain", source = "google", name = NULL, ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -36,6 +36,9 @@ for options. Default: none}
 \item{source}{(character) Google Maps ("google"), OpenStreetMap ("osm"),
 Stamen Maps ("stamen"), or CloudMade maps ("cloudmade"). Default: \code{osm}}
 
+\item{name}{(character) the column name that contains the name to use in
+creating the map. If left \code{NULL} we look for a "name" column.}
+
 \item{...}{Ignored}
 }
 \description{
@@ -59,46 +62,46 @@ Apologies for the problem.
 
 ## spocc
 library("spocc")
-gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75,
-  has_coords = TRUE)
-map_ggmap(gd)
-map_ggmap(gd$gbif)
+# gd <- occ(query = 'Accipiter striatus', from = 'gbif', limit=75,
+#   has_coords = TRUE)
+# map_ggmap(gd)
+# map_ggmap(gd$gbif)
 
 ## rgbif
-library("rgbif")
+# library("rgbif")
 ### occ_search() output
-res <- occ_search(scientificName = "Puma concolor", limit = 100)
-map_ggmap(res)
+# res <- occ_search(scientificName = "Puma concolor", limit = 100)
+# map_ggmap(res)
 
 ### occ_data() output
-res <- occ_data(scientificName = "Puma concolor", limit = 100)
-map_ggmap(res)
+# res <- occ_data(scientificName = "Puma concolor", limit = 100)
+# map_ggmap(res)
 
 #### many taxa
-res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
-   limit = 30)
-map_ggmap(res)
+# res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
+#    limit = 30)
+# map_ggmap(res)
 
 
 ## data.frame
-df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
-                 longitude = c(-120, -121, -123),
-                 latitude = c(41, 42, 45), stringsAsFactors = FALSE)
-map_ggmap(df)
+# df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),
+#                  longitude = c(-120, -121, -123),
+#                  latitude = c(41, 42, 45), stringsAsFactors = FALSE)
+# map_ggmap(df)
 
 ### usage of occ2sp()
 #### SpatialPointsDataFrame
-spdat <- occ2sp(gd)
-map_ggmap(spdat)
+# spdat <- occ2sp(gd)
+# map_ggmap(spdat)
 
 # many species, each gets a different color
-library("spocc")
-spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE,
-  gbifopts = list(country = 'US'))
-map_ggmap(dat)
-map_ggmap(dat, zoom = 5)
-map_ggmap(dat, color = '#6B944D')
-map_ggmap(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
+# library("spocc")
+# spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
+# dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE,
+#   gbifopts = list(country = 'US'))
+# map_ggmap(dat)
+# map_ggmap(dat, zoom = 5)
+# map_ggmap(dat, color = '#6B944D')
+# map_ggmap(dat, color = c('#976AAE', '#6B944D', '#BD5945'))
 }
 }

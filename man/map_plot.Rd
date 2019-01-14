@@ -5,7 +5,7 @@
 \title{Base R mapping}
 \usage{
 map_plot(x, lon = "longitude", lat = "latitude", color = NULL,
-  size = 1, pch = 16, hull = FALSE, ...)
+  size = 1, pch = 16, hull = FALSE, name = NULL, ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -23,11 +23,14 @@ but if nothing close, we stop. Default: \code{longitude} and
 
 \item{color}{Default color of your points.}
 
-\item{size}{point size, Default: 1}
+\item{size}{point size, passed to \code{cex} Default: 1}
 
 \item{pch}{point symbol shape, Default: 16}
 
 \item{hull}{(logical) whether to add a convex hull. Default: \code{FALSE}}
+
+\item{name}{(character) the column name that contains the name to use in
+creating the map. If left \code{NULL} we look for a "name" column.}
 
 \item{...}{Further args to \code{\link[graphics:points]{graphics::points()}}}
 }

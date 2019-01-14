@@ -78,7 +78,7 @@ map_ggplot(dat, map = "usa")
 
 Using the `ggmap` package we can create a ggplot, but with map data behind the points.
 
-```{r}
+```{r eval=FALSE}
 map_ggmap(dat)
 ```
 

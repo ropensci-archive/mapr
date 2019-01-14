@@ -5,7 +5,7 @@
 \title{Make interactive maps with Leaflet.js}
 \usage{
 map_leaflet(x, lon = "longitude", lat = "latitude", color = NULL,
-  size = 13, ...)
+  size = 13, name = NULL, ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -24,6 +24,9 @@ but if nothing close, we stop. Default: \code{longitude} and
 \item{color}{Default color of your points.}
 
 \item{size}{point size, Default: 13}
+
+\item{name}{(character) the column name that contains the name to use in
+creating the map. If left \code{NULL} we look for a "name" column.}
 
 \item{...}{Ignored}
 }

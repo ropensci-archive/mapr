@@ -5,7 +5,7 @@
 \title{Make an interactive map to view in the browser as a GitHub gist}
 \usage{
 map_gist(x, description = "", public = TRUE, browse = TRUE,
-  lon = "longitude", lat = "latitude", ...)
+  lon = "longitude", lat = "latitude", name = NULL, ...)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -27,6 +27,9 @@ default (=no description)}
 unless \code{data.frame} input to \code{x} parameter. We attempt to guess,
 but if nothing close, we stop. Default: \code{longitude} and
 \code{latitude}}
+
+\item{name}{(character) the column name that contains the name to use in
+creating the map. If left \code{NULL} we look for a "name" column.}
 
 \item{...}{Further arguments passed on to \code{\link[=style_geojson]{style_geojson()}}}
 }
