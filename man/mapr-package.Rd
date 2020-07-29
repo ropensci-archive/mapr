@@ -4,7 +4,10 @@
 \name{mapr-package}
 \alias{mapr-package}
 \alias{mapr}
-\title{Visualize species occurrence data}
+\title{mapr}
+\description{
+Visualize species occurrence data
+}
 \section{Many inputs}{
 
 All functions take the following kinds of inputs:
@@ -28,7 +31,6 @@ with the default \code{latitude} and \code{longitude})
 \itemize{
 \item \code{\link[=map_plot]{map_plot()}} - static Base R plots
 \item \code{\link[=map_ggplot]{map_ggplot()}} - static ggplot2 plots
-\item \code{\link[=map_ggmap]{map_ggmap()}} - static ggplot2 plots with map layers
 \item \code{\link[=map_leaflet]{map_leaflet()}} - interactive Leaflet.js interactive maps
 \item \code{\link[=map_gist]{map_gist()}} - ineractive, shareable maps on GitHub Gists
 }
