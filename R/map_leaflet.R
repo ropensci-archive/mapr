@@ -150,13 +150,6 @@ map_leaflet.default <- function(x, lon = 'longitude', lat = 'latitude',
 }
 
 # helpers ------------------------------------
-dat_cleaner <- function(x, lon = 'longitude', lat = 'latitude', name = NULL) {
-  x <- guess_latlon(x, lat, lon)
-  x <- x[stats::complete.cases(x$latitude, x$longitude), ]
-  x <- check_name(x, name)
-  return(x)
-}
-
 make_map <- function(x, color, size) {
   lf <- leaflet::leaflet(data = x)
   lf <- leaflet::addTiles(lf)
