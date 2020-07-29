@@ -46,7 +46,7 @@ Make interactive maps with Leaflet.js
 }
 \details{
 We add popups by default, and add all columns to the popup. The
-html is escaped with \code{\link[htmltools:htmlEscape]{htmltools::htmlEscape()}}
+html is escaped with \code{htmltools::htmlEscape()}
 }
 \examples{
 \dontrun{
@@ -62,9 +62,11 @@ map_leaflet(out$gbif)
 map_leaflet(occ2sp(out))
 
 ## rgbif
+if (requireNamespace("rgbif")) {
 library("rgbif")
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_leaflet(res)
+}
 
 ## SpatialPoints class
 library("sp")
@@ -74,6 +76,7 @@ x <- SpatialPoints(df)
 map_leaflet(x)
 
 ## SpatialPointsDataFrame class
+if (requireNamespace("rgbif")) {
 library("rgbif")
 ### occ_search() output
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
@@ -86,6 +89,7 @@ map_leaflet(x)
 ### occ_data() output
 res <- occ_data(scientificName = "Puma concolor", limit = 100)
 map_leaflet(res)
+}
 
 #### many taxa
 res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 

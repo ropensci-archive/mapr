@@ -71,6 +71,7 @@ map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'),
 map_gist(dat, symbol=c('park','zoo','garden'))
 
 ## rgbif
+if (requireNamespace("rgbif")) {
 library("rgbif")
 ### occ_search() output
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
@@ -85,7 +86,7 @@ res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"),
    limit = 30)
 res
 map_gist(res)
-
+}
 
 ## data.frame
 df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),

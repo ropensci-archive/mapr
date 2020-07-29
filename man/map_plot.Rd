@@ -71,6 +71,7 @@ map_plot(out$gbif)
 map_plot(out$gbif, hull = TRUE)
 
 ## rgbif
+if (requireNamespace("rgbif")) {
 library("rgbif")
 ### occ_search() output
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
@@ -85,6 +86,7 @@ res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"),
    limit = 30)
 res
 map_plot(res)
+}
 
 
 ## data.frame
@@ -119,9 +121,11 @@ map_plot(dat, color = c('#976AAE', '#6B944D', '#BD5945', 'red'))
 map_plot(dat, color = c('#976AAE', '#6B944D', '#BD5945', 'red'), hull = TRUE)
 
 # add a convex hull
+if (requireNamespace("rgbif")) {
 library("rgbif")
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 map_plot(res, hull = FALSE)
 map_plot(res, hull = TRUE)
+}
 }
 }

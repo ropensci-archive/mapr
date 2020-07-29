@@ -46,7 +46,7 @@ NULL
 #' @name occdat_eg1
 NULL
 
-#' Example dataset: output from call to [rgbif::occ_search()]
+#' Example dataset: output from call to `rgbif::occ_search()`
 #'
 #' A dataset with 50 rows, and 101 columns, from the query:
 #' `rgbif::occ_search(scientificName = "Puma concolor", limit = 100)`

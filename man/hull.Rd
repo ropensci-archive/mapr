@@ -39,9 +39,11 @@ dat <- occ(spp, from = 'gbif', limit = 30, has_coords = TRUE)
 hull(map_leaflet(dat))
 
 # ggplot
+if (requireNamespace("rgbif")) {
 library("rgbif")
 res <- occ_search(scientificName = "Puma concolor", limit = 100)
 hull(map_ggplot(res))
+}
 
 # base plots
 library("spocc")

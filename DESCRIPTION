@@ -4,7 +4,7 @@ Description: Utilities for visualizing species occurrence data. Includes
     functions to visualize occurrence data from 'spocc', 'rgbif',
     and other packages. Mapping options included for base R plots, 'ggplot2',
     'ggmap', 'leaflet' and 'GitHub' 'gists'.
-Version: 0.4.4.91
+Version: 0.4.8.91
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com", 
@@ -30,7 +30,8 @@ Suggests:
     testthat,
     knitr,
     taxize,
-    maptools
+    maptools,
+    rgbif
 RoxygenNote: 7.1.1
 X-schema.org-applicationCategory: Geospatial
 X-schema.org-keywords: maps, mapping, ggplot, leaflet, interactive, biodiversity, occurrences

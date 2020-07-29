@@ -79,6 +79,7 @@ spdatdf <- as(spdat, "SpatialPointsDataFrame")
 map_ggplot(spdatdf)
 
 ## rgbif
+if (requireNamespace("rgbif")) {
 library("rgbif")
 library("ggplot2")
 ### occ_search() output
@@ -96,7 +97,7 @@ map_ggplot(res)
 
 ### add a convex hull
 hull(map_ggplot(res))
-
+}
 
 ## data.frame
 df <- data.frame(name = c('Poa annua', 'Puma concolor', 'Foo bar'),

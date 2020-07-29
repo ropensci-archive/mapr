@@ -3,7 +3,7 @@
 \docType{data}
 \name{gbif_eg1}
 \alias{gbif_eg1}
-\title{Example dataset: output from call to \code{\link[rgbif:occ_search]{rgbif::occ_search()}}}
+\title{Example dataset: output from call to \code{rgbif::occ_search()}}
 \format{
 A data frame with 50 rows and 101 variables
 }

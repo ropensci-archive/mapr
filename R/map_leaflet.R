@@ -9,7 +9,7 @@
 #' creating the map. If left `NULL` we look for a "name" column. 
 #' @param ... Ignored
 #' @details We add popups by default, and add all columns to the popup. The
-#' html is escaped with [htmltools::htmlEscape()]
+#' html is escaped with `htmltools::htmlEscape()`
 #' @return a Leaflet map in Viewer in Rstudio, or in your default browser
 #' otherwise
 #' @examples \dontrun{
@@ -25,9 +25,11 @@
 #' map_leaflet(occ2sp(out))
 #'
 #' ## rgbif
+#' if (requireNamespace("rgbif")) {
 #' library("rgbif")
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
 #' map_leaflet(res)
+#' }
 #'
 #' ## SpatialPoints class
 #' library("sp")
@@ -37,6 +39,7 @@
 #' map_leaflet(x)
 #'
 #' ## SpatialPointsDataFrame class
+#' if (requireNamespace("rgbif")) {
 #' library("rgbif")
 #' ### occ_search() output
 #' res <- occ_search(scientificName = "Puma concolor", limit = 100)
@@ -49,6 +52,7 @@
 #' ### occ_data() output
 #' res <- occ_data(scientificName = "Puma concolor", limit = 100)
 #' map_leaflet(res)
+#' }
 #' 
 #' #### many taxa
 #' res <- occ_data(scientificName = c("Puma concolor", "Quercus lobata"), 
