@@ -19,7 +19,9 @@ foo$data$identifiedBy <- stringi::stri_escape_unicode(foo$data$identifiedBy)
 foo$data$occurrenceRemarks <- stringi::stri_escape_unicode(foo$data$occurrenceRemarks)
 z <- foo$data
 gbif_eg1 <- foo$data
+gbif_eg1 <- dplyr::rename(gbif_eg1, latitude = decimalLatitude, longitude = decimalLongitude)
 save(gbif_eg1, file = "data/gbif_eg1.rda", version = 2)
+
 
 # occdat_eg1
 library(spocc)
