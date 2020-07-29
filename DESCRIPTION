@@ -21,7 +21,7 @@ Imports:
     leaflet,
     spocc (>= 0.6.0),
     sp,
-    rworldmap,
+    maps,
     RColorBrewer,
     jsonlite,
     gistr,

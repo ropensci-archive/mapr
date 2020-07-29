@@ -26,7 +26,7 @@
 #' ggplot geom_point geom_polygon element_blank theme scale_color_manual
 #' scale_color_brewer
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame plot
-#' @importFrom rworldmap getMap
+#' @importFrom maps map
 #' @import leaflet
 #' @name mapr-package
 #' @aliases mapr

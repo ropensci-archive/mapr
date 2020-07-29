@@ -191,7 +191,7 @@ plot_prep <- function(x) {
 
 plot_er <- function(x, size, hull, pch = 16, ...) {
   sp::proj4string(x) <- sp::CRS("+init=epsg:4326")
-  sp::plot(rworldmap::getMap(), mar = c(1,1,1,1))
+  maps::map()
   graphics::points(x, pch = pch, col = x$color, cex = size, ...)
   if (length(unique(x$color)) > 1) {
     graphics::legend(x = -180, y = -20, unique(x$name), pch = 16,
