@@ -4,8 +4,16 @@
 \alias{map_gist}
 \title{Make an interactive map to view in the browser as a GitHub gist}
 \usage{
-map_gist(x, description = "", public = TRUE, browse = TRUE,
-  lon = "longitude", lat = "latitude", name = NULL, ...)
+map_gist(
+  x,
+  description = "",
+  public = TRUE,
+  browse = TRUE,
+  lon = "longitude",
+  lat = "latitude",
+  name = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},

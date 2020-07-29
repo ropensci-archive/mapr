@@ -4,8 +4,17 @@
 \alias{map_plot}
 \title{Base R mapping}
 \usage{
-map_plot(x, lon = "longitude", lat = "latitude", color = NULL,
-  size = 1, pch = 16, hull = FALSE, name = NULL, ...)
+map_plot(
+  x,
+  lon = "longitude",
+  lat = "latitude",
+  color = NULL,
+  size = 1,
+  pch = 16,
+  hull = FALSE,
+  name = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},

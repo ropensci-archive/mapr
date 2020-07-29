@@ -4,9 +4,19 @@
 \alias{map_ggmap}
 \title{ggpmap visualization of species occurences}
 \usage{
-map_ggmap(x, zoom = 3, point_color = "#86161f", color = NULL,
-  size = 3, lon = "longitude", lat = "latitude",
-  maptype = "terrain", source = "google", name = NULL, ...)
+map_ggmap(
+  x,
+  zoom = 3,
+  point_color = "#86161f",
+  color = NULL,
+  size = 3,
+  lon = "longitude",
+  lat = "latitude",
+  maptype = "terrain",
+  source = "google",
+  name = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
@@ -59,6 +69,11 @@ Apologies for the problem.
 # "GeomRasterAnn was built with an incompatible version of ggproto".
 # This is fixed in the dev version of `ggmap`, but not in the CRAN
 # version. Apologies for the problem.
+
+# load your key
+Sys.setenv(GGMAPS_KEY = "yourkey")
+# or better yet, put the key in your .Renviron or equivalent file 
+# like GGMAPS_KEY=yourkey
 
 ## spocc
 library("spocc")

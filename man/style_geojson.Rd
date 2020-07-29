@@ -4,8 +4,16 @@
 \alias{style_geojson}
 \title{Style a data.frame prior to converting to geojson.}
 \usage{
-style_geojson(input, var = NULL, var_col = NULL, var_sym = NULL,
-  var_size = NULL, color = NULL, symbol = NULL, size = NULL)
+style_geojson(
+  input,
+  var = NULL,
+  var_col = NULL,
+  var_sym = NULL,
+  var_size = NULL,
+  color = NULL,
+  symbol = NULL,
+  size = NULL
+)
 }
 \arguments{
 \item{input}{A data.frame}

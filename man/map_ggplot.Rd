@@ -4,8 +4,17 @@
 \alias{map_ggplot}
 \title{ggplot2 mapping}
 \usage{
-map_ggplot(x, map = "world", point_color = "#86161f", color = NULL,
-  size = 3, lon = "longitude", lat = "latitude", name = NULL, ...)
+map_ggplot(
+  x,
+  map = "world",
+  point_color = "#86161f",
+  color = NULL,
+  size = 3,
+  lon = "longitude",
+  lat = "latitude",
+  name = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},

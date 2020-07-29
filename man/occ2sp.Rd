@@ -4,8 +4,7 @@
 \alias{occ2sp}
 \title{Create a spatial points dataframe from a spocc search}
 \usage{
-occ2sp(x, coord_string = "+proj=longlat +datum=WGS84",
-  just_coords = FALSE)
+occ2sp(x, coord_string = "+proj=longlat +datum=WGS84", just_coords = FALSE)
 }
 \arguments{
 \item{x}{The resuslts of a spocc search called by \code{\link[spocc:occ]{spocc::occ()}}}

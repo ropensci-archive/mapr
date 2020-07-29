@@ -5,9 +5,6 @@
 \alias{mapr-package}
 \alias{mapr}
 \title{Visualize species occurrence data}
-\description{
-Visualize species occurrence data
-}
 \section{Many inputs}{
 
 All functions take the following kinds of inputs:

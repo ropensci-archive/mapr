@@ -4,8 +4,15 @@
 \alias{map_leaflet}
 \title{Make interactive maps with Leaflet.js}
 \usage{
-map_leaflet(x, lon = "longitude", lat = "latitude", color = NULL,
-  size = 13, name = NULL, ...)
+map_leaflet(
+  x,
+  lon = "longitude",
+  lat = "latitude",
+  color = NULL,
+  size = 13,
+  name = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{The data. An object of class \code{occdat}, \code{occdatind},
