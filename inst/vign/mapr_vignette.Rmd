@@ -74,14 +74,6 @@ dat <- occ(query = 'Lynx rufus californicus', from = 'gbif', has_coords = TRUE, 
 map_ggplot(dat, map = "usa")
 ```
 
-### ggmap
-
-Using the `ggmap` package we can create a ggplot, but with map data behind the points.
-
-```{r eval=FALSE}
-map_ggmap(dat)
-```
-
 ## The supported inputs
 
 All functions take the following kinds of inputs:

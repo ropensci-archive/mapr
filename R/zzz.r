@@ -37,6 +37,14 @@ bdt <- function(x) {
 
 check_name <- function(x, name = NULL) {
   if (!is.null(name)) {
+    if (!name %in% names(x)) {
+      stop(sprintf("'%s' not found in the data", name),
+        call. = FALSE)
+    }
+    if ("name" %in% names(x)) {
+      message("existing 'name' column found; setting it to 'name_old'")
+      names(x)[which(names(x) == "name")] <- "name_old"
+    }
     names(x)[which(names(x) == name)] <- "name"
   }
   return(x)

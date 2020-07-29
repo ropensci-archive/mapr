@@ -7,8 +7,8 @@ mapr
 [![Build status](https://ci.appveyor.com/api/projects/status/p0vje85d0us1q2pa?svg=true)](https://ci.appveyor.com/project/sckott/mapr)
 [![cran checks](https://cranchecks.info/badges/worst/mapr)](https://cranchecks.info/pkgs/mapr)
 [![codecov.io](https://codecov.io/github/ropensci/mapr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mapr?branch=master)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mapr?color=FAB657)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/mapr)](https://cran.r-project.org/package=mapr)
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/mapr?color=FAB657)](https://github.com/metacran/cranlogs.app)
+[![cran version](https://www.r-pkg.org/badges/version/mapr)](https://cran.r-project.org/package=mapr)
 
 
 Helper for making maps of species occurrence data, including for:
@@ -21,7 +21,6 @@ This package has utilities for making maps with:
 
 * base R
 * ggplot2
-* ggplot2 with map layers - via `ggmap` pkg
 * Leaflet - via `leaflet` pkg
 * GitHub Gists - via `gistr` package
 
@@ -70,19 +69,7 @@ map_gist(dat, color = c("#976AAE","#6B944D","#BD5945"))
 
 ![gistmap](http://f.cl.ly/items/343l2G0A2J3T0n2t433W/Screen%20Shot%202014-02-09%20at%2010.40.57%20PM.png)
 
-### ggplot2 family maps
-
-#### ggmaps
-
-
-```r
-x <- occ(query = 'Lynx rufus californicus', from = 'gbif', limit = 100)
-map_ggmap(x)
-```
-
-![ggmaps](http://f.cl.ly/items/1L3r0b3k1W2o1Z3j2I3r/Screen%20Shot%202015-07-02%20at%202.55.59%20PM.png)
-
-#### ggplot
+### ggplot
 
 
 ```r
@@ -118,6 +105,6 @@ map_leaflet(g, lon = "lon", lat = "lat", name = "scientificName")
 * Please [report any issues or bugs](https://github.com/ropensci/mapr/issues).
 * License: MIT
 * Get citation information for `mapr` in R doing `citation(package = 'mapr')`
-* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
 
 [![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

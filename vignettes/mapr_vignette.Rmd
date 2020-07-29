@@ -76,16 +76,6 @@ map_ggplot(dat, map = "usa")
 
 ![plot of chunk unnamed-chunk-6](img/unnamed-chunk-6-1.png)
 
-### ggmap
-
-Using the `ggmap` package we can create a ggplot, but with map data behind the points.
-
-
-```r
-map_ggmap(dat)
-```
-
-![plot of chunk unnamed-chunk-7](img/unnamed-chunk-7-1.png)
 
 ## The supported inputs
 
