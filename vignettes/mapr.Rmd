@@ -1,13 +1,14 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Introduction to mapr}
-%\VignetteEncoding{UTF-8}
--->
+---
+title: "mapr introduction"
+author: "Scott Chamberlain"
+date: "2020-07-29"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mapr introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
 
-
-
-Introduction to mapr
-====================
 
 
 ## Load spocc and mapr
@@ -33,7 +34,7 @@ dat <- occ(query = spp, from = 'gbif', has_coords = TRUE, limit = 100)
 map_leaflet(dat)
 ```
 
-![leaflet](img/leaflet.png)
+![leaflet](../man/figures/leaflet.png)
 
 ### Geojson map as a Github gist
 
@@ -47,7 +48,7 @@ dat <- fixnames(dat)
 map_gist(dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 ```
 
-![gist](img/gist.png)
+![gist](../man/figures/gist.png)
 
 ## Static maps
 
@@ -62,7 +63,7 @@ out <- occ(query = spnames, from = 'gbif', has_coords = TRUE, limit = 100)
 map_plot(out, size = 1, pch = 10)
 ```
 
-![plot of chunk unnamed-chunk-5](img/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-5](../man/figures/unnamed-chunk-5-1.png)
 
 ### ggplot2
 
@@ -74,8 +75,7 @@ dat <- occ(query = 'Lynx rufus californicus', from = 'gbif', has_coords = TRUE, 
 map_ggplot(dat, map = "usa")
 ```
 
-![plot of chunk unnamed-chunk-6](img/unnamed-chunk-6-1.png)
-
+![plot of chunk unnamed-chunk-6](../man/figures/unnamed-chunk-6-1.png)
 
 ## The supported inputs
 

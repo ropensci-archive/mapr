@@ -1,21 +1,22 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Introduction to mapr}
-%\VignetteEncoding{UTF-8}
--->
+---
+title: "mapr introduction"
+author: "Scott Chamberlain"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mapr introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(
-  fig.path = "img/",
+  fig.path = "../man/figures/",
   comment = "#>",
   warning = FALSE,
   message = FALSE
 )
 ```
-
-Introduction to mapr
-====================
-
 
 ## Load spocc and mapr
 
@@ -38,7 +39,7 @@ dat <- occ(query = spp, from = 'gbif', has_coords = TRUE, limit = 100)
 map_leaflet(dat)
 ```
 
-![leaflet](img/leaflet.png)
+![leaflet](../man/figures/leaflet.png)
 
 ### Geojson map as a Github gist
 
@@ -51,7 +52,7 @@ dat <- fixnames(dat)
 map_gist(dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 ```
 
-![gist](img/gist.png)
+![gist](../man/figures/gist.png)
 
 ## Static maps
 

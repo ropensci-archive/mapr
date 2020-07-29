@@ -1,6 +1,11 @@
 PACKAGE := $(shell grep '^Package:' DESCRIPTION | sed -E 's/^Package:[[:space:]]+//')
 RSCRIPT = Rscript --no-init-file
 
+vign:
+	cd vignettes;\
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('mapr.Rmd.og', output = 'mapr.Rmd')";\
+	cd ..
+
 test:
 	${RSCRIPT} -e 'library(methods); devtools::test()'
 
@@ -20,11 +25,3 @@ check: build
 
 readme: README.Rmd
 	${RSCRIPT} -e "knitr::knit('README.Rmd')"
-
-move:
-	cp inst/vign/mapr_vignette.md vignettes
-	cp -rf inst/vign/img/* vignettes/img/
-
-rmd2md:
-	cd vignettes;\
-	mv mapr_vignette.md mapr_vignette.Rmd
