@@ -38,7 +38,9 @@ NULL
 #' Example dataset: output from call to [spocc::occ()]
 #'
 #' A dataset with 25 rows, and 62 columns, from the query:
-#' `spocc::occ(query='Accipiter striatus', from='gbif', limit=25, has_coords=T)`
+#' `occ(query='Accipiter striatus', from='gbif', limit=25, has_coords=TRUE)`
+#' 
+#' See `inst/ignore/datasets.R` for the code to prepare this dataaset
 #'
 #' @docType data
 #' @keywords datasets
@@ -50,6 +52,8 @@ NULL
 #'
 #' A dataset with 50 rows, and 101 columns, from the query:
 #' `rgbif::occ_search(scientificName = "Puma concolor", limit = 100)`
+#' 
+#' See `inst/ignore/datasets.R` for the code to prepare this dataaset
 #'
 #' @docType data
 #' @keywords datasets

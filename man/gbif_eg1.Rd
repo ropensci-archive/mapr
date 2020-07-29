@@ -11,4 +11,7 @@ A data frame with 50 rows and 101 variables
 A dataset with 50 rows, and 101 columns, from the query:
 \code{rgbif::occ_search(scientificName = "Puma concolor", limit = 100)}
 }
+\details{
+See \code{inst/ignore/datasets.R} for the code to prepare this dataaset
+}
 \keyword{datasets}
