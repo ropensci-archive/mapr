@@ -12,6 +12,10 @@ test:
 doc:
 	${RSCRIPT} -e "devtools::document()"
 
+
+egs:
+	${RSCRIPT} -e "devtools::run_examples(run = TRUE)"
+
 install: doc build
 	R CMD INSTALL . && rm *.tar.gz
 

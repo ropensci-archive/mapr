@@ -1,3 +1,27 @@
+mapr 0.5.0
+==========
+
+### DEFUNCT
+
+* `map_ggmap()` is defunct. authentication has changed, more trouble than its worth (#34)
+
+### NEW FEATURES
+
+* all mapping functions gain the `name` parameter to specify the column that holds the taxon name - if not given, we look for a column "name" (#32)
+
+### MINOR IMPROVEMENTS
+
+* fix vignette missing title (#37)
+
+### BUG FIXES
+
+* fix non-ascii strings in the two package datasets - and script added to make those datasets reproducible, including fixing non-ascii strings (#39)
+* remove linked references to pkgs in docs that are not imported/suggested (#38)
+* `map_plot()` speed up: using `maps::map()` instead of `rworldmap::getMap()`, faster (#35)
+* improve internal handling of `name` parameter users can pass down through mapping functions (#36)
+* `rgbif` added to Suggests - was used in examples but wasn't in Suggests - used conditionally in examples now
+
+
 mapr 0.4.0
 ==========
 
