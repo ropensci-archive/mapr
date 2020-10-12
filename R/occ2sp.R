@@ -11,8 +11,7 @@
 #' @details This function will return either a spatial points dataframe or
 #' spatial points object. Conversion to spatial points objects allows spocc
 #' searches to interact with other spatial data sources. More coordinate system
-#' codes can be found at the EPGS registry:
-#' <http://www.epsg-registry.org/>
+#' codes can be found at the EPGS registry
 #'
 #' @examples \dontrun{
 #' ### See points on a map
