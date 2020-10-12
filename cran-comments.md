@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 4.0.2 Patched
-* ubuntu 16.04 (on travis-ci), R 4.0.2
+* local OS X install, R 4.0.3 RC
+* ubuntu 16.04 (on travis-ci), R 4.0.3
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -14,7 +14,7 @@ There are no reverse dependencies.
 
 ---
 
-This version includes some smalls improvements.
+This version includes a fix to the vignette that was causing a warning on two CRAN platforms.
 
 Thanks! 
 Scott Chamberlain

@@ -1,3 +1,11 @@
+mapr 0.5.2
+==========
+
+### MINOR IMPROVEMENTS
+
+* fix vignette issue (#40)
+
+
 mapr 0.5.0
 ==========
 
