@@ -31,7 +31,8 @@ Suggests:
     knitr,
     taxize,
     maptools,
-    rgbif
+    rgbif,
+    scrubr
 RoxygenNote: 7.1.1
 X-schema.org-applicationCategory: Geospatial
 X-schema.org-keywords: maps, mapping, ggplot, leaflet, interactive, biodiversity, occurrences

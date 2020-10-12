@@ -54,14 +54,11 @@ Does not support adding a convex hull via \code{\link[=hull]{hull()}}
 ## spocc
 library("spocc")
 spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-dat <- occ(spp, from=c('gbif','ecoengine'), limit=30,
+dat <- spocc::occ(spp, from=c('gbif','ecoengine'), limit=30,
   gbifopts=list(hasCoordinate=TRUE))
-dat <- fixnames(dat, "query")
 
 # Define colors
 map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'))
-map_gist(dat$gbif, color=c('#976AAE','#6B944D','#BD5945'))
-map_gist(dat$ecoengine, color=c('#976AAE','#6B944D','#BD5945'))
 
 # Define colors and marker size
 map_gist(dat, color=c('#976AAE','#6B944D','#BD5945'),
