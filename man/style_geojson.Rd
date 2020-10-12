@@ -29,7 +29,7 @@ style_geojson(
 \item{color}{Valid RGB hex color}
 
 \item{symbol}{An icon ID from the Maki project
-\url{http://www.mapbox.com/maki/} or a single alphanumeric character
+https://labs.mapbox.com/maki-icons/ or a single alphanumeric character
 (a-z or 0-9).}
 
 \item{size}{One of 'small', 'medium', or 'large'}

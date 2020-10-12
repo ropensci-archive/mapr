@@ -37,6 +37,6 @@ with the default \code{latitude} and \code{longitude})
 }
 
 \author{
-Scott Chamberlain \email{myrmecocystus@gmail.com}
+Scott Chamberlain
 }
 \keyword{package}

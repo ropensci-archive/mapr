@@ -32,7 +32,7 @@
 #' @aliases mapr
 #' @docType package
 #' @keywords package
-#' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
+#' @author Scott Chamberlain
 NULL
 
 #' Example dataset: output from call to [spocc::occ()]
