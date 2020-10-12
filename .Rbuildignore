@@ -22,3 +22,4 @@ gistmap*
 ^codemeta\.json$
 \.github
 ^LICENSE\.md$
+vignettes/mapr.Rmd
